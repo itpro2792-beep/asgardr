@@ -161,6 +161,60 @@
   </div>
 </section>
 
+<section id="solar">
+  <style>
+    #solarviz{position:relative;height:min(58vh,440px);margin-top:26px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:radial-gradient(ellipse at center,#0d1424,var(--panel))}
+    #ssky{position:absolute;inset:0}
+    #ss-sun{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;z-index:2}
+    #ss-sun .d{width:64px;height:64px;border-radius:50%;background:radial-gradient(circle at 38% 34%,#fff2cf,var(--ember) 60%,#7a3d0c);box-shadow:0 0 32px 8px #e7a23c55;display:grid;place-items:center;animation:ssb 6s ease-in-out infinite}
+    #ss-sun .d span{font-family:var(--serif);font-weight:700;color:#3a1f06;font-size:15px}
+    #ss-sun .l{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--ember);margin-top:6px}
+    .ss-ring{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border:1px solid #ffffff12;border-radius:50%}
+    .ss-p{position:absolute;left:0;top:0;transform:translate(-50%,-50%);text-align:center;z-index:1}
+    .ss-p .c{border-radius:50%;margin:0 auto}
+    .ss-p .n{font-family:var(--mono);font-size:10px;color:var(--ink);margin-top:4px;white-space:nowrap}
+    .ss-p .r{font-family:var(--mono);font-size:8.5px;color:var(--muted);white-space:nowrap}
+    @keyframes ssb{0%,100%{box-shadow:0 0 32px 8px #e7a23c55}50%{box-shadow:0 0 44px 12px #e7a23c88}}
+    @media (prefers-reduced-motion:reduce){#ss-sun .d{animation:none}}
+  </style>
+  <div class="wrap">
+    <div class="shead"><span class="eyebrow">◆</span><h2>The Solar System</h2></div>
+    <p class="sintro">Every machine is a planet. I run this as a live "Mission Control" — a private operator console fed by the cluster's own metrics. Here's the fleet: ten computers orbiting the command core.</p>
+    <div id="solarviz"><canvas id="ssky"></canvas><div id="ss-sun"><div class="d"><span>sól</span></div><div class="l">command core</div></div></div>
+  </div>
+  <script>
+  (function(){
+    const F=[
+      {n:'mimisbrunnr',r:'control · knowledge',t:1,c:'#5cd2c0',s:19},
+      {n:'baldur',r:'control · etcd',t:1,c:'#5cd2c0',s:14},
+      {n:'kvasir',r:'control · etcd',t:1,c:'#5cd2c0',s:14},
+      {n:'magni',r:'edge GPU',t:2,c:'#e7a23c',s:15},
+      {n:'tyr',r:'agent host',t:2,c:'#e7a23c',s:17},
+      {n:'vidarr',r:'edge node',t:2,c:'#e7a23c',s:12},
+      {n:'freya',r:'companion',t:2,c:'#e7a23c',s:13},
+      {n:'odin',r:'big-model server',t:3,c:'#a99cf0',s:24},
+      {n:'surtr',r:'big-model server',t:3,c:'#a99cf0',s:22}
+    ];
+    const box=document.getElementById('solarviz'),cv=document.getElementById('ssky'),ctx=cv.getContext('2d');
+    const RED=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let W,H,stars=[],els=[];const TR={1:.20,2:.34,3:.47},SP={1:.9,2:.55,3:.35};let t0=performance.now();
+    function mk(){box.querySelectorAll('.ss-p,.ss-ring').forEach(e=>e.remove());els=[];const m=Math.min(W,H);
+      [1,2,3].forEach(t=>{const d=2*TR[t]*m,r=document.createElement('div');r.className='ss-ring';r.style.width=d+'px';r.style.height=d+'px';box.appendChild(r);});
+      const byT={1:[],2:[],3:[]};F.forEach(p=>byT[p.t].push(p));
+      Object.entries(byT).forEach(([t,arr])=>arr.forEach((p,i)=>{const el=document.createElement('div');el.className='ss-p';
+        el.innerHTML='<div class="c" style="width:'+p.s*2+'px;height:'+p.s*2+'px;background:radial-gradient(circle at 36% 32%,'+p.c+','+p.c+'bb 55%,'+p.c+'55);box-shadow:0 0 14px 2px '+p.c+'88"></div><div class="n">'+p.n+'</div><div class="r">'+p.r+'</div>';
+        el._a=(i/arr.length)*6.283+(+t*0.7);el._t=+t;box.appendChild(el);els.push(el);}));}
+    function rs(){const b=box.getBoundingClientRect();W=b.width;H=b.height;const dpr=Math.min(2,devicePixelRatio||1);cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+      stars=Array.from({length:Math.round(W*H/6000)},function(){return{x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.1+.2,t:Math.random()*6.28,s:Math.random()*.8+.2};});mk();}
+    function draw(){ctx.clearRect(0,0,W,H);for(var i=0;i<stars.length;i++){var s=stars[i];s.t+=.01*s.s;ctx.globalAlpha=(Math.sin(s.t)*.5+.5)*.5+.05;ctx.fillStyle='#cfe0ff';ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,6.29);ctx.fill();}ctx.globalAlpha=1;
+      var cx=W/2,cy=H/2,m=Math.min(W,H),dt=RED?0:(performance.now()-t0)/1000;
+      els.forEach(function(el){var R=TR[el._t]*m,a=el._a+(RED?0:dt*SP[el._t]*Math.PI/180);el.style.left=(cx+R*Math.cos(a))+'px';el.style.top=(cy+R*Math.sin(a))+'px';});
+      requestAnimationFrame(draw);}
+    new ResizeObserver(rs).observe(box);rs();draw();
+  })();
+  </script>
+</section>
+
 <section>
   <div class="wrap">
     <div class="shead"><span class="eyebrow">01</span><h2>The Fleet</h2></div>
@@ -306,6 +360,13 @@ corpus 10 docs → <b>sourced kept, unsourced dropped</b>
         <li><b>The retrieval corpus is small by choice</b> — ingestion is gated on human review, so the knowledge base grows slowly and deliberately.</li>
       </ul>
     </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="shead"><span class="eyebrow">✦</span><h2>Beyond the Machines</h2></div>
+    <p class="sintro">The fleet doesn't just run models — it writes. <a href="https://itpro2792-beep.github.io/book-of-euphoria/"><b>The Book of Euphoria</b></a> is a searchable text synthesized by a 100-agent council debate run on this cluster: ten councils of philosophers and mystics, a grand summit, and a final synthesis. Read it — no sign-up needed.</p>
   </div>
 </section>
 
