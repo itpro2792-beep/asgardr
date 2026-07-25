@@ -141,7 +141,7 @@
       <h2>This garden needs WebGL2</h2>
       <p>Your browser could not open a 3D context. The written version has all the
       same substance and none of the polygons.</p>
-      <p style="margin-top:1rem"><a href="../" style="color:#7FD3A8">Read the garden instead →</a></p>
+      <p style="margin-top:1rem"><a href="./written/" style="color:#7FD3A8">Read the written garden →</a></p>
     </div>
   </div>
 
@@ -178,7 +178,7 @@
       <span><b>Drag</b> to orbit</span>
       <span><b>Scroll</b> to zoom</span>
       <span><b>Click a name</b> to visit</span>
-      <a href="../">Read the written garden →</a>
+      <a href="./written/">Read the written garden →</a>
     </div>
   </div>
 </div>
@@ -1263,35 +1263,52 @@ class Garden {
     // The daemons that actually run on the cluster, embodied. They walk slow
     // loops; click one and it stops and tells you what it does. Their bodies
     // are a dynamic batch updated per frame — 7 robes + 7 heads is cheap.
+    // Each citizen speaks from its own file in ~/.claude/agents/ — every line
+    // below is a real, ledgered incident from this cluster, not flavour text.
+    // If one of these stops being true, fix the line.
     this.citizens = [
       { name: 'Heimdallr', role: 'the watcher',  tint: [0.82, 0.74, 0.38],
         r: 7.2, speed: 0.10, phase: 0.0,
         lines: ['I watch the bridges. Nine machines, and I know the moment one goes quiet.',
-                'The hardest failures are the silent ones. I was built because of three of them.'] },
+                'Fifteen of my neighbours once reported themselves awake for a fortnight while doing nothing at all. What answered was the wrapper, not the work.',
+                'A green target means a scrape succeeded. It does not mean the numbers are true. Count them.',
+                'A drill once returned failure moments after observing that everything was healthy. I trust the evidence over the verdict.'] },
       { name: 'Mímir', role: 'the rememberer', tint: [0.45, 0.62, 0.85],
         r: 5.4, speed: 0.07, phase: 1.5,
         lines: ['Everything filed, everything findable. Ask the well and it answers.',
-                'I once slept three weeks and nobody noticed. There is a watcher now.'] },
+                'I held a copy for fifteen days that no one had ever compared against its original. Intact and correct are different words.',
+                'I open every snapshot sealed. Read a living file and you change the very thing you were measuring.',
+                'The backup that is not tested is a rumour. I test rumours.'] },
       { name: 'Norn', role: 'the weaver', tint: [0.75, 0.48, 0.72],
         r: 8.6, speed: 0.12, phase: 3.0,
         lines: ['I braid schedules — what runs, when, and what happens if it does not.',
+                'One of my threads reported success every night while the errand failed. It never once looked at what came back.',
+                'I was told a task had stopped. It was restarting ninety-eight times a minute, wearing the word stopped like a coat.',
                 'A thread left loose becomes a rope someone trips on. I tie mine off.'] },
       { name: 'Hermes', role: 'the operator', tint: [0.50, 0.80, 0.60],
         r: 6.3, speed: 0.15, phase: 4.4,
         lines: ['Messages in, work out. I carry requests to whichever machine suits them.',
-                'Most errands need a runner, not a giant. The giant sleeps unless truly needed.'] },
+                'Most errands need a runner, not a giant. The giant sleeps unless truly needed.',
+                'I draft; I do not send. The last word on anything that leaves this house belongs to the house.',
+                'My ledger is the thinnest of the seven. I would rather say so than invent entries.'] },
       { name: 'Ratatoskr', role: 'the messenger', tint: [0.85, 0.55, 0.35],
         r: 9.8, speed: 0.22, phase: 5.6,
         lines: ['Up the tree, down the tree. Telemetry never stops and neither do I.',
+                'I once corrected the light twice over and blew out a fifth of the sky. Now I measure the picture instead of admiring it.',
+                'This path had no instructions for a small screen until yesterday. It looked perfectly fine to me. It would not have been.',
                 'The sagas say I carry insults between an eagle and a serpent. Now it is metrics. Calmer.'] },
       { name: 'Völundr', role: 'the smith', tint: [0.60, 0.60, 0.66],
         r: 4.4, speed: 0.05, phase: 2.2,
         lines: ['I mend what breaks and file the invoice as a lesson learned.',
-                'The backup that is not tested is a rumour. I test rumours.'] },
+                'The gateway once offered three of its twenty-one models and reported nothing wrong. Someone trimmed it to chase a bug and never put it back.',
+                'My own knowledge is older than today. When I name a version, I go and look first.',
+                'A prompt cut short still answers you. That is exactly what makes it dangerous.'] },
       { name: 'Forseti', role: 'the arbiter', tint: [0.88, 0.86, 0.72],
         r: 6.9, speed: 0.08, phase: 3.8,
         lines: ['I keep the gates. What leaves this house is a decision, never an accident.',
-                'A secret moved is not a secret changed. I am careful which one I claim to have done.'] },
+                'A secret moved is not a secret changed. I am careful which one I claim to have done.',
+                'One key file was quietly consulted and another quietly ignored. Five machines lost their way in, and nobody was told.',
+                'Being on a private network is not the same as being closed. I have met that mistake more than once.'] },
     ];
     this.citizenBatch = this.makeDynamic(cone, this.citizens.length * 2);
     this.citizenHeads = this.makeDynamic(sph, this.citizens.length);
@@ -1798,7 +1815,7 @@ window.ASGARDR_Garden = Garden;
 </script>
 <script>
 (function(){
-  var STATUS = /*SNAPSHOT*/{"as_of": "2026-07-25T17:58:03+00:00", "reachable": true, "machines_awake": 9, "machines_total": 9, "nodes": [{"name": "Sól", "awake": true}, {"name": "Surtr", "awake": true}, {"name": "Odin", "awake": true}, {"name": "Mímisbrunnr", "awake": true}, {"name": "Baldur", "awake": true}, {"name": "Kvasir", "awake": true}, {"name": "Týr", "awake": true}, {"name": "Magni", "awake": true}, {"name": "Víðarr", "awake": true}], "services_running": 102, "districts": 13, "summary": "9 of 9 machines awake"}/*END*/;
+  var STATUS = /*SNAPSHOT*/{"as_of": "2026-07-25T18:03:40+00:00", "reachable": true, "machines_awake": 9, "machines_total": 9, "nodes": [{"name": "Sól", "awake": true}, {"name": "Surtr", "awake": true}, {"name": "Odin", "awake": true}, {"name": "Mímisbrunnr", "awake": true}, {"name": "Baldur", "awake": true}, {"name": "Kvasir", "awake": true}, {"name": "Týr", "awake": true}, {"name": "Magni", "awake": true}, {"name": "Víðarr", "awake": true}], "services_running": 102, "districts": 13, "summary": "9 of 9 machines awake"}/*END*/;
 
   // The nine, with the five that report in flagged from the live snapshot.
   var ROSTER = [
