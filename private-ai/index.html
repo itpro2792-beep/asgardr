@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Private AI Assistant — document Q&amp;A on private infrastructure</title>
+<meta name="description" content="A retrieval-augmented document assistant running entirely on self-hosted hardware. No external API calls. Answers cite the source passage.">
+<style>
+  :root{
+    --bg:#f7f6f3; --panel:#fffffe; --ink:#191a17; --muted:#5f6360; --line:#e2e0da;
+    --accent:#b4522f; --accent-soft:rgba(180,82,47,.09); --ok:#2f6d4f; --warn:#8a6a1f;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#111312;--panel:#181b1a;--ink:#e8e6e1;--muted:#9aa09b;--line:#282c2a;
+          --accent:#e08b63;--accent-soft:rgba(224,139,99,.12);--ok:#7fc4a0;--warn:#d9b45f;}
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+       line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:860px;margin:0 auto;padding:0 22px}
+  header{padding:72px 0 40px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+           color:var(--accent);margin:0 0 14px}
+  h1{font-size:clamp(30px,5vw,44px);line-height:1.15;margin:0 0 18px;letter-spacing:-.02em}
+  .lede{font-size:clamp(17px,2.3vw,20px);color:var(--muted);margin:0;max-width:62ch}
+  h2{font-size:22px;margin:56px 0 16px;letter-spacing:-.01em}
+  h3{font-size:16px;margin:30px 0 8px}
+  p{margin:0 0 16px;max-width:70ch}
+  ul{margin:0 0 16px;padding-left:20px;max-width:70ch} li{margin:0 0 8px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px;margin:20px 0}
+  .qa{border-left:3px solid var(--accent);padding-left:18px;margin:24px 0}
+  .q{font-weight:650;margin:0 0 10px}
+  .a{margin:0 0 10px}
+  .cite{font-family:var(--mono);font-size:12.5px;color:var(--muted);background:var(--accent-soft);
+        border-radius:6px;padding:8px 11px;display:inline-block;max-width:100%;overflow-x:auto}
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));margin:20px 0}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px}
+  .stat b{display:block;font-size:24px;letter-spacing:-.02em}
+  .stat span{font-size:13px;color:var(--muted)}
+  pre{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;
+      overflow-x:auto;font-family:var(--mono);font-size:13px;line-height:1.5;margin:0 0 16px}
+  table{width:100%;border-collapse:collapse;margin:0 0 16px;font-size:14.5px;display:block;overflow-x:auto}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:600}
+  .tag{font-family:var(--mono);font-size:11.5px;padding:2px 8px;border-radius:20px;
+       background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+  footer{margin:72px 0 60px;padding-top:24px;border-top:1px solid var(--line);
+         color:var(--muted);font-size:14px}
+  a{color:var(--accent)}
+  .note{color:var(--muted);font-size:14.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Self-hosted · Retrieval-augmented · No external inference</p>
+  <h1>A document assistant that never sends your documents anywhere</h1>
+  <p class="lede">Upload site surveys, contracts, and operations manuals. Ask questions in
+  plain language. Get answers that quote the passage they came from. Every model call runs
+  on hardware I own — nothing leaves the network.</p>
+</header>
+
+<h2>Why this shape</h2>
+<p>Plenty of tools will answer questions about your documents. Most of them require handing
+those documents to somebody else's servers. For a venue operator holding signed service
+agreements, or a contractor holding as-built records and safety procedures, that is often
+the end of the conversation.</p>
+<p>This runs on a private Kubernetes cluster: a vector database for retrieval, a local model
+gateway for inference, and a web interface. The document text is embedded locally, stored
+locally, and answered locally. There is no third-party API key anywhere in the request path,
+which means there is no version of this where a contract leaks because a vendor changed
+their data-retention policy.</p>
+
+<h2>What it looks like in use</h2>
+<p class="note">Real responses from the running system, against a sample corpus of venue
+documents: a DAS site survey, a neutral-host service agreement, a field operations handbook,
+and a quarterly performance report.</p>
+
+<div class="card">
+  <div class="qa">
+    <p class="q">What deficiencies were found at Meridian Arena, and what fixes were recommended?</p>
+    <p class="a">Two main issues were identified. The uplink noise floor in Sector 4 is 7 dB
+    above system average, attributed to the LED ribbon driver installed on the level 300
+    fascia. There is also a coverage hole at grid reference J-14 requiring an additional
+    remote antenna.</p>
+    <span class="cite">Doc: DAS_Site_Survey_Meridian_Arena.txt, Page 1</span>
+  </div>
+
+  <div class="qa">
+    <p class="q">If a venue misses the availability commitment, what credit is owed?</p>
+    <p class="a">Availability below 99.0 percent in any month triggers a credit equal to
+    15 percent of that month's recurring charge, against a 99.7 percent commitment.</p>
+    <span class="cite">Doc: Neutral_Host_Service_Agreement.txt, Page 1</span>
+  </div>
+
+  <div class="qa">
+    <p class="q">Can technicians work on the catwalk during an event?</p>
+    <p class="a">No. Catwalk work in occupied venues is prohibited during any event and
+    during the four hours preceding doors. Exceptions require written approval from the
+    Venue Operations Manager.</p>
+    <span class="cite">Doc: Field_Operations_Handbook_Excerpt.txt, Page 1</span>
+  </div>
+
+  <div class="qa">
+    <p class="q">What is the parking garage clearance height?</p>
+    <p class="a">I'm sorry, but the uploaded document(s) do not contain sufficient
+    information to answer your question.</p>
+    <span class="cite">No citation returned — the corpus is silent on this</span>
+  </div>
+</div>
+
+<p><strong>The fourth answer is the important one.</strong> A document assistant that
+invents a clearance height is worse than no assistant, because you would act on it. Refusing
+cleanly when the documents do not cover the question is a feature that has to be built and
+tested for, not a behaviour you get for free.</p>
+
+<h2>How it is built</h2>
+<div class="grid">
+  <div class="stat"><b>Local</b><span>Embeddings and generation both run on self-hosted GPUs</span></div>
+  <div class="stat"><b>Cited</b><span>Every claim carries the document and passage it came from</span></div>
+  <div class="stat"><b>Scoped</b><span>Queries can be restricted to a chosen subset of documents</span></div>
+  <div class="stat"><b>Redundant</b><span>Two replicas per service, survives a node loss</span></div>
+</div>
+
+<table>
+  <tr><th>Layer</th><th>Choice</th><th>Reason</th></tr>
+  <tr><td>Retrieval</td><td>Qdrant, cosine over 768-dim vectors</td><td>Payload filtering lets a query be scoped to specific documents — the privacy boundary the product rests on</td></tr>
+  <tr><td>Embedding</td><td>Local embedding model with task prefixes</td><td>Separate prefixes for indexing and querying measurably improve retrieval quality</td></tr>
+  <tr><td>Generation</td><td>Local model behind an OpenAI-compatible gateway</td><td>Swapping models is a config change, not a code change</td></tr>
+  <tr><td>Chunking</td><td>Recursive split, ~750 chars, 100 overlap</td><td>A 21 KB document becomes 38 chunks with exact retrieval from the middle and the end</td></tr>
+  <tr><td>Serving</td><td>Kubernetes, pinned image tags</td><td>A moving tag has no rollback target</td></tr>
+</table>
+
+<h2>How I know it works</h2>
+<p>This is the part I would want to read if I were hiring.</p>
+
+<p>The project arrived with a passing test suite. The suite asked the system about OAuth2
+with SAML2 fallback, AES-256-GCM encryption at rest, and a 15-minute incident response SLA
+— then asserted the answer was non-empty. Every one of those is answerable from a language
+model's general knowledge. <strong>The test passed with the vector database switched
+off.</strong> It was measuring nothing, and it had already been reported as proof that the
+system worked.</p>
+
+<p>The replacement uses facts that exist in no training corpus — an asset tag, a path loss
+coefficient to four decimal places, a named engineer — and asserts the exact string appears
+in the answer. It also does three things the original did not:</p>
+<ul>
+  <li><strong>A negative control.</strong> Ask for a fact the documents do not contain. The
+  answer must be a refusal, not a plausible number.</li>
+  <li><strong>A scoping check.</strong> Ask for document A's fact while the query is
+  restricted to document B. A's value must not appear, and A must not be cited.</li>
+  <li><strong>A failure check.</strong> Point the suite at a dead endpoint and confirm it
+  reports the failure and exits non-zero. The original could not: a shell assignment under
+  <code>set -e</code> made its entire diagnostic branch unreachable.</li>
+</ul>
+
+<pre>RESULT: PASS=32  FAIL=0
+
+$ API_BASE=http://unreachable:39999 ./test.sh
+  [FAIL] GET /api/health did not return 2xx
+RESULT: PASS=0 FAIL=1
+EXIT CODE: 1</pre>
+
+<h2>Things that were quietly wrong</h2>
+<p>Found by reading artifacts rather than status fields. Each of these reported healthy.</p>
+
+<table>
+  <tr><th>Reported</th><th>Actual</th></tr>
+  <tr><td>Document list working</td><td>Two replicas each cached their own list in process memory and never re-read the database. The store held 23 documents; one replica reported 6, the other 17, alternating as the load balancer rotated. Neither was correct.</td></tr>
+  <tr><td>Model configured correctly</td><td>The fallback chain hardcoded a specific model ahead of the configured one, so the configured model had never once been used.</td></tr>
+  <tr><td>Credential managed</td><td>An API key sat as a literal default in application source, and in the built container image. Moved to a secret reference; the running image now greps clean.</td></tr>
+  <tr><td>Answers grounded</td><td>The grounding prompt forbade "extrapolation" so strictly that the model refused a safety question while holding the answering passage at retrieval rank 1. Retrieval was correct; the instruction was wrong.</td></tr>
+  <tr><td>Backup present</td><td>A backup that has never been restored is a file of unknown provenance. The restore path now runs as a drill: snapshot, restore into a scratch collection, then query the restored copy and check the answer.</td></tr>
+</table>
+
+<p class="note">The through-line: a check whose passing condition is also satisfied by the
+failure mode is decoration. Green is not evidence. The artifact is.</p>
+
+<h2>Who this is for</h2>
+<ul>
+  <li><strong>Venue and neutral-host operators</strong> — service agreements, SLA terms, and
+  as-built records, searchable without the documents leaving the building.</li>
+  <li><strong>Contractors and integrators</strong> — site surveys, closeout packages, and
+  safety procedures, answerable on a phone from a catwalk.</li>
+  <li><strong>Anyone with a confidentiality obligation</strong> — legal, medical, financial —
+  who cannot upload the corpus to a hosted service.</li>
+</ul>
+
+<footer>
+  <p>Built and operated by Ian Thane on a private nine-machine Kubernetes cluster.<br>
+  Interested in a walkthrough, or in running this against your own documents?
+  Get in touch and I will show you the live system.</p>
+  <p><a href="https://asgardr-public-garden.itpro27.chatgpt.site/">← More about the cluster this runs on</a></p>
+</footer>
+
+</div>
+</body>
+</html>
