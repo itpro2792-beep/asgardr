@@ -19,18 +19,31 @@ guidance: [amsterdamny.gov](https://www.amsterdamny.gov).
   from the current Census release, with the vintage stated on every figure.
 - **The Comprehensive Plan** — adoption vote, what the city's own website
   hasn't caught up to yet, and three open questions worth asking in public.
-- **The money** — flood-specific grants, the city's recent funding track
-  record, what's due right now, and the broader development-funding landscape.
+- **The money** — flood-specific grants, the city's recent funding track record,
+  what's due right now, and the broader landscape including utility and
+  foundation programs that name Amsterdam.
+- **The plumbing** — four standing arrangements the city lives inside: the
+  county sales-tax share (renewed through Nov 30, 2027), the no-MPO routing of
+  federal transportation money, the return of regional transit, and the
+  circa-1895 water transmission main everything depends on.
 - **What's built, what's stalled** — a project-by-project scorecard for the
   2018/2019 Downtown Revitalization Initiative award, plus the sites outside it.
 - **Elsewhere** — three comparable small NY cities running the same programs,
   including one honest account of a redevelopment that didn't survive contact
   with reality.
-- **Discrepancies** — six places the public record contradicts itself, flagged
+- **The research** — an NSF CAREER award two hours away in Binghamton on making
+  cities smarter with the data they already have; what genuinely applies at
+  this scale, and what doesn't. The facts are verified; the connection to
+  Amsterdam is the notebook's own.
+- **Discrepancies** — seven places the public record contradicts itself, flagged
   rather than silently resolved.
+- **Open ledger** — including its first **answered** question: the county's
+  Hazard Mitigation Plan is FEMA-approved through May 2030, so the biggest
+  administrative gate on federal mitigation money is open.
 
 ## Standing rules
 
 No non-public information, ever. Every claim sourced and dated. Unverifiable
-claims are labeled UNVERIFIED rather than smoothed over. Corrections stay
-visible; nothing is silently rewritten.
+claims are labeled UNVERIFIED rather than smoothed over — one claim failed
+verification during the latest pass and was removed rather than published.
+Corrections stay visible; nothing is silently rewritten.
