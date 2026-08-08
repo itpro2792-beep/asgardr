@@ -6,8 +6,8 @@
 <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
-<meta name="description" content="An unofficial family civic notebook for Amsterdam, New York — starting with the July 29, 2026 flood: what happened, what it costs, and the money that exists to fix it.">
-<title>Amsterdam Civic Notebook — the July 29 flood</title>
+<meta name="description" content="An unofficial civic notebook for Amsterdam, New York — the July 29 flood, the 2026 Comprehensive Plan, development funding and project status, and the city's own numbers. Every claim sourced, dated, and labeled confirmed, preliminary, or unknown.">
+<title>Amsterdam Civic Notebook — public records, plainly labeled</title>
 
 <style>
   :root{
@@ -34,6 +34,24 @@
       --t3:#9BA1AF; --t3-wash:#1D1F25;
     }
   }
+  :root[data-theme="dark"]{
+    --paper:#131316; --surface:#191A1E; --surface-2:#212227;
+    --ink:#ECE8E5; --ink-2:#A9A29E; --ink-3:#7C7570;
+    --rule:#2C2A2F; --rule-strong:#413E44;
+    --claret:#D9808F; --claret-ink:#E8A0AC; --claret-wash:#2A1B1F;
+    --t1:#74C29B; --t1-wash:#16241D;
+    --t2:#D6A25C; --t2-wash:#28200F;
+    --t3:#9BA1AF; --t3-wash:#1D1F25;
+  }
+  :root[data-theme="light"]{
+    --paper:#F6F3F0; --surface:#FFFDFB; --surface-2:#EFEAE6;
+    --ink:#1B1A1C; --ink-2:#57514F; --ink-3:#867E7B;
+    --rule:#DCD4CF; --rule-strong:#C3B8B2;
+    --claret:#7A2233; --claret-ink:#7A2233; --claret-wash:#F1E4E5;
+    --t1:#2C6A4E; --t1-wash:#E4EFE8;
+    --t2:#9A6114; --t2-wash:#F5EADB;
+    --t3:#4B4F5B; --t3-wash:#E8E9ED;
+  }
   *{box-sizing:border-box;}
   body{margin:0;background:var(--paper);color:var(--ink);
     font-family:var(--font-body);
@@ -56,18 +74,24 @@
   .kicker .dot{width:5px;height:5px;background:var(--claret);border-radius:50%;flex:none;}
   h1 .accent{color:var(--claret);font-style:italic;}
   .lede{font-family:var(--font-display);font-size:clamp(1.08rem,1rem + 0.5vw,1.32rem);
-    line-height:1.5;color:var(--ink-2);max-width:31rem;}
+    line-height:1.5;color:var(--ink-2);max-width:32rem;}
 
   .notice{border:1px solid var(--rule-strong);background:var(--claret-wash);
     padding:0.85rem 1rem;display:flex;flex-direction:column;gap:0.3rem;}
   .notice .stamp{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.13em;text-transform:uppercase;color:var(--claret-ink);font-weight:700;}
   .notice p{font-size:0.86rem;color:var(--ink-2);max-width:none;}
 
+  .toc{display:flex;flex-wrap:wrap;gap:0.5rem 1.1rem;font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.03em;}
+  .toc a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--rule-strong);padding-bottom:0.1rem;white-space:nowrap;}
+  .toc a:hover{color:var(--claret-ink);border-color:var(--claret-ink);}
+
   section{padding:clamp(2.4rem,6vw,4rem) 0;border-bottom:1px solid var(--rule);
-    display:flex;flex-direction:column;gap:1.3rem;}
+    display:flex;flex-direction:column;gap:1.3rem;scroll-margin-top:1.5rem;}
   section:last-of-type{border-bottom:0;}
   .sec-head{display:flex;flex-direction:column;gap:0.5rem;}
   .sec-head .num{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.14em;color:var(--claret);text-transform:uppercase;}
+
+  h3.sub{font-size:0.98rem;color:var(--ink);margin-top:0.2rem;}
 
   .tag{font-family:var(--font-mono);font-size:0.63rem;letter-spacing:0.09em;text-transform:uppercase;
     padding:0.2rem 0.5rem;white-space:nowrap;border:1px solid;border-radius:2px;display:inline-block;}
@@ -98,6 +122,13 @@
   .qlist{margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:0.35rem;max-width:var(--measure);}
   .qlist li{font-size:0.9rem;color:var(--ink-2);}
 
+  details{border:1px solid var(--rule);background:var(--surface);}
+  summary{cursor:pointer;font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-3);padding:0.7rem 0.9rem;}
+  summary::marker{color:var(--claret);}
+  details[open] summary{border-bottom:1px solid var(--rule);}
+  .details-body{padding:0.9rem;display:flex;flex-direction:column;gap:0.8rem;}
+  .details-body p,.details-body li{font-size:0.87rem;color:var(--ink-2);}
+
   .colophon{padding:2.2rem 0 0;margin-top:2rem;border-top:2px solid var(--ink);display:flex;flex-direction:column;gap:0.6rem;}
   .colophon p{font-size:0.84rem;color:var(--ink-3);max-width:32rem;}
   .colophon .dedication{font-family:var(--font-display);font-style:italic;color:var(--ink-2);font-size:0.95rem;}
@@ -109,14 +140,27 @@
   <header class="masthead">
     <p class="kicker"><span class="dot"></span> Amsterdam, New York <span aria-hidden="true">·</span> Civic notebook <span aria-hidden="true">·</span> Unofficial</p>
     <h1>A notebook for the city <span class="accent">we're from</span>.</h1>
-    <p class="lede">A family project: public sources, honest labels, and a running record of what happens here — starting with the flood of July 29, 2026.</p>
+    <p class="lede">A family project: public sources, honest labels, and a running record of the city — the July 29 flood, the new Comprehensive Plan, where the development money actually stands, and what the record itself gets wrong.</p>
     <div class="notice">
       <span class="stamp">Read this first</span>
       <p>This page is <strong>not affiliated with the City of Amsterdam</strong> or any government agency. It is a private civic notebook built from public sources. For official guidance, use <a href="https://www.amsterdamny.gov">amsterdamny.gov</a>, Montgomery County Emergency Management, and NY-Alert. Every claim below is labeled by how well we know it — <strong>confirmed</strong>, <strong>preliminary</strong>, or <strong>unknown</strong>. A number without a label deserves your distrust.</p>
     </div>
+    <nav class="toc" aria-label="Contents">
+      <a href="#flood">The flood</a>
+      <a href="#why">Why it floods</a>
+      <a href="#residents">For residents</a>
+      <a href="#numbers">The numbers</a>
+      <a href="#plan">The plan</a>
+      <a href="#money">The money</a>
+      <a href="#projects">What's built</a>
+      <a href="#elsewhere">Elsewhere</a>
+      <a href="#discrepancies">Discrepancies</a>
+      <a href="#open">Open ledger</a>
+      <a href="#sources">Sources</a>
+    </nav>
   </header>
 
-  <section>
+  <section id="flood">
     <div class="sec-head">
       <span class="num">Entry 01 · July 29, 2026 · status: preliminary</span>
       <h2>The morning the drains gave up</h2>
@@ -139,7 +183,7 @@
     <p class="fine">Timestamps are approximate until official logs are published; the working timeline and full source registry live in the project files.</p>
   </section>
 
-  <section>
+  <section id="why">
     <div class="sec-head">
       <span class="num">Context · status: confirmed history</span>
       <h2>Why this keeps happening</h2>
@@ -165,7 +209,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="residents">
     <div class="sec-head">
       <span class="num">For residents · status: informational</span>
       <h2>If your home took water</h2>
@@ -203,11 +247,57 @@
     </div>
   </section>
 
-  <section>
+  <section id="numbers">
+    <div class="sec-head">
+      <span class="num">The city · status: sourced and dated below</span>
+      <h2>Who actually lives here</h2>
+    </div>
+    <p>Before the plans and the money, the numbers they're built on. Nearly everything below is the newest Census release that exists — the 2020–2024 American Community Survey, released this January — not an old figure passed around because nobody checked. Two things here read <em>less</em> severe than the city's reputation; the rest is real, and worth sitting with.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Metric</th><th>Amsterdam</th><th>For comparison</th></tr></thead>
+        <tbody>
+          <tr><td>Population</td><td>18,166</td><td>peak was 34,817 in 1930 — a 48% decline</td></tr>
+          <tr><td>Median household income</td><td>$56,178</td><td>65% of the NY State median ($85,974)</td></tr>
+          <tr><td>Per-capita income</td><td>$31,224</td><td>70% of the US figure</td></tr>
+          <tr><td>Poverty rate</td><td>20.2% <span class="fine">(26.5% among children)</span></td><td>12.5% / 16.1% nationally</td></tr>
+          <tr><td>Housing vacancy</td><td>18.0%</td><td>10.1% US, 14.7% county</td></tr>
+          <tr><td>Homes built before 1940</td><td>56.5%</td><td>11.7% US — nearly 5× the national rate</td></tr>
+          <tr><td>Median home value</td><td>$137,900</td><td>41% of the NY State median</td></tr>
+          <tr><td>Bachelor's degree or higher</td><td>22.5%</td><td>40.2% NY, 35.7% US</td></tr>
+          <tr><td>Hispanic/Latino residents</td><td>34.2% <span class="fine">(~6,220 people)</span></td><td>19.8% NY, 19.3% US — mostly long-settled: only 4.6% are foreign-born</td></tr>
+          <tr><td>Rent burden (50%+ of income)</td><td>27.0%</td><td>28.5% statewide — <strong>lower</strong> than NY, not higher</td></tr>
+          <tr><td>County unemployment</td><td>4.2%</td><td>at, not above, the national rate</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fine">All figures: American Community Survey 2020–2024 5-year estimates, the current release as of this notebook's last check, except the 1930 population peak (Decennial Census, cited from a secondary compilation — treat the exact figure as unconfirmed even though the scale of the decline is not in doubt) and unemployment (NYS DOL LAUS, May 2026 — no BLS series exists for Amsterdam city on its own; it's below the population threshold the Bureau reports individually, so this is the county figure). Income and vacancy figures carry real margins of error at this population size — read the comparison ratios as more solid than the exact dollar amounts.</p>
+    <p>The Greater Amsterdam School District's own enrollment records — a count, not a survey estimate — show <strong>78% of students classified as economically disadvantaged</strong> and an 18% dropout rate against a state average of 5% (2024–25 year, most recent cohort). Rent burden and unemployment reading close to or better than state and national averages doesn't mean the hardship elsewhere on this table is exaggerated — a city can have both a genuinely low-cost housing stock and a genuinely struggling population at once, and the numbers say that's exactly the case here.</p>
+  </section>
+
+  <section id="plan">
+    <div class="sec-head">
+      <span class="num">The plan · status: adopted, mostly unpublished</span>
+      <h2>A new plan, five votes, and a city page that hasn't caught up</h2>
+    </div>
+    <p>The city's Common Council adopted the <strong>2026 Comprehensive Plan</strong> on <strong>May 19, 2026</strong>, by a vote of <strong>5–0</strong>, alongside a formal environmental (SEQRA) negative declaration — confirmed directly from that meeting's Council minutes. It replaces a 2003 plan, which itself replaced a 1960 master plan; 23 years separate the last two.</p>
+    <p>As of this notebook's last check, <strong>the adopted plan has not been posted anywhere on the city's own website.</strong> The Comprehensive Plan Update page still reads "anticipated completion: Spring 2025" and links only the February 2026 draft — checked and unchanged as of today. If you go looking for it and can't find it, that isn't you missing something.</p>
+    <p>Three things worth asking about at a public meeting, because the public record doesn't currently answer them:</p>
+    <ul class="qlist">
+      <li>The February draft's own table of contents promised a "Roadmap for Action" — but its actual Section 4 is titled "Our Community Development Strategy," and the draft ends at page 84 with no action or implementation table. Council described the final pre-adoption edits as "a few grammar and picture updates" — does the adopted version contain the roadmap the plan told readers to expect, or not?</li>
+      <li>The new plan treats a 2023 update to the city's waterfront policy (the LWRP) as settled and current. The city's own website still labels that same 2023 document a <strong>"Draft."</strong> State records show only the original 1993 waterfront plan as formally approved. Which one actually governs a permit application on the waterfront today?</li>
+      <li>At a March 2026 Council meeting, a resident raised the planning process's lack of Spanish-language access; staff said the plan was "being translated." No Spanish-language version has been found posted since.</li>
+    </ul>
+    <p class="fine">Don't confuse this with a separate, concurrent process next door: the <strong>Town</strong> of Amsterdam — a different government — is running its own zoning update on its own timeline, targeting spring 2027. The city and town are frequently conflated in casual searches and even in some press coverage; they are not the same body.</p>
+  </section>
+
+  <section id="money">
     <div class="sec-head">
       <span class="num">The money · status: preliminary — verify every deadline</span>
-      <h2>Funding that exists to fix this</h2>
+      <h2>Where the money is</h2>
     </div>
+
+    <h3 class="sub">For flood damage and mitigation</h3>
     <p>None of this money applies for itself, and most of it requires paperwork the public never sees — hazard mitigation plans, benefit-cost analyses, federal registrations. This is the shortlist a serious pursuit would start from.</p>
     <div class="table-scroll">
       <table>
@@ -221,10 +311,110 @@
         </tbody>
       </table>
     </div>
-    <p>Amsterdam starts with real advantages: the USACE flood-reduction infrastructure already exists, the comprehensive-plan update is underway with state funding, and the 2011 record establishes precedent. The gating questions are administrative, not conceptual — current hazard-mitigation plan, NFIP standing, federal registration — and they're listed below because they decide eligibility for nearly everything above.</p>
+
+    <h3 class="sub">Recent track record</h3>
+    <p>Amsterdam doesn't apply for this money from a standing start. In the last three years the city (or a partner applying on its behalf) has won a $2.5M state waterfront grant plus $150K from the Canal Corporation for the Southside Boardwalk (2023); $262,500 for a Veterans Park bath house (2025); and — the largest single win — roughly <strong>$21 million combined</strong> for a wastewater treatment plant upgrade: a $10M state water-quality grant, $4.3M more from a related infrastructure program, and a $7.04M <em>no-interest</em> state loan (2024, targeted completion mid-2027). The Amsterdam Industrial Development Agency separately won $296,475 for a rail-trail project in 2025, and Montgomery County won $30,000 to plan a Chuctanunda trail extension that runs through the city. This is the pattern any new flood-mitigation application would be judged against.</p>
+
+    <h3 class="sub">Right now</h3>
+    <p>The 2026 round of the state's main grant application (the CFA) <strong>closed July 31</strong>; results aren't expected until fall. A related state water-infrastructure fund's 2026 application window closed a few days earlier, on July 27. No new round of the Downtown Revitalization Initiative or NY Forward has been announced yet — the last one (Round 9) went to Rome, Utica, and the Village of Morris in April 2026; Amsterdam was not an applicant that round.</p>
+
+    <h3 class="sub">Beyond flood repair</h3>
+    <p>The flood grants above are one slice of a much larger landscape the city can draw on for ordinary development work — building rehab, brownfield cleanup, small-business support, water and sewer projects.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Program</th><th>What it funds</th><th>Status for Amsterdam</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Restore NY</strong></td><td>Demolition, rehab, adaptive reuse of blighted buildings</td><td>Eligible; population tier caps a typical award near $1M — exactly what the city won in 2025 for a former paper mill. No new round open right now.</td></tr>
+          <tr><td><strong>NYS CDBG</strong></td><td>Public infrastructure (grant-cycle) and an "open round" for microenterprise loans, business assistance, public facilities, planning</td><td>City is confirmed eligible; the open round has no deadline at all.</td></tr>
+          <tr><td><strong>NY Main Street / the city's own Downtown Improvement Fund</strong></td><td>Facade and building rehab for downtown property owners</td><td>The city runs its own local version — up to $50,000 per building, reimbursed after the work, capped at half the cost.</td></tr>
+          <tr><td><strong>EPA Brownfields</strong></td><td>Environmental assessment and cleanup of contaminated sites</td><td>Montgomery County won $1.5M in June 2026 for assessment work across the county, naming Amsterdam sites; the full list of which Amsterdam properties benefit isn't finalized yet.</td></tr>
+          <tr><td><strong>EDA Public Works</strong></td><td>Larger infrastructure tied to job creation, $600K–$5M range</td><td>Rolling, no deadline. The city clears the federal economic-distress test on income with room to spare. Gated on a regional strategy document that's being rewritten this year.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Amsterdam starts with real advantages: existing flood-reduction infrastructure, an adopted Comprehensive Plan, an active pipeline of recent wins, and the 2011 flood record establishing precedent for the next one. The gating questions tend to be administrative rather than conceptual — a current hazard-mitigation plan, standing with the federal flood insurance program, an active federal registration — and they decide eligibility for nearly everything on this page.</p>
   </section>
 
-  <section>
+  <section id="projects">
+    <div class="sec-head">
+      <span class="num">DRI Round 3 · status: mixed, seven-plus years in</span>
+      <h2>Ten million dollars, fifteen projects, one bottleneck</h2>
+    </div>
+    <p>In 2018–2019 (see <a href="#discrepancies">Discrepancies</a> — even the award year isn't consistent across the city's own documents), Amsterdam won a $10 million state Downtown Revitalization Initiative grant, funding fifteen individual projects. The city's own DRI web page, as of this notebook's last check, publishes <strong>no per-project dollar amounts or status</strong> for any of them — everything below had to be pieced together from council records, state filings, and news coverage instead.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Project</th><th>Status</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Chuctanunda Trail Park</td><td class="mono"><span class="tag t1">complete</span></td><td>Finished October 2024.</td></tr>
+          <tr><td>Southside Public Boardwalk</td><td class="mono"><span class="tag t1">complete</span></td><td>Ribbon-cut July 3, 2026, per regional news coverage — but the city's own project page still uses future-tense planning language and hasn't been updated to reflect it.</td></tr>
+          <tr><td>Amsterdam Free Library expansion</td><td class="mono"><span class="tag t2">under construction</span></td><td>Phase 1 (drainage, power) began summer 2024. The city's own page still says "anticipated start Q1 2023."</td></tr>
+          <tr><td>Multimodal transit station &amp; pedestrian connector</td><td class="mono"><span class="tag t2">in design</span></td><td>$3M federal design contract awarded 2023. No construction funding identified yet; requires coordination with the railroads, and it's unclear from public sources whether that's CSX, Amtrak, or both.</td></tr>
+          <tr><td>NYS Route 5 eastbound lane removal</td><td class="mono"><span class="tag t3">not started</span></td><td>$547,087 awarded; the city says it's "actively working with" the state transportation department, with no construction date. This is the one to watch — see below.</td></tr>
+          <tr><td>Dog park, skate park &amp; recreation-center work</td><td class="mono"><span class="tag t3">not started</span></td><td>Funded ($323,400 and $93,000 for the first two alone) but sequenced behind the Route 5 project.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>The Route 5 lane removal is the bottleneck for the rest of the list.</strong> It gates roughly <strong>$963,000</strong> of other already-funded DRI work — the dog park, the skate park, recreation-center improvements, and progress on the transit-station site — and it alone has no construction date. The remaining projects among the original fifteen aren't itemized here because the city hasn't published their individual status; the honest tally as of this notebook's last check is two complete, one under construction, and the rest split between "in design" and "not started."</p>
+    <p>Outside the DRI list, four other sites define what "development" currently means in Amsterdam: the <strong>Chalmers Mills</strong> site (cleared over a decade ago; a 2023 housing deal lapsed; the Industrial Development Agency is remarketing it, now sitting beside the finished boardwalk and pedestrian bridge — a materially better pitch than it had in 2023); the former <strong>paper mill on Forest Avenue</strong> (a 2024 bakery-and-brewpub redevelopment deal fell through in 2026; the city is now seeking state permission to redirect its associated $1M award toward site preparation instead); the <strong>Lower Mills Complex</strong> on Elk Street (an October 2025 agreement handed foreclosure rights to a private developer who estimates $40M for mixed-use redevelopment; no timeline exists yet); and <strong>24 Willow Street</strong> (a roof collapse forced emergency demolition; the Council formally declared it "slum and blight" in July 2026, a required step before the city can seek federal cleanup funding).</p>
+  </section>
+
+  <section id="elsewhere">
+    <div class="sec-head">
+      <span class="num">Elsewhere · status: for comparison, not prescription</span>
+      <h2>Three cities, one hard decade, three different outcomes</h2>
+    </div>
+    <p>None of these are Amsterdam, and none of them prove what will happen here. They're the closest available comparisons — similarly sized upstate cities running the same state programs through the same hard years — and one of them is an honest account of a plan that didn't survive contact with reality.</p>
+    <div class="split">
+      <div>
+        <h4>Gloversville — the closest playbook</h4>
+        <p>Same region, a smaller and poorer tax base than Amsterdam's on paper, the same era of industrial collapse (gloves, not carpets). Won its own $10M DRI grant in December 2021; by mid-2025, four of its projects were complete, including turning a vacant lot into a concert and movie space, and a 75-unit mixed-income housing project was under construction leveraging roughly eighteen private dollars for every public one. Four and a half years in, and roughly halfway.</p>
+      </div>
+      <div>
+        <h4>Cohoes — the reusable application</h4>
+        <p>Almost exactly Amsterdam's size (18,159 people to Amsterdam's 18,166) and the best-argued application in this comparison. Its development corporation ran a small facade-grant program with its <strong>own</strong> money for six years before asking the state to scale it with $400,000 — proving the idea worked before asking anyone else to pay for it. Won $10M in March 2023; eleven projects were announced in 2024. It's too early for completions to judge yet.</p>
+      </div>
+      <div>
+        <h4>Batavia — the honest failure</h4>
+        <p>A $24.9M flagship — apartments, a restaurant, a brewery — broke ground in 2022. The developer went out of business in 2023, and the half-built site sat as an empty shell for roughly two years while a state agency and the developer's estate disputed what kind of building it even legally was. A nonprofit took it over in 2025; full occupancy is now targeted for 2027 — a decade after the original announcement. Batavia otherwise has the <em>lowest</em> vacancy rate of any city in this comparison. This wasn't a weak market failing; it was one company's collapse freezing the city's best block for two years with the city holding little leverage once construction stopped.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="discrepancies">
+    <div class="sec-head">
+      <span class="num">Discrepancies · status: flagged, not resolved</span>
+      <h2>Six places the public record disagrees with itself</h2>
+    </div>
+    <p>Building this notebook meant reading a lot of government documents against each other, and they don't always agree. Rather than quietly picking whichever number sounded more finished, here's where the record itself is inconsistent. Each one is a reason to ask a follow-up question, not an accusation.</p>
+    <div class="split">
+      <div>
+        <h4>① The award year</h4>
+        <p>The city's own DRI web page says the $10M grant was awarded in 2018. The 2026 Comprehensive Plan and the city's Downtown Improvement Fund guidelines both say 2019. The state's announcement and the city's project pipeline appear to be running on two different calendars.</p>
+      </div>
+      <div>
+        <h4>② How many people live here</h4>
+        <p>Montgomery County's own Hazard Mitigation Plan gives two different 2020 populations for the city of Amsterdam — 31 people apart — in two different tables of the <em>same document</em>.</p>
+      </div>
+      <div>
+        <h4>③ The median income</h4>
+        <p>The newly adopted Comprehensive Plan cites $43,164, sourced to an older Census release. The current Census release says $56,178. Both numbers were correct when they were written — which is exactly why every figure on this page carries a date, including these.</p>
+      </div>
+      <div>
+        <h4>④ One grant or two</h4>
+        <p>A $700,000 2024 state award tied to a bakery redevelopment project appears twice in regional funding records, filed under two different program labels. Most likely one award counted twice rather than two separate awards — unconfirmed either way.</p>
+      </div>
+      <div>
+        <h4>⑤ Is the clock tower funded</h4>
+        <p>A 2021 regional funding ledger lists $500,000 for the restoration of the Sanford Clock Tower downtown. The state's own award database shows $0 for that same line item today — the pattern that usually means funding was pulled back, not that it was never real.</p>
+      </div>
+      <div>
+        <h4>⑥ Which waterfront rules apply</h4>
+        <p>The new Comprehensive Plan treats a 2023 update to the city's waterfront policy as settled and current. The city's own website still labels that same document a "Draft." State records show only the original 1993 plan as formally approved. Someone applying for a waterfront permit today deserves a straight answer about which one actually governs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="open">
     <div class="sec-head">
       <span class="num">Open ledger · status: unknown, on purpose</span>
       <h2>What we don't know yet</h2>
@@ -242,17 +432,26 @@
     <p class="fine">When any of these gets an answer, the answer gets a source and a date here — and if we got something wrong, the correction stays visible rather than silently replacing the mistake.</p>
   </section>
 
-  <section>
+  <section id="sources">
     <div class="sec-head">
       <span class="num">Sources</span>
       <h2>Where every claim comes from</h2>
     </div>
-    <p class="fine">Retrieved July 29, 2026, mid-morning ET: National Weather Service (Albany) flood watches and warnings · NYSDOT/<a href="https://511ny.org">511NY</a> road closures · City of Amsterdam alerts, APD/AFD, DPW operations via <a href="https://www.amsterdamny.gov">amsterdamny.gov</a> · Montgomery County Emergency Management · USGS stream gauges (Mohawk River at Amsterdam; North and South Chuctanunda Creek) · Times Union live coverage · FEMA flood maps (<a href="https://msc.fema.gov">msc.fema.gov</a>) · NYS DEC Resilient NY program pages · Union College Mohawk Watershed studies on the valley's two flood mechanisms. Eyewitness material is labeled as such and never treated as established fact without corroboration.</p>
+    <p class="fine">Flood entry retrieved July 29, 2026, mid-morning ET: National Weather Service (Albany) flood watches and warnings · NYSDOT/<a href="https://511ny.org">511NY</a> road closures · City of Amsterdam alerts, APD/AFD, DPW operations via <a href="https://www.amsterdamny.gov">amsterdamny.gov</a> · Montgomery County Emergency Management · USGS stream gauges (Mohawk River at Amsterdam; North and South Chuctanunda Creek) · Times Union live coverage · FEMA flood maps (<a href="https://msc.fema.gov">msc.fema.gov</a>) · NYS DEC Resilient NY program pages · Union College Mohawk Watershed studies on the valley's two flood mechanisms. Eyewitness material is labeled as such and never treated as established fact without corroboration.</p>
+    <details>
+      <summary>Sources for the numbers, plan, money, projects and comparisons</summary>
+      <div class="details-body">
+        <p>Primary government records: City of Amsterdam Common Council minutes and resolutions (including the May 19, 2026 adoption vote, read directly), the adopted and draft Comprehensive Plan text, the city's own project and DRI web pages checked against their current live state, and state award booklets and Consolidated Funding Application databases (Empire State Development, NYS DEC, NYS EFC, NYS DOS, NYS HCR).</p>
+        <p>Demographic and economic data: U.S. Census Bureau American Community Survey 2020–2024 5-year estimates; NYS Department of Labor Local Area Unemployment Statistics; Greater Amsterdam School District enrollment records.</p>
+        <p>Comparable cities: each city's own Downtown Revitalization Initiative or NY Forward award announcement, plus local news coverage (the Leader-Herald, the Batavian, the Buffalo News, the Daily Gazette) for post-award outcomes the state's own pages don't track.</p>
+        <p>Before publication, the claims most load-bearing to this page — the adoption vote, several funding deadlines, and several project statuses — were independently rechecked against primary sources rather than taken on the strength of the underlying research alone. Where a city web page itself turned out to be stale, that's noted in the text above rather than quietly corrected out from under it.</p>
+      </div>
+    </details>
   </section>
 
   <footer class="colophon">
     <p class="dedication">For my mother — who has spent a lifetime taking care of this city, and is not done.</p>
-    <p>A family project, built at home from public sources. Not the government, not the news — a notebook. It grows as the answers come in: a grant radar and a running issues ledger are next.</p>
+    <p>A family project, built at home from public sources. Not the government, not the news — a notebook. It grows as the record does.</p>
     <p>Standing rules: this page contains no non-public information, and never will. Project statuses are always stated as proposed, awarded, under construction, complete, or stalled — because small-city development is full of announced projects that were never built. Claims we could not verify are labeled rather than dropped or smoothed over; each one is a thing to check, not a thing to hide. This page is shared by link and asks not to be indexed by search engines.</p>
   </footer>
 
