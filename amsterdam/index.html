@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="An unofficial family civic notebook for Amsterdam, New York — starting with the July 29, 2026 flood: what happened, what it costs, and the money that exists to fix it.">
+<title>Amsterdam Civic Notebook — the July 29 flood</title>
+
+<style>
+  :root{
+    --paper:#F6F3F0; --surface:#FFFDFB; --surface-2:#EFEAE6;
+    --ink:#1B1A1C; --ink-2:#57514F; --ink-3:#867E7B;
+    --rule:#DCD4CF; --rule-strong:#C3B8B2;
+    --claret:#7A2233; --claret-ink:#7A2233; --claret-wash:#F1E4E5;
+    --t1:#2C6A4E; --t1-wash:#E4EFE8;
+    --t2:#9A6114; --t2-wash:#F5EADB;
+    --t3:#4B4F5B; --t3-wash:#E8E9ED;
+    --font-display:"Hoefler Text",Baskerville,"Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --font-body:"Segoe UI Variable Text","Segoe UI",Inter,-apple-system,BlinkMacSystemFont,"Avenir Next",Avenir,system-ui,sans-serif;
+    --font-mono:ui-monospace,"Cascadia Mono","SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    --measure:34rem; --gutter:clamp(1.1rem,4vw,2.5rem);
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --paper:#131316; --surface:#191A1E; --surface-2:#212227;
+      --ink:#ECE8E5; --ink-2:#A9A29E; --ink-3:#7C7570;
+      --rule:#2C2A2F; --rule-strong:#413E44;
+      --claret:#D9808F; --claret-ink:#E8A0AC; --claret-wash:#2A1B1F;
+      --t1:#74C29B; --t1-wash:#16241D;
+      --t2:#D6A25C; --t2-wash:#28200F;
+      --t3:#9BA1AF; --t3-wash:#1D1F25;
+    }
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--font-body);
+    font-size:clamp(1rem,0.97rem + 0.15vw,1.075rem);line-height:1.62;
+    -webkit-font-smoothing:antialiased;padding:0 var(--gutter) 5rem;overflow-x:hidden;}
+  .wrap{max-width:46rem;margin:0 auto;}
+  p{margin:0;max-width:var(--measure);}
+  h1,h2,h3{font-family:var(--font-display);font-weight:600;margin:0;text-wrap:balance;letter-spacing:-0.005em;}
+  h1{font-size:clamp(2.1rem,1.4rem + 3.2vw,3.6rem);line-height:1.04;letter-spacing:-0.02em;}
+  h2{font-size:clamp(1.45rem,1.2rem + 1.1vw,1.95rem);line-height:1.14;}
+  h3{font-size:1.05rem;line-height:1.3;}
+  strong{font-weight:650;color:var(--ink);}
+  a{color:var(--claret-ink);text-decoration-thickness:1px;text-underline-offset:2px;}
+  .fine{font-size:0.83rem;line-height:1.55;color:var(--ink-3);max-width:var(--measure);}
+
+  .masthead{padding:clamp(3rem,9vw,5.5rem) 0 clamp(1.8rem,4vw,2.6rem);
+    border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:1.4rem;}
+  .kicker{display:flex;align-items:center;gap:0.7rem;flex-wrap:wrap;
+    font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-3);}
+  .kicker .dot{width:5px;height:5px;background:var(--claret);border-radius:50%;flex:none;}
+  h1 .accent{color:var(--claret);font-style:italic;}
+  .lede{font-family:var(--font-display);font-size:clamp(1.08rem,1rem + 0.5vw,1.32rem);
+    line-height:1.5;color:var(--ink-2);max-width:31rem;}
+
+  .notice{border:1px solid var(--rule-strong);background:var(--claret-wash);
+    padding:0.85rem 1rem;display:flex;flex-direction:column;gap:0.3rem;}
+  .notice .stamp{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.13em;text-transform:uppercase;color:var(--claret-ink);font-weight:700;}
+  .notice p{font-size:0.86rem;color:var(--ink-2);max-width:none;}
+
+  section{padding:clamp(2.4rem,6vw,4rem) 0;border-bottom:1px solid var(--rule);
+    display:flex;flex-direction:column;gap:1.3rem;}
+  section:last-of-type{border-bottom:0;}
+  .sec-head{display:flex;flex-direction:column;gap:0.5rem;}
+  .sec-head .num{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.14em;color:var(--claret);text-transform:uppercase;}
+
+  .tag{font-family:var(--font-mono);font-size:0.63rem;letter-spacing:0.09em;text-transform:uppercase;
+    padding:0.2rem 0.5rem;white-space:nowrap;border:1px solid;border-radius:2px;display:inline-block;}
+  .tag.t1{color:var(--t1);border-color:var(--t1);background:var(--t1-wash);}
+  .tag.t2{color:var(--t2);border-color:var(--t2);background:var(--t2-wash);}
+  .tag.t3{color:var(--t3);border-color:var(--t3);background:var(--t3-wash);}
+
+  .table-scroll{overflow-x:auto;border:1px solid var(--rule);}
+  table{border-collapse:collapse;width:100%;min-width:30rem;background:var(--surface);}
+  th,td{text-align:left;padding:0.6rem 0.8rem;border-bottom:1px solid var(--rule);font-size:0.86rem;vertical-align:top;}
+  th{font-family:var(--font-mono);font-size:0.64rem;letter-spacing:0.11em;text-transform:uppercase;
+    color:var(--ink-3);font-weight:400;background:var(--surface-2);}
+  tr:last-child td{border-bottom:0;}
+  td.mono{font-family:var(--font-mono);font-size:0.72rem;white-space:nowrap;}
+
+  .split{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);}
+  .split > div{background:var(--surface);padding:1.1rem 1.05rem;display:flex;flex-direction:column;gap:0.5rem;}
+  .split h4{font-family:var(--font-mono);font-size:0.66rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--claret);font-weight:400;margin:0;}
+  .split p,.split li{font-size:0.87rem;color:var(--ink-2);max-width:none;}
+  .split ul{margin:0;padding-left:1.05rem;display:flex;flex-direction:column;gap:0.3rem;}
+
+  .faq{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--rule);}
+  .faq > div{padding:1.05rem 0;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:0.4rem;}
+  .faq h3{font-size:1rem;}
+  .faq p,.faq li{font-size:0.9rem;color:var(--ink-2);}
+  .faq ol,.faq ul{margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:0.25rem;max-width:var(--measure);}
+
+  .qlist{margin:0;padding-left:1.2rem;display:flex;flex-direction:column;gap:0.35rem;max-width:var(--measure);}
+  .qlist li{font-size:0.9rem;color:var(--ink-2);}
+
+  .colophon{padding:2.2rem 0 0;margin-top:2rem;border-top:2px solid var(--ink);display:flex;flex-direction:column;gap:0.6rem;}
+  .colophon p{font-size:0.84rem;color:var(--ink-3);max-width:32rem;}
+  .colophon .dedication{font-family:var(--font-display);font-style:italic;color:var(--ink-2);font-size:0.95rem;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="kicker"><span class="dot"></span> Amsterdam, New York <span aria-hidden="true">·</span> Civic notebook <span aria-hidden="true">·</span> Unofficial</p>
+    <h1>A notebook for the city <span class="accent">we're from</span>.</h1>
+    <p class="lede">A family project: public sources, honest labels, and a running record of what happens here — starting with the flood of July 29, 2026.</p>
+    <div class="notice">
+      <span class="stamp">Read this first</span>
+      <p>This page is <strong>not affiliated with the City of Amsterdam</strong> or any government agency. It is a private civic notebook built from public sources. For official guidance, use <a href="https://www.amsterdamny.gov">amsterdamny.gov</a>, Montgomery County Emergency Management, and NY-Alert. Every claim below is labeled by how well we know it — <strong>confirmed</strong>, <strong>preliminary</strong>, or <strong>unknown</strong>. A number without a label deserves your distrust.</p>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head">
+      <span class="num">Entry 01 · July 29, 2026 · status: preliminary</span>
+      <h2>The morning the drains gave up</h2>
+    </div>
+    <p>On the morning of July 29, 2026, severe storms dropped <strong>3–9 inches of rain</strong> on the Capital Region and Mohawk Valley, at rates of one to two inches per hour. The National Weather Service issued Flash Flood Warnings for Montgomery County and the wider region.</p>
+    <p>Amsterdam's storm drains were overwhelmed. The Chuctanunda Creek — which falls steeply through the middle of the city — shed its water fast, and the Mohawk River gauge at Amsterdam showed rising stage. Route 5 (Main Street) and Route 30 closed, underpasses flooded, and the fire and police departments performed water rescues while DPW ran emergency pumping. The city and county advised against all non-essential travel.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>What</th><th>Status that morning</th><th>Source tier</th></tr></thead>
+        <tbody>
+          <tr><td>Flash Flood Warnings, rainfall 1–2 in/hr</td><td>Issued for Montgomery County and region</td><td class="mono">official</td></tr>
+          <tr><td>Route 5 (Main St) and Route 30</td><td>Closed; underpasses inundated, detours barricaded</td><td class="mono">official</td></tr>
+          <tr><td>Water rescues</td><td>Performed by AFD and APD; count not yet published</td><td class="mono">official</td></tr>
+          <tr><td>Storm drains, lower Chuctanunda, waterfront</td><td>Overwhelmed; emergency pumping and drain clearing</td><td class="mono">official</td></tr>
+          <tr><td>Travel</td><td>Non-essential travel advisory citywide</td><td class="mono">official</td></tr>
+          <tr><td>Regional scope</td><td>Amsterdam, Guilderland, Albany, Schodack, Kinderhook</td><td class="mono">press</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fine">Timestamps are approximate until official logs are published; the working timeline and full source registry live in the project files.</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="num">Context · status: confirmed history</span>
+      <h2>Why this keeps happening</h2>
+    </div>
+    <p>Amsterdam floods in two different ways, and they need different fixes.</p>
+    <div class="split">
+      <div>
+        <h4>Heavy rain — like July 29</h4>
+        <p>Urban storm drains are designed for ordinary storms, not extreme cells. When rainfall outruns the drains, streets flood from the surface down — no river required. This is the mechanism the existing floodwalls were never built to solve.</p>
+      </div>
+      <div>
+        <h4>Ice jams — the winter mechanism</h4>
+        <p>Ice blockages on the Mohawk back water up into the city suddenly. It has happened for as long as anyone has kept records — 1914, 1955, 1996.</p>
+      </div>
+      <div>
+        <h4>The benchmark year</h4>
+        <p>Hurricane Irene and Tropical Storm Lee, back to back in 2011, set the modern high-water marks and remain the comparison every serious flood conversation returns to.</p>
+      </div>
+      <div>
+        <h4>What's already built</h4>
+        <p>The Army Corps' Amsterdam Flood Damage Reduction Project — floodwalls, channel realignment, and pumping stations on the South Chuctanunda — addresses river flooding. Whether its components are all fully operational today is an open question below.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="num">For residents · status: informational</span>
+      <h2>If your home took water</h2>
+    </div>
+    <div class="faq">
+      <div>
+        <h3>My basement flooded. What do I do, in order?</h3>
+        <ol>
+          <li><strong>Document first</strong> — photos and video with timestamps, before any cleanup.</li>
+          <li><strong>Call your insurer</strong> and file the claim early. NFIP flood policies have a 60-day window.</li>
+          <li><strong>Report it to Amsterdam DPW</strong> — a reported flood becomes part of the city's damage record, which is what disaster declarations and grants are built on.</li>
+          <li><strong>Keep every receipt</strong> — cleanup, repairs, temporary housing.</li>
+        </ol>
+      </div>
+      <div>
+        <h3>I don't have flood insurance. Is there help?</h3>
+        <ul>
+          <li><strong>NYS DEC Resilient Retrofits</strong> can fund home floodproofing up to $50,000 per household, with income-based priority.</li>
+          <li>If a federal disaster is declared for this event, <strong>FEMA Individual Assistance</strong> may cover serious damage.</li>
+          <li>Montgomery County Department of Social Services and the Red Cross handle immediate relief.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Am I in a flood zone?</h3>
+        <p>Look up your address at <a href="https://msc.fema.gov">msc.fema.gov</a>. <strong>Zone AE</strong> means high risk — flood insurance is required with a federally backed mortgage. <strong>Zone X</strong> is lower risk — insurance optional, and worth considering anyway, because July 29 flooded plenty of Zone X streets from the surface down.</p>
+      </div>
+      <div>
+        <h3>Where do I report road damage or blocked drains?</h3>
+        <p>Amsterdam DPW or the City Alert Center — with the location, a photo, and the date and time. Road status lives at <a href="https://511ny.org">511ny.org</a>.</p>
+      </div>
+      <div>
+        <h3>Has this been declared a disaster?</h3>
+        <p><strong>As of this writing, no federal or state disaster declaration covers this event.</strong> Declarations follow a formal damage-assessment process — which is exactly why documented, reported damage matters.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="num">The money · status: preliminary — verify every deadline</span>
+      <h2>Funding that exists to fix this</h2>
+    </div>
+    <p>None of this money applies for itself, and most of it requires paperwork the public never sees — hazard mitigation plans, benefit-cost analyses, federal registrations. This is the shortlist a serious pursuit would start from.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Program</th><th>What it funds</th><th>The catch</th><th>Our read</th></tr></thead>
+        <tbody>
+          <tr><td><strong>NYS EFC Green Innovation</strong></td><td>Green infrastructure — permeable pavement, bio-retention</td><td>Annual CFA application; 10–40% match</td><td class="mono"><span class="tag t1">strong candidate</span></td></tr>
+          <tr><td><strong>NYS DEC Resilient Watersheds</strong></td><td>Culvert upgrades, stream restoration, municipal mitigation</td><td>Aligns with Resilient NY assessments</td><td class="mono"><span class="tag t1">strong candidate</span></td></tr>
+          <tr><td><strong>NYS DEC Resilient Retrofits</strong></td><td>Residential floodproofing, up to $50K/home</td><td>Income-based priority; via municipality</td><td class="mono"><span class="tag t2">investigate</span></td></tr>
+          <tr><td><strong>FEMA BRIC / FMA</strong></td><td>Infrastructure hardening; NFIP-property mitigation</td><td>Needs a FEMA-approved Hazard Mitigation Plan, benefit-cost analysis, 25% match</td><td class="mono"><span class="tag t2">investigate</span></td></tr>
+          <tr><td><strong>FEMA HMGP / HUD CDBG-DR</strong></td><td>Post-disaster mitigation and recovery</td><td>Require a Presidential disaster declaration</td><td class="mono"><span class="tag t3">monitor</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Amsterdam starts with real advantages: the USACE flood-reduction infrastructure already exists, the comprehensive-plan update is underway with state funding, and the 2011 record establishes precedent. The gating questions are administrative, not conceptual — current hazard-mitigation plan, NFIP standing, federal registration — and they're listed below because they decide eligibility for nearly everything above.</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="num">Open ledger · status: unknown, on purpose</span>
+      <h2>What we don't know yet</h2>
+    </div>
+    <p>Every cost of July 29 is <strong>UNKNOWN</strong> on this page until an official number exists — road repair, DPW and responder overtime, flooded basements, damaged vehicles, business interruption. We keep the ledger with empty columns rather than guesses, because a guessed number repeated twice becomes a fact.</p>
+    <p>The questions we're tracking, in rough order of consequence:</p>
+    <ul class="qlist">
+      <li>Does the city hold a <strong>current FEMA-approved Hazard Mitigation Plan</strong>? (It gates the biggest federal money.)</li>
+      <li>Is the city in good standing with NFIP, with an active federal SAM registration?</li>
+      <li>What were the peak gauge readings, and did the USACE pumping stations run at capacity?</li>
+      <li>How many water rescues, flooded homes, and damaged vehicles — the count that decides whether a disaster declaration is even requested?</li>
+      <li>Which streets that flooded on July 29 also flooded in 2011?</li>
+      <li>Will this event be reported into a state or federal declaration request?</li>
+    </ul>
+    <p class="fine">When any of these gets an answer, the answer gets a source and a date here — and if we got something wrong, the correction stays visible rather than silently replacing the mistake.</p>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="num">Sources</span>
+      <h2>Where every claim comes from</h2>
+    </div>
+    <p class="fine">Retrieved July 29, 2026, mid-morning ET: National Weather Service (Albany) flood watches and warnings · NYSDOT/<a href="https://511ny.org">511NY</a> road closures · City of Amsterdam alerts, APD/AFD, DPW operations via <a href="https://www.amsterdamny.gov">amsterdamny.gov</a> · Montgomery County Emergency Management · USGS stream gauges (Mohawk River at Amsterdam; North and South Chuctanunda Creek) · Times Union live coverage · FEMA flood maps (<a href="https://msc.fema.gov">msc.fema.gov</a>) · NYS DEC Resilient NY program pages · Union College Mohawk Watershed studies on the valley's two flood mechanisms. Eyewitness material is labeled as such and never treated as established fact without corroboration.</p>
+  </section>
+
+  <footer class="colophon">
+    <p class="dedication">For my mother — who has spent a lifetime taking care of this city, and is not done.</p>
+    <p>A family project, built at home from public sources. Not the government, not the news — a notebook. It grows as the answers come in: a grant radar and a running issues ledger are next.</p>
+  </footer>
+
+</div>
+</body>
+</html>
