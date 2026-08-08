@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ibwbench — an in-building wireless / DAS reasoning benchmark for LLMs</title>
+<meta name="description" content="A held-out benchmark measuring whether language models can reason about in-building wireless and distributed antenna systems: public-safety code, PIM/intermod, DAS topology, and closeout QA.">
+<style>
+  :root{
+    --bg:#f7f6f3; --panel:#fffffe; --ink:#191a17; --muted:#5f6360; --line:#e2e0da;
+    --accent:#b4522f; --accent-soft:rgba(180,82,47,.09); --ok:#2f6d4f; --warn:#8a6a1f;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#111312;--panel:#181b1a;--ink:#e8e6e1;--muted:#9aa09b;--line:#282c2a;
+          --accent:#e08b63;--accent-soft:rgba(224,139,99,.12);--ok:#7fc4a0;--warn:#d9b45f;}
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+       line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:820px;margin:0 auto;padding:0 22px}
+  header{padding:70px 0 38px;border-bottom:1px solid var(--line)}
+  h1{font-size:clamp(30px,5vw,44px);margin:0 0 10px;letter-spacing:-.02em}
+  .tag{display:inline-block;font:600 12px/1 var(--mono);letter-spacing:.08em;
+       text-transform:uppercase;color:var(--accent);background:var(--accent-soft);
+       padding:6px 10px;border-radius:5px;margin-bottom:20px}
+  .lede{font-size:19px;color:var(--muted);max-width:64ch}
+  section{padding:38px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:22px;margin:0 0 14px;letter-spacing:-.01em}
+  p{max-width:66ch}
+  a{color:var(--accent)}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:15px}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
+  th{font:600 12px/1.2 var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  td.num{font-family:var(--mono);text-align:right}
+  .score{font-family:var(--mono);font-weight:700}
+  .bar{display:inline-block;height:8px;border-radius:4px;background:var(--accent);vertical-align:middle;margin-left:8px}
+  code,pre{font-family:var(--mono);font-size:13.5px}
+  pre{background:var(--panel);border:1px solid var(--line);border-radius:8px;
+      padding:16px;overflow-x:auto}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:14px 0}
+  .card.warn{border-left:3px solid var(--warn)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:14px 0}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:14px 16px}
+  .stat b{display:block;font:700 26px/1 var(--mono);margin-bottom:4px}
+  .stat span{font-size:13px;color:var(--muted)}
+  footer{padding:34px 0 70px;color:var(--muted);font-size:14px}
+  .muted{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="tag">Open benchmark · v0</div>
+  <h1>ibwbench</h1>
+  <p class="lede">A held-out benchmark measuring whether a language model can reason about
+  <strong>in-building wireless</strong> and <strong>distributed antenna systems</strong> — the
+  domain the general telecom LLM suites leave uncovered.</p>
+</header>
+
+<section>
+  <h2>Why it exists</h2>
+  <p>GSMA's Open-Telco LLM Benchmarks — the reference telecom suite — contain <strong>no items</strong>
+  for <code>indoor</code>, <code>in-building</code>, <code>DAS</code>, <code>distributed antenna</code>,
+  <code>PIM</code>, <code>intermod</code>, or <code>EIRP</code> (checked against <code>GSMA/leaderboard</code>,
+  Aug 2026). General telecom-math sets cover link-budget arithmetic but not the in-building core:
+  public-safety DAS code compliance, passive intermodulation product math, distributed-antenna
+  topology and link design, and installation closeout QA. ibwbench fills that gap.</p>
+  <div class="grid">
+    <div class="stat"><b>43</b><span>scored numeric items</span></div>
+    <div class="stat"><b>4</b><span>engineering categories</span></div>
+    <div class="stat"><b>2</b><span>control items</span></div>
+    <div class="stat"><b>0%</b><span>empty responses (all runs)</span></div>
+  </div>
+</section>
+
+<section>
+  <h2>Baselines — first discrimination run</h2>
+  <p class="muted">Aug 2026, via an OpenAI-compatible endpoint. Scored by float-tolerant numeric
+  match; control items held out of the headline number.</p>
+  <table>
+    <thead><tr><th>Model</th><th>Score</th><th>Code</th><th>PIM</th><th>Topology</th><th>Closeout</th></tr></thead>
+    <tbody>
+      <tr><td>gpt-oss:120b</td><td class="score">0.977 <span class="bar" style="width:98px"></span></td><td class="num">10/10</td><td class="num">11/11</td><td class="num">10/11</td><td class="num">11/11</td></tr>
+      <tr><td>qwen3.5:4b</td><td class="score">0.767 <span class="bar" style="width:77px"></span></td><td class="num">9/10</td><td class="num">7/11</td><td class="num">6/11</td><td class="num">11/11</td></tr>
+      <tr><td>llama3.3:70b</td><td class="score">0.605 <span class="bar" style="width:61px"></span></td><td class="num">8/10</td><td class="num">5/11</td><td class="num">6/11</td><td class="num">7/11</td></tr>
+    </tbody>
+  </table>
+  <p><strong>It discriminates.</strong> Three distinct, well-separated scores. And note the ordering:
+  <strong>the 4B model beats the older 70B.</strong> That is deliberate — ibwbench rewards RF/DAS
+  reasoning, not parameter count, and a modern small reasoning model outperforms an older large one.
+  PIM/intermod is the sharpest discriminator (11 / 7 / 5 correct). Reported honestly rather than
+  smoothed into a size-monotonic story.</p>
+</section>
+
+<section>
+  <h2>The empty-response guard</h2>
+  <p>This benchmark could have silently produced fiction. With a stop sequence like <code>['\n\n']</code>,
+  some small models returned <em>empty strings</em> — which a naive harness scores as a clean
+  <code>exact_match = 0</code> and prints in a tidy results table. A broken or unreachable model then
+  reads as merely <em>bad</em>, and the table looks trustworthy. So the runner refuses to score a run
+  where more than 5% of responses are empty:</p>
+  <pre>frac = empty / total
+if frac &gt; 0.05:
+    raise SystemExit(
+        f"ABORT: {frac:.0%} empty responses — this is a broken/"
+        f"unreachable model, NOT a score of 0.")</pre>
+  <p>The stop sequence is removed entirely (<code>until: []</code>), and scoring parses the final number
+  and compares as a float, so <code>33</code> and <code>33.0</code> are not a false miss. Every gold
+  answer was verified by independent recomputation before any model ran.</p>
+</section>
+
+<section>
+  <h2>Controls</h2>
+  <div class="card"><strong>Stated-fact control.</strong> An invented constant given <em>in</em> the
+  prompt. A model that misses it is broken. Passed on all three models — the harness scores a gettable
+  item.</div>
+  <div class="card warn"><strong>Contamination canary.</strong> An invented constant defined <em>only</em>
+  inside ibwbench and never shown in the prompt. An honest model must miss it; a correct answer would
+  mean the benchmark leaked into training data. <strong>Failed on all three models</strong> — no leak.</div>
+</section>
+
+<section>
+  <h2>Protocol &amp; reproducibility</h2>
+  <ul>
+    <li><strong>Format:</strong> <code>generate_until</code>, numeric exact-match. Multiple-choice /
+    loglikelihood scoring is unsupported against a local OpenAI-compatible endpoint, so every item is
+    free-generation with one unambiguous numeric answer.</li>
+    <li><strong>Content:</strong> invented site geometry over public engineering standards. No real
+    project files; questions concern code <em>requirements</em> (facts), and copyrighted standard text
+    is not reproduced.</li>
+    <li><strong>Runs anywhere</strong> with an OpenAI-compatible chat endpoint via
+    <code>lm-eval</code> and the shipped task file + runner.</li>
+  </ul>
+  <pre>python3 run_ibwbench.py --model &lt;name&gt; --base &lt;endpoint&gt; --concurrent 8</pre>
+  <p class="muted">The full item set, task config, runner, dataset card, and per-model logs are released
+  as the ibwbench dataset.</p>
+</section>
+
+<footer>
+  <div class="wrap" style="padding:0">
+    ibwbench v0 · built on a private multi-node inference cluster, Aug 2026 ·
+    <a href="../">← Asgardr</a>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
