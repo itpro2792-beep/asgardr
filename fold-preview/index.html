@@ -7,8 +7,8 @@
   <meta name="color-scheme" content="dark">
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; media-src 'none'; font-src 'none'; object-src 'none'; frame-src 'none'; child-src 'none'; worker-src 'none'; manifest-src 'self'; form-action 'none'; base-uri 'none'">
-  <meta name="description" content="A synthetic, non-operational Galaxy Fold command-center interface study.">
-  <title>Ásgarðr Fold — Synthetic Command Center</title>
+  <meta name="description" content="A synthetic, non-operational Galaxy Fold RF and operations interface study.">
+  <title>Ásgarðr Fold — Synthetic RF + Operations Lab</title>
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icon-192.png" sizes="192x192" type="image/png">
   <link rel="apple-touch-icon" href="./icon-192.png">
@@ -20,45 +20,62 @@
 
   <div class="safety-banner" role="status" aria-label="Preview safety boundary">
     <span class="safety-dot" aria-hidden="true"></span>
-    <strong>SYNTHETIC UI PREVIEW</strong>
-    <span>NO LIVE CONNECTION</span>
-    <span>NO CONTROL CAPABILITY</span>
+    <strong>SYNTHETIC RF / DAS LAB</strong>
+    <span>NOT TEST-EQUIPMENT DATA</span>
+    <span>NO CONTROL PATH</span>
   </div>
 
-  <div class="app-shell" id="app-shell" data-layout="auto">
+  <div class="app-shell" id="app-shell" data-layout="auto" data-workspace="rf">
     <header class="topbar">
       <div class="brand-lockup">
         <div class="brand-mark" aria-hidden="true">Á</div>
         <div>
           <p class="eyebrow">ÁSGARÐR / FOLD LAB</p>
-          <h1>Command Center Preview</h1>
+          <h1>RF + Operations Preview</h1>
         </div>
       </div>
-
       <div class="truth-cluster" aria-label="Preview state">
-        <span class="truth-pill"><span class="status-light demo"></span>LOCAL FIXTURES</span>
-        <span class="truth-pill">CANARY V2</span>
+        <span class="truth-pill"><span class="status-light demo" aria-hidden="true"></span>LOCAL FIXTURES</span>
+        <span class="truth-pill">CANARY V3</span>
         <span class="truth-pill">PUBLIC DEMO</span>
       </div>
     </header>
 
     <nav class="preview-toolbar" aria-label="Preview controls">
-      <div class="segmented" role="group" aria-label="Preview layout">
-        <button class="segment is-active" type="button" data-layout-choice="auto" aria-pressed="true">Auto</button>
-        <button class="segment" type="button" data-layout-choice="cover" aria-pressed="false">Cover</button>
-        <button class="segment" type="button" data-layout-choice="inner" aria-pressed="false">Unfolded</button>
+      <div class="toolbar-block">
+        <span class="toolbar-label">View</span>
+        <div class="segmented" role="group" aria-label="Preview layout">
+          <button class="segment is-active" type="button" data-layout-choice="auto" aria-pressed="true">Auto</button>
+          <button class="segment" type="button" data-layout-choice="cover" aria-pressed="false">Cover</button>
+          <button class="segment" type="button" data-layout-choice="inner" aria-pressed="false">Unfolded</button>
+        </div>
       </div>
-      <p class="viewport-note" id="viewport-note" aria-live="polite">Auto layout</p>
-      <button class="button button-ghost" id="rotate-fixture" type="button">Rotate demo fixture</button>
+      <div class="toolbar-block workspace-control">
+        <span class="toolbar-label">Workspace</span>
+        <div class="segmented" role="group" aria-label="Workspace">
+          <button class="segment" id="workspace-tab-ops" type="button" data-workspace-choice="ops" aria-pressed="false">Operations</button>
+          <button class="segment is-active" id="workspace-tab-rf" type="button" data-workspace-choice="rf" aria-pressed="true">RF / DAS</button>
+        </div>
+      </div>
+      <div class="scenario-control">
+        <label for="scenario-select">Synthetic scenario</label>
+        <select id="scenario-select">
+          <option value="A-01">A-01 · Balanced baseline</option>
+          <option value="B-02">B-02 · Optical-path fade</option>
+          <option value="C-03">C-03 · Compute queue pressure</option>
+        </select>
+      </div>
+      <button class="button button-ghost" id="rotate-fixture" type="button">Next scenario</button>
+      <p class="viewport-note" id="viewport-note" aria-live="polite">Auto layout · RF / DAS</p>
     </nav>
 
     <main id="main-content" tabindex="-1">
       <section class="cover-view" aria-labelledby="cover-heading">
         <div class="cover-hero">
           <div>
-            <p class="eyebrow">COVER HUD / GLANCE MODE</p>
-            <h2 id="cover-heading">Synthetic fleet is nominal</h2>
-            <p class="subtle">A visual fixture only. Reloading restores the original state.</p>
+            <p class="eyebrow">COVER HUD / CROSS-DOMAIN GLANCE</p>
+            <h2 id="cover-heading">RF and compute fixtures are nominal</h2>
+            <p class="subtle" id="cover-summary">Balanced generated samples across both display-only domains.</p>
           </div>
           <div class="score-ring" id="health-ring" role="img" aria-label="Demo health score 96 percent">
             <span id="health-score">96</span>
@@ -66,22 +83,28 @@
           </div>
         </div>
 
-        <div class="metric-stack" aria-label="Synthetic cluster metrics">
+        <div class="cover-domain-grid" aria-label="Synthetic domain status">
           <article class="metric-card">
-            <div class="metric-title"><span>Memory commit</span><strong id="memory-label">61%</strong></div>
-            <div class="meter"><span id="memory-meter" role="progressbar" aria-label="Synthetic memory commit" aria-valuemin="0" aria-valuemax="100" aria-valuenow="61"></span></div>
-            <p id="memory-copy">18.3 / 30.0 GB fixture</p>
+            <span class="domain-label">RF / DAS</span>
+            <strong class="domain-state nominal" id="cover-rf-state">NOMINAL</strong>
+            <dl class="compact-kpis">
+              <div><dt>Donor RSRP</dt><dd id="cover-rsrp">−78 dBm</dd></div>
+              <div><dt>Worst VSWR</dt><dd id="cover-vswr">1.18:1</dd></div>
+            </dl>
           </article>
           <article class="metric-card">
-            <div class="metric-title"><span>Disk headroom</span><strong id="disk-label">74%</strong></div>
-            <div class="meter"><span id="disk-meter" role="progressbar" aria-label="Synthetic disk headroom" aria-valuemin="0" aria-valuemax="100" aria-valuenow="74"></span></div>
-            <p id="disk-copy">222 / 300 GB fixture</p>
+            <span class="domain-label">COMPUTE</span>
+            <strong class="domain-state nominal" id="cover-compute-state">NOMINAL</strong>
+            <dl class="compact-kpis">
+              <div><dt>CPU</dt><dd id="cover-cpu">27%</dd></div>
+              <div><dt>Queue p95</dt><dd id="cover-p95">18 ms</dd></div>
+            </dl>
           </article>
         </div>
 
         <div class="queue-strip" aria-label="Synthetic queue counts">
           <div><strong id="queue-running">4</strong><span>Running</span></div>
-          <div><strong id="queue-pending">7</strong><span>Pending</span></div>
+          <div><strong id="queue-pending">2</strong><span>Pending</span></div>
           <div><strong id="queue-done">128</strong><span>Done</span></div>
           <div><strong id="queue-failed">1</strong><span>Failed</span></div>
         </div>
@@ -90,177 +113,190 @@
           <div class="alert-icon" aria-hidden="true">!</div>
           <div>
             <p class="eyebrow">DEMO ADVISORY</p>
-            <h3 id="cover-alert-title">Worker latency above fixture baseline</h3>
-            <p id="cover-alert-copy">demo-worker-03 · synthetic warning · no action available</p>
+            <h3 id="cover-alert-title">No cross-domain anomaly in this fixture</h3>
+            <p id="cover-alert-copy">Illustrative values only · no action available</p>
           </div>
         </article>
 
-        <article class="siren-orb-card">
-          <div class="voice-orb" aria-hidden="true"><span></span></div>
-          <div>
-            <p class="eyebrow">SIREN UI STUDY</p>
-            <h3>Text simulation only</h3>
-            <p>No microphone, audio, permissions, API, or background connections.</p>
-          </div>
-          <button class="button button-primary" id="open-siren" type="button">Open simulator</button>
-        </article>
-
-        <article class="cover-fit-card" aria-labelledby="cover-fit-heading">
-          <div>
-            <p class="eyebrow">LOCAL DEVICE QA</p>
-            <h3 id="cover-fit-heading">Check this screen for overflow</h3>
-            <p>The scan reads layout dimensions only and never leaves this browser tab.</p>
-          </div>
+        <div class="cover-actions" aria-label="Cover shortcuts">
+          <button class="button button-primary" id="open-workspace" type="button">Open selected workspace</button>
           <button class="button button-ghost" id="cover-scan" type="button">Run fit scan</button>
-          <p class="cover-fit-result" id="cover-fit-result" aria-live="polite">Ready to scan</p>
-        </article>
+        </div>
+        <p class="cover-fit-result" id="cover-fit-result" aria-live="polite">Ready to scan</p>
       </section>
 
-      <section class="inner-view" aria-labelledby="inner-heading">
-        <div class="inner-heading-row">
-          <div>
-            <p class="eyebrow">UNFOLDED CANVAS / SOC STUDY</p>
-            <h2 id="inner-heading">Synthetic operations overview</h2>
+      <section class="inner-view">
+        <section class="workspace-pane ops-workspace" id="ops-workspace" hidden>
+          <div class="inner-heading-row">
+            <div><p class="eyebrow">OPERATIONS WORKSPACE / DISPLAY ONLY</p><h2>Synthetic cluster overview</h2></div>
+            <p class="data-stamp">Scenario <strong class="scenario-stamp">A-01 · Balanced baseline</strong></p>
           </div>
-          <p class="data-stamp">Fixture set <strong id="fixture-number">A-01</strong></p>
-        </div>
 
-        <nav class="jump-nav" aria-label="Dashboard sections">
-          <a href="#services-panel">Services</a>
-          <a href="#jobs-panel">Jobs</a>
-          <a href="#events-panel">Events</a>
-          <a href="#siren-panel">Siren</a>
-          <a href="#device-panel">Device QA</a>
-        </nav>
+          <nav class="jump-nav" aria-label="Operations sections">
+            <a href="#services-panel">Services</a><a href="#jobs-panel">Jobs</a><a href="#events-panel">Events</a><a href="#siren-panel">Siren</a><a href="#device-panel">Device QA</a>
+          </nav>
 
-        <div class="soc-grid">
-          <article class="panel fleet-panel" id="services-panel">
-            <div class="panel-header">
-              <div><p class="eyebrow">PROCESS MATRIX</p><h3>Demo services</h3></div>
-              <div class="filter-row">
-                <label class="sr-only" for="service-search">Search demo services</label>
-                <input id="service-search" type="search" placeholder="Search fixtures" autocomplete="off" inputmode="search">
-                <label class="sr-only" for="status-filter">Filter service status</label>
-                <select id="status-filter">
-                  <option value="all">All statuses</option>
-                  <option value="online">Online</option>
-                  <option value="warning">Warning</option>
-                  <option value="offline">Offline</option>
-                </select>
+          <div class="soc-grid">
+            <article class="panel fleet-panel" id="services-panel">
+              <div class="panel-header">
+                <div><p class="eyebrow">PROCESS MATRIX</p><h3>Demo services</h3></div>
+                <div class="filter-row">
+                  <label class="sr-only" for="service-search">Search demo services</label>
+                  <input id="service-search" type="search" placeholder="Search fixtures" autocomplete="off" inputmode="search">
+                  <label class="sr-only" for="status-filter">Filter service status</label>
+                  <select id="status-filter"><option value="all">All statuses</option><option value="online">Online</option><option value="warning">Warning</option><option value="offline">Offline</option></select>
+                </div>
               </div>
-            </div>
-            <div class="service-grid" id="service-grid"></div>
-            <p class="sr-only" id="service-result-status" aria-live="polite"></p>
-            <p class="empty-state" id="service-empty" hidden>No synthetic services match this filter.</p>
-          </article>
+              <div class="service-grid" id="service-grid"></div>
+              <p class="sr-only" id="service-result-status" aria-live="polite"></p>
+              <p class="empty-state" id="service-empty" hidden>No synthetic services match this filter.</p>
+            </article>
 
-          <article class="panel vitals-panel">
-            <div class="panel-header"><div><p class="eyebrow">CLUSTER VITALS</p><h3>Visual gauges</h3></div><span class="truth-pill compact">FIXTURE</span></div>
-            <div class="vital-list" id="vital-list"></div>
-            <div class="fixture-path" aria-label="Synthetic data path">
-              <span>Browser memory</span><span aria-hidden="true">→</span><span>UI renderer</span><span aria-hidden="true">→</span><span>View only</span>
-            </div>
-          </article>
+            <article class="panel vitals-panel">
+              <div class="panel-header"><div><p class="eyebrow">CLUSTER VITALS</p><h3>Generated gauges</h3></div><span class="truth-pill compact">FIXTURE</span></div>
+              <div class="vital-list" id="vital-list"></div>
+              <div class="fixture-path" aria-label="Synthetic data path"><span>Browser memory</span><span aria-hidden="true">→</span><span>UI renderer</span><span aria-hidden="true">→</span><span>View only</span></div>
+            </article>
 
-          <article class="panel jobs-panel" id="jobs-panel">
-            <div class="panel-header"><div><p class="eyebrow">JOB QUEUE</p><h3>Lifecycle explorer</h3></div></div>
-            <div class="tab-list" role="tablist" aria-label="Job state">
-              <button id="job-tab-all" type="button" role="tab" class="tab is-active" data-job-state="all" aria-selected="true" aria-controls="job-list" tabindex="0">All</button>
-              <button id="job-tab-running" type="button" role="tab" class="tab" data-job-state="running" aria-selected="false" aria-controls="job-list" tabindex="-1">Running</button>
-              <button id="job-tab-pending" type="button" role="tab" class="tab" data-job-state="pending" aria-selected="false" aria-controls="job-list" tabindex="-1">Pending</button>
-              <button id="job-tab-failed" type="button" role="tab" class="tab" data-job-state="failed" aria-selected="false" aria-controls="job-list" tabindex="-1">Failed</button>
-            </div>
-            <div class="job-list" id="job-list" role="tabpanel" aria-labelledby="job-tab-all" tabindex="0"></div>
-          </article>
-
-          <article class="panel siren-panel" id="siren-panel">
-            <div class="panel-header"><div><p class="eyebrow">SIREN CONSOLE</p><h3>Local text simulation</h3></div><span class="truth-pill compact">NO AUDIO</span></div>
-            <div class="transcript" id="transcript" role="log" aria-live="polite" aria-relevant="additions" aria-label="Synthetic Siren transcript"></div>
-            <div class="query-row">
-              <label class="sr-only" for="siren-input">Ask about the synthetic fixture</label>
-              <input id="siren-input" type="text" maxlength="120" placeholder="Ask about this demo…" autocomplete="off" enterkeyhint="send" aria-describedby="siren-boundary">
-              <button class="button button-primary" id="siren-send" type="button">Simulate</button>
-            </div>
-            <p class="microcopy" id="siren-boundary">Deterministic browser-memory answers only.</p>
-            <div class="quick-prompts" aria-label="Example synthetic queries">
-              <button type="button" data-query="Summarize fixture health">Summarize health</button>
-              <button type="button" data-query="Show the demo warning">Show warning</button>
-              <button type="button" data-query="Explain privacy boundaries">Explain privacy</button>
-              <button type="button" data-query="Check the layout">Check layout</button>
-            </div>
-          </article>
-
-          <article class="panel events-panel" id="events-panel">
-            <div class="panel-header">
-              <div><p class="eyebrow">EVENT STREAM</p><h3>Frozen synthetic tail</h3></div>
-              <label class="select-label" for="event-filter">Severity
-                <select id="event-filter">
-                  <option value="all">All</option>
-                  <option value="info">Info</option>
-                  <option value="warning">Warning</option>
-                  <option value="critical">Critical</option>
-                </select>
-              </label>
-            </div>
-            <div class="event-list" id="event-list"></div>
-            <p class="sr-only" id="event-result-status" aria-live="polite"></p>
-          </article>
-
-          <article class="panel activity-panel" id="activity-panel">
-            <div class="panel-header">
-              <div><p class="eyebrow">LOCAL ACTIVITY</p><h3>Ephemeral interaction trail</h3></div>
-              <span class="truth-pill compact">RESETS ON RELOAD</span>
-            </div>
-            <ol class="activity-list" id="activity-list" role="log" aria-live="polite" aria-relevant="additions"></ol>
-          </article>
-
-          <article class="panel device-panel" id="device-panel">
-            <div class="device-heading">
-              <div>
-                <p class="eyebrow">PHYSICAL FOLD CANARY</p>
-                <h3>Local device-fit scanner</h3>
-                <p class="subtle">Checks visible component widths and viewport dimensions. No device identity, network, or storage is used.</p>
+            <article class="panel jobs-panel" id="jobs-panel">
+              <div class="panel-header"><div><p class="eyebrow">JOB QUEUE</p><h3>Lifecycle explorer</h3></div></div>
+              <div class="tab-list" role="tablist" aria-label="Job state">
+                <button id="job-tab-all" type="button" role="tab" class="tab is-active" data-job-state="all" aria-selected="true" aria-controls="job-list" tabindex="0">All</button>
+                <button id="job-tab-running" type="button" role="tab" class="tab" data-job-state="running" aria-selected="false" aria-controls="job-list" tabindex="-1">Running</button>
+                <button id="job-tab-pending" type="button" role="tab" class="tab" data-job-state="pending" aria-selected="false" aria-controls="job-list" tabindex="-1">Pending</button>
+                <button id="job-tab-failed" type="button" role="tab" class="tab" data-job-state="failed" aria-selected="false" aria-controls="job-list" tabindex="-1">Failed</button>
               </div>
-              <div class="device-actions">
-                <span class="fit-badge pending" id="fit-badge">READY</span>
-                <button class="button button-primary" id="run-scan" type="button">Run layout scan</button>
+              <div class="job-list" id="job-list" role="tabpanel" aria-labelledby="job-tab-all" tabindex="0"></div>
+            </article>
+
+            <article class="panel siren-panel" id="siren-panel">
+              <div class="panel-header"><div><p class="eyebrow">SIREN CONSOLE</p><h3>Local text explanation</h3></div><span class="truth-pill compact">NO AUDIO</span></div>
+              <div class="transcript" id="transcript" role="log" aria-live="polite" aria-relevant="additions" aria-label="Synthetic Siren transcript"></div>
+              <div class="query-row">
+                <label class="sr-only" for="siren-input">Ask about the synthetic fixture</label>
+                <input id="siren-input" type="text" maxlength="120" placeholder="Ask about this demo…" autocomplete="off" enterkeyhint="send" aria-describedby="siren-boundary">
+                <button class="button button-primary" id="siren-send" type="button">Simulate</button>
               </div>
+              <p class="microcopy" id="siren-boundary">Deterministic browser-memory answers only.</p>
+              <div class="quick-prompts" aria-label="Example synthetic queries">
+                <button type="button" data-query="Summarize this scenario">Summarize scenario</button>
+                <button type="button" data-query="Explain RF isolation">Explain RF isolation</button>
+                <button type="button" data-query="Show the demo warning">Show warning</button>
+                <button type="button" data-query="Explain privacy boundaries">Explain privacy</button>
+              </div>
+            </article>
+
+            <article class="panel events-panel" id="events-panel">
+              <div class="panel-header">
+                <div><p class="eyebrow">SYNTHETIC EVENT STREAM</p><h3>Cross-domain frozen tail</h3></div>
+                <label class="select-label" for="event-filter">Severity<select id="event-filter"><option value="all">All</option><option value="info">Info</option><option value="warning">Warning</option><option value="critical">Critical</option></select></label>
+              </div>
+              <div class="event-list" id="event-list"></div>
+              <p class="sr-only" id="event-result-status" aria-live="polite"></p>
+            </article>
+
+            <article class="panel activity-panel">
+              <div class="panel-header"><div><p class="eyebrow">LOCAL SESSION</p><h3>Ephemeral interaction trail</h3></div><span class="truth-pill compact">RESETS ON RELOAD</span></div>
+              <ol class="activity-list" id="activity-list" role="log" aria-live="polite" aria-relevant="additions"></ol>
+            </article>
+          </div>
+        </section>
+
+        <section class="workspace-pane rf-workspace" id="rf-workspace">
+          <div class="inner-heading-row">
+            <div><p class="eyebrow">RF / DAS WORKSPACE · SYNTHETIC</p><h2>Signal-path situation lab</h2></div>
+            <p class="data-stamp">Scenario <strong class="scenario-stamp">A-01 · Balanced baseline</strong></p>
+          </div>
+          <p class="rf-disclaimer"><strong>Illustrative values only.</strong> Not design, commissioning, acceptance, test-equipment, or alarm limits.</p>
+
+          <nav class="jump-nav" aria-label="RF sections">
+            <a href="#rf-scorecard">Scorecard</a><a href="#band-panel">Bands</a><a href="#path-panel">Signal path</a><a href="#remote-panel">Remotes</a><a href="#finding-panel">Findings</a><a href="#device-panel">Device QA</a>
+          </nav>
+
+          <section class="situation-strip" id="rf-scorecard" aria-label="Cross-domain situation summary">
+            <article><span>RF domain</span><strong id="rf-domain-state">NOMINAL</strong><small id="rf-domain-copy">Balanced sample path</small></article>
+            <article><span>Compute domain</span><strong id="compute-domain-state">NOMINAL</strong><small id="compute-domain-copy">Queue within demo baseline</small></article>
+            <article><span>Correlation</span><strong id="correlation-state">NONE</strong><small id="correlation-copy">No shared synthetic fault</small></article>
+            <article><span>Advisories</span><strong id="advisory-count">0</strong><small>Read-only findings</small></article>
+          </section>
+
+          <div class="rf-layout">
+            <div class="rf-main-stack">
+              <article class="panel band-panel" id="band-panel">
+                <div class="panel-header">
+                  <div><p class="eyebrow">RF SCORECARD</p><h3>Generated measurement samples</h3></div>
+                  <span class="truth-pill compact">DISPLAY ONLY</span>
+                </div>
+                <div class="rf-kpi-grid" id="rf-kpi-grid"></div>
+              </article>
+
+              <article class="panel path-panel" id="path-panel">
+                <div class="panel-header"><div><p class="eyebrow">DAS SIGNAL PATH</p><h3>Read-only route ladder</h3></div><span class="truth-pill compact">DEMO-RF-01</span></div>
+                <div class="signal-path" id="signal-path"></div>
+                <p class="panel-note" id="path-summary">Select a node to inspect its fictional contribution.</p>
+              </article>
+
+              <article class="panel remote-panel" id="remote-panel">
+                <div class="panel-header">
+                  <div><p class="eyebrow">REMOTE MATRIX</p><h3>Fictional radio units</h3></div>
+                  <label class="select-label" for="remote-filter">State<select id="remote-filter"><option value="all">All</option><option value="nominal">Nominal</option><option value="advisory">Advisory</option></select></label>
+                </div>
+                <div class="remote-grid" id="remote-grid"></div>
+                <p class="sr-only" id="remote-result-status" aria-live="polite"></p>
+              </article>
             </div>
-            <dl class="device-stats">
-              <div><dt>Layout viewport</dt><dd id="layout-viewport">—</dd></div>
-              <div><dt>Visual viewport</dt><dd id="visual-viewport">—</dd></div>
-              <div><dt>Effective view</dt><dd id="effective-view">—</dd></div>
-              <div><dt>Page fit</dt><dd id="page-fit">Not scanned</dd></div>
-            </dl>
-            <div class="scan-results" id="scan-results" aria-live="polite">
-              <p>Run the scanner on the cover and inner displays. A pass means no visible checked rail is wider than its container.</p>
-            </div>
-          </article>
-        </div>
+
+            <aside class="rf-side-stack" aria-label="RF findings and trend study">
+              <article class="panel finding-panel" id="finding-panel">
+                <div class="panel-header"><div><p class="eyebrow">FINDING INBOX</p><h3>Synthetic advisories</h3></div><span class="truth-pill compact">NO ACK</span></div>
+                <div class="finding-list" id="finding-list"></div>
+              </article>
+
+              <article class="panel trend-panel">
+                <div class="panel-header"><div><p class="eyebrow">FIXED SAMPLE STUDY</p><h3>Six-point comparison</h3></div></div>
+                <div class="trend-summary" id="trend-summary"></div>
+                <table class="trend-table">
+                  <caption>Generated optical receive sequence</caption>
+                  <thead><tr><th scope="col">Sample</th><th scope="col">Optical Rx</th></tr></thead>
+                  <tbody id="trend-body"></tbody>
+                </table>
+              </article>
+            </aside>
+          </div>
+        </section>
+
+        <article class="panel device-panel" id="device-panel">
+          <div class="device-heading">
+            <div><p class="eyebrow">PHYSICAL FOLD CANARY</p><h3>Local device-fit scanner</h3><p class="subtle">Checks overflow, clipped controls, target size, viewport scale, and sticky overlap. Nothing leaves this tab.</p></div>
+            <div class="device-actions"><span class="fit-badge pending" id="fit-badge">READY</span><button class="button button-primary" id="run-scan" type="button">Run layout scan</button></div>
+          </div>
+          <dl class="device-stats">
+            <div><dt>Layout viewport</dt><dd id="layout-viewport">—</dd></div>
+            <div><dt>Visual viewport</dt><dd id="visual-viewport">—</dd></div>
+            <div><dt>Scale / DPR</dt><dd id="scale-dpr">—</dd></div>
+            <div><dt>Effective view</dt><dd id="effective-view">—</dd></div>
+            <div><dt>Page fit</dt><dd id="page-fit">Not scanned</dd></div>
+          </dl>
+          <div class="scan-results" id="scan-results" aria-live="polite"><p>Run once on each physical display. A pass covers only this viewport and visible workspace.</p></div>
+        </article>
       </section>
     </main>
 
     <footer>
-      <p><strong>Preview boundary:</strong> static browser code + fictional in-memory fixtures. No AG candidate code was used.</p>
-      <p>Build channel: clean-room public UI study · Canary V2 · 2026-08-24</p>
+      <p><strong>Preview boundary:</strong> static browser code + fictional in-memory fixtures. No controller candidate code was used.</p>
+      <p>Build channel: clean-room public UI study · Canary V3 · 2026-08-24</p>
     </footer>
   </div>
 
   <dialog class="inspector-dialog" id="inspector-dialog" aria-labelledby="inspector-title" aria-describedby="inspector-boundary">
     <div class="inspector-shell">
       <div class="inspector-header">
-        <div>
-          <p class="eyebrow" id="inspector-kicker">FIXTURE INSPECTOR</p>
-          <h2 id="inspector-title">Synthetic detail</h2>
-        </div>
+        <div><p class="eyebrow" id="inspector-kicker">FIXTURE INSPECTOR</p><h2 id="inspector-title">Synthetic detail</h2></div>
         <button class="icon-button" id="close-inspector" type="button" aria-label="Close inspector">×</button>
       </div>
       <p class="inspector-summary" id="inspector-summary"></p>
       <dl class="inspector-grid" id="inspector-grid"></dl>
-      <div class="inspector-boundary" id="inspector-boundary">
-        <strong>Read-only demonstration</strong>
-        <span>No live target exists and no action can be sent.</span>
-      </div>
+      <div class="inspector-boundary" id="inspector-boundary"><strong>Read-only demonstration</strong><span>No live target exists and no action can be sent.</span></div>
     </div>
   </dialog>
 </body>

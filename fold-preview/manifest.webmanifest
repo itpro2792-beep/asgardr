@@ -1,8 +1,8 @@
 {
   "id": "/asgardr/fold-preview/",
-  "name": "Ásgarðr Fold Synthetic Command Center",
+  "name": "Ásgarðr Fold Synthetic RF + Operations Lab",
   "short_name": "Ásgarðr Fold",
-  "description": "A non-operational synthetic Galaxy Fold command-center interface study.",
+  "description": "A non-operational synthetic Galaxy Fold RF, DAS, and operations interface study.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
