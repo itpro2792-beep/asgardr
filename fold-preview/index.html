@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#07121f">
+  <meta name="color-scheme" content="dark">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; media-src 'none'; font-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'self'; form-action 'none'; base-uri 'none'">
+  <meta name="description" content="A synthetic, non-operational phone preview of the Ásgarðr Fold command-center interface.">
+  <title>Ásgarðr Fold — Synthetic Phone Preview</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to dashboard</a>
+
+  <div class="safety-banner" role="status">
+    <span class="safety-dot" aria-hidden="true"></span>
+    <strong>SYNTHETIC UI PREVIEW</strong>
+    <span>NO LIVE CONNECTION</span>
+    <span>NO CONTROL CAPABILITY</span>
+  </div>
+
+  <div class="app-shell" id="app-shell" data-layout="auto">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <div class="brand-mark" aria-hidden="true">Á</div>
+        <div>
+          <p class="eyebrow">ÁSGARÐR / FOLD LAB</p>
+          <h1>Command Center Preview</h1>
+        </div>
+      </div>
+
+      <div class="truth-cluster" aria-label="Preview state">
+        <span class="truth-pill"><span class="status-light demo"></span>LOCAL FIXTURES</span>
+        <span class="truth-pill">PUBLIC DEMO</span>
+      </div>
+    </header>
+
+    <nav class="preview-toolbar" aria-label="Preview controls">
+      <div class="segmented" role="group" aria-label="Preview layout">
+        <button class="segment is-active" type="button" data-layout-choice="auto" aria-pressed="true">Auto</button>
+        <button class="segment" type="button" data-layout-choice="cover" aria-pressed="false">Cover</button>
+        <button class="segment" type="button" data-layout-choice="inner" aria-pressed="false">Unfolded</button>
+      </div>
+      <p class="viewport-note" id="viewport-note" aria-live="polite">Auto layout</p>
+      <button class="button button-ghost" id="rotate-fixture" type="button">Rotate demo fixture</button>
+    </nav>
+
+    <main id="main-content" tabindex="-1">
+      <section class="cover-view" aria-labelledby="cover-heading">
+        <div class="cover-hero">
+          <div>
+            <p class="eyebrow">COVER HUD / GLANCE MODE</p>
+            <h2 id="cover-heading">Synthetic fleet is nominal</h2>
+            <p class="subtle">A visual fixture only. Reloading restores the original state.</p>
+          </div>
+          <div class="score-ring" id="health-ring" role="img" aria-label="Demo health score 96 percent">
+            <span id="health-score">96</span>
+            <small>DEMO</small>
+          </div>
+        </div>
+
+        <div class="metric-stack" aria-label="Synthetic cluster metrics">
+          <article class="metric-card">
+            <div class="metric-title"><span>Memory commit</span><strong id="memory-label">61%</strong></div>
+            <div class="meter"><span id="memory-meter" style="--value:61%"></span></div>
+            <p>18.3 / 30.0 GB fixture</p>
+          </article>
+          <article class="metric-card">
+            <div class="metric-title"><span>Disk headroom</span><strong id="disk-label">74%</strong></div>
+            <div class="meter"><span id="disk-meter" style="--value:74%"></span></div>
+            <p>222 / 300 GB fixture</p>
+          </article>
+        </div>
+
+        <div class="queue-strip" aria-label="Synthetic queue counts">
+          <div><strong id="queue-running">4</strong><span>Running</span></div>
+          <div><strong id="queue-pending">7</strong><span>Pending</span></div>
+          <div><strong id="queue-done">128</strong><span>Done</span></div>
+          <div><strong id="queue-failed">1</strong><span>Failed</span></div>
+        </div>
+
+        <article class="cover-alert">
+          <div class="alert-icon" aria-hidden="true">!</div>
+          <div>
+            <p class="eyebrow">DEMO ADVISORY</p>
+            <h3 id="cover-alert-title">Worker latency above fixture baseline</h3>
+            <p id="cover-alert-copy">demo-worker-03 · synthetic warning · no action available</p>
+          </div>
+        </article>
+
+        <article class="siren-orb-card">
+          <div class="voice-orb" aria-hidden="true"><span></span></div>
+          <div>
+            <p class="eyebrow">SIREN UI STUDY</p>
+            <h3>Text simulation only</h3>
+            <p>No microphone, audio, permissions, or network access.</p>
+          </div>
+          <button class="button button-primary" id="open-siren" type="button">Open simulator</button>
+        </article>
+      </section>
+
+      <section class="inner-view" aria-labelledby="inner-heading">
+        <div class="inner-heading-row">
+          <div>
+            <p class="eyebrow">UNFOLDED CANVAS / SOC STUDY</p>
+            <h2 id="inner-heading">Synthetic operations overview</h2>
+          </div>
+          <p class="data-stamp">Fixture set <strong id="fixture-number">A-01</strong></p>
+        </div>
+
+        <div class="soc-grid">
+          <article class="panel fleet-panel">
+            <div class="panel-header">
+              <div><p class="eyebrow">PROCESS MATRIX</p><h3>Demo services</h3></div>
+              <div class="filter-row">
+                <label class="sr-only" for="service-search">Search demo services</label>
+                <input id="service-search" type="search" placeholder="Search fixtures" autocomplete="off">
+                <label class="sr-only" for="status-filter">Filter service status</label>
+                <select id="status-filter">
+                  <option value="all">All statuses</option>
+                  <option value="online">Online</option>
+                  <option value="warning">Warning</option>
+                  <option value="offline">Offline</option>
+                </select>
+              </div>
+            </div>
+            <div class="service-grid" id="service-grid" aria-live="polite"></div>
+            <p class="empty-state" id="service-empty" hidden>No synthetic services match this filter.</p>
+          </article>
+
+          <article class="panel vitals-panel">
+            <div class="panel-header"><div><p class="eyebrow">CLUSTER VITALS</p><h3>Visual gauges</h3></div><span class="truth-pill compact">FIXTURE</span></div>
+            <div class="vital-list" id="vital-list"></div>
+          </article>
+
+          <article class="panel jobs-panel">
+            <div class="panel-header"><div><p class="eyebrow">JOB QUEUE</p><h3>Lifecycle explorer</h3></div></div>
+            <div class="tab-list" role="tablist" aria-label="Job state">
+              <button type="button" role="tab" class="tab is-active" data-job-state="all" aria-selected="true">All</button>
+              <button type="button" role="tab" class="tab" data-job-state="running" aria-selected="false">Running</button>
+              <button type="button" role="tab" class="tab" data-job-state="pending" aria-selected="false">Pending</button>
+              <button type="button" role="tab" class="tab" data-job-state="failed" aria-selected="false">Failed</button>
+            </div>
+            <div class="job-list" id="job-list" role="tabpanel"></div>
+          </article>
+
+          <article class="panel events-panel">
+            <div class="panel-header">
+              <div><p class="eyebrow">EVENT STREAM</p><h3>Frozen synthetic tail</h3></div>
+              <label class="select-label" for="event-filter">Severity
+                <select id="event-filter">
+                  <option value="all">All</option>
+                  <option value="info">Info</option>
+                  <option value="warning">Warning</option>
+                  <option value="critical">Critical</option>
+                </select>
+              </label>
+            </div>
+            <div class="event-list" id="event-list" aria-live="polite"></div>
+          </article>
+
+          <article class="panel siren-panel" id="siren-panel">
+            <div class="panel-header"><div><p class="eyebrow">SIREN CONSOLE</p><h3>Local text simulation</h3></div><span class="truth-pill compact">NO AUDIO</span></div>
+            <div class="transcript" id="transcript" aria-live="polite"></div>
+            <div class="query-row">
+              <label class="sr-only" for="siren-input">Ask about the synthetic fixture</label>
+              <input id="siren-input" type="text" maxlength="120" placeholder="Ask about this demo…" autocomplete="off">
+              <button class="button button-primary" id="siren-send" type="button">Simulate</button>
+            </div>
+            <div class="quick-prompts" aria-label="Example synthetic queries">
+              <button type="button" data-query="Summarize fixture health">Summarize health</button>
+              <button type="button" data-query="Show the demo warning">Show demo warning</button>
+              <button type="button" data-query="Explain privacy boundaries">Explain privacy</button>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p><strong>Preview boundary:</strong> static browser code + fictional in-memory fixtures. No AG candidate code was used.</p>
+      <p>Build channel: clean-room public UI study · 2026-08-24</p>
+    </footer>
+  </div>
+</body>
+</html>
