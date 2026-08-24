@@ -1,8 +1,8 @@
 {
   "id": "/asgardr/fold-preview/",
-  "name": "Ásgarðr Fold Synthetic Preview",
+  "name": "Ásgarðr Fold Synthetic Command Center",
   "short_name": "Ásgarðr Fold",
-  "description": "A non-operational, synthetic phone preview of the Ásgarðr Fold interface.",
+  "description": "A non-operational synthetic Galaxy Fold command-center interface study.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
