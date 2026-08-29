@@ -1,8 +1,9 @@
 # D28 Relocation — Authoritative State
 
-**Last updated: Saturday, August 29, 2026.** This file supersedes all earlier
-apartment rankings, tour plans, and listing information. The apartment search
-is **CLOSED**.
+**Last updated: Saturday, August 29, 2026 (evening). Application APPROVED in
+writing; lease signing Monday, Aug 31, 2:30 PM.** This file supersedes all
+earlier apartment rankings, tour plans, and listing information. The apartment
+search is **CLOSED**.
 
 > **Privacy note.** This repository is public. This file deliberately omits
 > salary figures, application documents, receipts, and any itemized list of
@@ -26,48 +27,77 @@ is **CLOSED**.
 | Laundry | Shared, directly outside the apartment door — $2 wash / $2 dry ($4 per full load) |
 | Why first floor matters | Easy indoor storage of the heavy e-bike |
 
-**Address correction, standing:** some flyers/online sources list Ambassador II
-as **828** Red Lion Road. That is **wrong** for this unit. Use **851** as the
-working address. Final authority is the address **exactly as written in the
-executed lease** — mover, insurance, utility, and legal documents must
-reproduce that lease address verbatim once it exists.
+**Address correction, standing — now explained:** some flyers/online sources
+list Ambassador II as **828** Red Lion Road. The Aug 29 approval letter
+resolves the discrepancy: **828 Red Lion Road is the leasing office**; the
+apartments (and unit D28) are at **851**. Use 851 as the unit's working
+address, and 828 for the office. Final authority is the address **exactly as
+written in the executed lease** — mover, insurance, utility, and legal
+documents must reproduce that lease address verbatim once it exists.
 
 Do not restart comparisons, revive eliminated properties, schedule tours, or
 contact other leasing offices **unless** D28 is denied or the written lease
 materially differs from the terms above.
 
-## 2. Application status (as of Aug 29, 2026)
+## 2. Application status (as of Sat Aug 29, 2026, evening)
 
-- Requested paperwork: **submitted**.
+- Requested paperwork: **submitted** (including income documents).
 - $250 security deposit: **paid**, receipt saved.
-- Decision / leasing offer expected from management: **Sun Aug 30 or Mon Aug 31, 2026**.
-- Fully executed lease + confirmed key date: **NOT yet in hand**.
+- Nova Credit income verification: ✅ **completed** (Sat Aug 29, ahead of the
+  48-hour deadline).
+- Application: ✅ **APPROVED in writing** — approval letter from Fidelity
+  Management Corp. Credit Department, Sat Aug 29, 11:46 AM ET, plus a
+  confirming phone call from the leasing office the same day.
+- **Signing appointment: Monday, Aug 31, 2:30 PM** at the leasing office
+  (per the approval letter, the office is 828 Red Lion Road).
+- **72-hour clause:** the approval letter requires the lease to be **signed
+  and funded within 72 hours** of receipt → deadline ≈ **Tuesday, Sept 1,
+  11:46 AM ET**. The Monday appointment is safely inside it.
+- Due at signing (per the phone call): **first month's rent + $1,490**, in
+  cash or certified funds; bank stop planned beforehand. The $1,490 is not
+  yet itemized — see pre-signing questions below.
+- Fully executed lease + key date: **not yet in hand** — expected Monday.
+  The approval letter states the lease is not binding until executed by both
+  parties **and a duplicate is delivered to the tenant** — do not leave the
+  signing without a complete countersigned copy.
 
-### ⚠️ URGENT — income verification (Nova Credit)
+### Pre-signing questions for the leasing office (before Monday 2:30 PM; answers in writing where possible)
 
-Evidence reviewed Sat Aug 29, 2026:
+1. Email the lease and an **itemized move-in statement** in advance for
+   review.
+2. Exact **payee name** for the certified check(s), whether one or two
+   checks, and the **exact amounts**.
+3. What does the **$1,490** cover, and is the **$250 already paid**
+   credited? (If the deposit equals one month's rent: $1,691 − $250 =
+   $1,441 — what accounts for the extra $49?)
+4. **Key/possession date**, lease start date, and any proration.
+5. Is **proof of renter's insurance** required at signing, and with what
+   coverage and interested-party wording?
 
-- Nova Credit sent an income-verification request for the Fidelity Management
-  application on **Fri Aug 28, 7:25 PM ET**. It states the step **must be
-  completed within 48 hours** or the application "may not be accepted," and
-  its secure link (not reproduced here) expires exactly 48 hours after send.
-- **Deadline: Sunday, August 30, ~7:25 PM ET.**
-- As of this check: the request email is still **unread**, and **no completion
-  confirmation** from Nova Credit or Fidelity exists anywhere in the mailbox.
-- Status: **treated as OUTSTANDING** (not assumed either way — it is possible
-  income documents were provided directly with the paper application, but no
-  evidence of that closes this loop).
+### Monday, Aug 31 itinerary
 
-**Action (Ian, personally — before Sunday evening):** complete the Nova Credit
-step via the email's secure link, or confirm with the leasing office that
-income is already verified another way. Do this before the decision window
-opens.
+1. Bank stop — certified funds (exact amounts confirmed first).
+2. **2:30 PM — lease signing**, Ambassador leasing office.
+3. **3:00 PM — fingerprinting appointment, 1900 Grant Ave** (employer
+   clearances).
 
-### Open loop to close
+⚠️ Two flags: (a) the 2:30 → 3:00 gap leaves ~20 minutes for a signing that
+normally takes longer — ask to start earlier, or confirm the fingerprinting
+site tolerates a late/walk-in arrival; (b) Monday is also day one at the new
+job — make sure the afternoon appointments are squared with onboarding.
 
-- A Morgan Properties email (Aug 28) confirms a **Brookmont tour "tomorrow"
-  at 10:30 AM** — i.e., Sat Aug 29. The search is closed; cancel or skip.
-  (Flagged only — no outside contact will be made without authorization.)
+Bring: photo ID, certified funds, the $250 receipt, checkbook, this
+checklist (Section 4B), and a phone for photos and measurements if unit
+access is offered.
+
+### Resolved
+
+- Nova Credit income verification — completed Sat Aug 29, before the Sunday
+  deadline (was flagged URGENT in the previous revision of this file). The
+  email was verified authentic via its SPF/DKIM/DMARC headers, and Fidelity
+  Management's role as Ambassador's manager was confirmed via public
+  listings, before completion.
+- Brookmont tour (Sat Aug 29, 10:30 AM) — moot; search closed.
 
 ## 3. Guardrails — in force until written approval + countersigned lease + confirmed possession date
 
@@ -80,12 +110,14 @@ opens.
 
 ## 4. Approval-to-lease checklist
 
-### A. Now → approval
+### A. Now → signing
 
-- [ ] Complete / confirm Nova Credit income verification (**deadline Sun Aug 30 ~7:25 PM ET**)
-- [ ] Cancel or skip the Brookmont tour (search closed)
-- [ ] Receive written application decision or leasing offer (expected Aug 30–31)
-- [ ] If denied or terms changed: recover/clarify the $250 per its written classification, then (and only then) wake the dormant contingencies
+- [x] Complete Nova Credit income verification (done Sat Aug 29)
+- [x] Brookmont tour (moot — search closed)
+- [x] Receive written application decision (approval letter, Sat Aug 29)
+- [ ] Get the five pre-signing questions (Section 2) answered before Monday 2:30 PM
+- [ ] Sign and fund within the 72-hour window (by ~Tue Sept 1, 11:46 AM ET)
+- [ ] If terms at signing differ materially from Section 1: pause and audit against Section 4B before signing; if the deal collapses, recover/clarify the $250 per its written classification before waking the dormant contingencies
 
 ### B. When approval / lease documents arrive — verify line by line, in writing
 
