@@ -22,8 +22,10 @@ under `departments/`). Everything in this repo is public.
   fonts, or images; no `fetch`/XHR/WebSocket/service workers; no analytics.
   Outbound `<a href>` navigation links are fine.
 - Synthetic data only, labeled as such; identities use `demo-*` / `DEMO-*`.
-  Never publish private hostnames, RFC1918 addresses, serials, credentials,
-  or anything derived from live cluster state.
+  Never publish private hostnames, RFC1918 or CGNAT/tailnet addresses,
+  serials, credentials, or anything derived from live cluster state. This
+  covers transcripts and screenshots too — an agent log pasted into a public
+  page is a public surface.
 - `org/index.html` is generated — edit `scripts/build-org-chart.py`,
   `departments/org-manifest.json`, or the skills, never the output.
 - Moved pages keep a meta-refresh **plus** a visible link to the canonical

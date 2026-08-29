@@ -10,7 +10,8 @@ synthetic-only boundary:
   2. Network APIs in page JavaScript (fetch, XHR, WebSocket, EventSource,
      sendBeacon, service-worker registration).
   3. Credential-shaped strings (cloud keys, tokens, private key blocks).
-  4. Private-fabric identifiers (RFC1918 addresses, cluster-internal hostnames).
+  4. Private-fabric identifiers (RFC1918 and CGNAT/tailnet addresses,
+     cluster-internal hostnames).
   5. Staleness of the generated org chart (delegates to build-org-chart.py --check).
 
 A blocking finding here is a Publication Safety finding: it is fixed, or the
@@ -61,9 +62,11 @@ SECRET_PATTERNS = [
     ("Private key block", re.compile("-----BEGIN " + r"[A-Z ]*PRIVATE KEY-----")),
 ]
 
-# 4. Private-fabric identifiers (all text files).
-RE_RFC1918 = re.compile(
-    r"\b(?:10\.\d{1,3}|192\.168|172\.(?:1[6-9]|2\d|3[01]))" + r"\.\d{1,3}\.\d{1,3}\b")
+# 4. Private-fabric identifiers (all text files): RFC1918 plus the CGNAT block
+#    (100.64/10), which mesh/tailnet peers use — every bit as identifying.
+RE_PRIVATE_IP = re.compile(
+    r"\b(?:10\.\d{1,3}|192\.168|172\.(?:1[6-9]|2\d|3[01])"
+    r"|100\.(?:6[4-9]|[7-9]\d|1[01]\d|12[0-7]))" + r"\.\d{1,3}\.\d{1,3}\b")
 RE_CLUSTER_HOST = re.compile(r"[a-z0-9.-]+\.svc\.cluster" + r"\.local\b", re.I)
 
 
@@ -99,7 +102,7 @@ def scan_tree(base: Path) -> list:
             for label, pattern in SECRET_PATTERNS:
                 if pattern.search(line):
                     hit(path, lineno, f"credential shape: {label}", line)
-            if RE_RFC1918.search(line):
+            if RE_PRIVATE_IP.search(line):
                 hit(path, lineno, "private address", line)
             if RE_CLUSTER_HOST.search(line):
                 hit(path, lineno, "cluster-internal hostname", line)
@@ -133,6 +136,7 @@ def self_test() -> int:
             "key = '" + "AKIA" + "B" * 16 + "'",
             "token = '" + "ghp_" + "a" * 36 + "'",
             "host = '" + "192.168." + "7.42" + "'",
+            "peer = '" + "100.64." + "23.7" + "'",
             "svc = 'qdrant.default" + ".svc.cluster" + ".local'",
             "</body></html>",
         ]
@@ -153,6 +157,11 @@ def self_test() -> int:
         clean_hits = [f for f in findings if str(f[0]) == "clean.html"]
         if missed:
             print(f"[self-test] FAIL — rules did not fire: {sorted(missed)}")
+            return 1
+        private_hits = sum(1 for (_, _, c, _) in findings if c == "private address")
+        if private_hits < 2:
+            print("[self-test] FAIL — private-address rule missed a range "
+                  f"(caught {private_hits} of 2: RFC1918 + CGNAT)")
             return 1
         if clean_hits:
             print(f"[self-test] FAIL — clean fixture drew findings: {clean_hits}")
