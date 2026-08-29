@@ -1,0 +1,16 @@
+name: publication-safety
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checker self-test (prove it can fail)
+        run: python3 scripts/check-publication-safety.py --self-test
+      - name: Publication-safety scan + org chart freshness
+        run: python3 scripts/check-publication-safety.py
