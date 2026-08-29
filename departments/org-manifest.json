@@ -1,0 +1,80 @@
+{
+  "org": "The Asgardr Operations Org",
+  "tagline": "An agent organization for a ten-computer, local-first fabric — five k3s core nodes, five mesh peers, one evidence-led operator. Every department installs independently.",
+  "operator": {
+    "title": "The Operator",
+    "subtitle": "evidence-led human authority",
+    "note": "Reviewer-class departments report to the Operator, not into the functions they review. Their blocking findings are not overrulable by the department under review — only the Operator may override, and the override is recorded in the decision ledger."
+  },
+  "install": {
+    "marketplace": "/plugin marketplace add itpro2792-beep/asgardr",
+    "example": "/plugin install fabric@asgardr"
+  },
+  "credits": "Pattern after cbrock84/headcount (MIT) — departments that install independently, a reviewer class that reports to the top, and a chart generated from the repository tree.",
+  "departments": [
+    {
+      "id": "evidence",
+      "title": "Evidence Review",
+      "steward": "Mímir",
+      "rune": "ᛗ",
+      "class": "reviewer",
+      "charter": "Reviews what the other departments claim to work. Green is not evidence; the artifact is. A check whose passing condition is also satisfied by the failure mode is decoration."
+    },
+    {
+      "id": "publication-safety",
+      "title": "Publication Safety",
+      "steward": "Heimdallr",
+      "rune": "ᚺ",
+      "class": "reviewer",
+      "charter": "Watches the boundary between the private fabric and every public surface. Synthetic-only in public: no live cluster access, telemetry, identifiers, or operator controls."
+    },
+    {
+      "id": "operator",
+      "title": "Office of the Operator",
+      "steward": "the Operator",
+      "rune": "ᚨ",
+      "class": "line",
+      "charter": "Authority tiers, continuity when the operator is away, and the ledger where decisions and their evidence are recorded — corrections visible, nothing silently rewritten."
+    },
+    {
+      "id": "fabric",
+      "title": "Fabric",
+      "steward": "Yggdrasil steward",
+      "rune": "ᚦ",
+      "class": "line",
+      "charter": "The five-node k3s core. Nodes leave and return with proof; a moving image tag has no rollback target; upgrades go one node at a time with artifact checks between."
+    },
+    {
+      "id": "mesh",
+      "title": "Mesh",
+      "steward": "Bifröst warden",
+      "rune": "ᚹ",
+      "class": "line",
+      "charter": "The five peers beyond the core. Keys rotate and the rotation is proven when the old key fails; reachability is read from session artifacts, not a dashboard's green dot."
+    },
+    {
+      "id": "retrieval",
+      "title": "Retrieval",
+      "steward": "Huginn & Muninn",
+      "rune": "ᚱ",
+      "class": "line",
+      "charter": "The knowledge fabric: what goes into the corpus, how answers stay grounded and cited, how a query is scoped to the documents it may see, and how replicas stay honest."
+    },
+    {
+      "id": "workloads",
+      "title": "Workloads",
+      "steward": "Völundr",
+      "rune": "ᛒ",
+      "class": "line",
+      "charter": "The built public works. Self-contained pages, canaries that earn capabilities one release at a time, and layouts that survive a 320-pixel phone with gloves on."
+    },
+    {
+      "id": "records",
+      "title": "Records",
+      "steward": "Sága",
+      "rune": "ᛟ",
+      "class": "line",
+      "charter": "Every claim labeled confirmed, preliminary, or unknown; every figure dated; contradictions flagged in public rather than silently resolved."
+    }
+  ]
+}

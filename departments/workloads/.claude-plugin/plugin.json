@@ -1,0 +1,8 @@
+{
+  "name": "workloads",
+  "description": "Workloads \u2014 public works: page shipping, canary progression, device-fit acceptance.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Ian Thane"
+  }
+}

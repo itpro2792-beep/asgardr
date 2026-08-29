@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="The Asgardr operations org chart — 8 departments of evidence-led skills for a ten-computer, local-first fabric, 2 of them reviewer-class. Generated from the repository tree; no live cluster access.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; img-src data:; base-uri 'none'; form-action 'none'">
+<title>The Asgardr Operations Org</title>
+<style>
+  :root{color-scheme:dark;--bg:#0c1710;--panel:#111f17;--panel2:#0f1b13;--ink:#f4efe2;
+        --muted:#a9b4ac;--gold:#e2aa45;--gold-soft:rgba(226,170,69,.12);--line:#ffffff26;
+        --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+        --sans:"Avenir Next","Segoe UI",Helvetica,Arial,sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px 80px}
+  header{padding:64px 0 30px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+           color:var(--gold);margin:0 0 14px}
+  h1{margin:0 0 14px;font:400 clamp(40px,7vw,64px)/1 Georgia,serif;letter-spacing:-.03em}
+  .lede{color:var(--muted);max-width:66ch;margin:0}
+  .stats{display:flex;flex-wrap:wrap;gap:26px;margin:26px 0 0}
+  .stat b{display:block;font:700 26px/1 var(--mono)}
+  .stat span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .tools{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 8px}
+  #q{flex:1 1 260px;min-width:0;padding:12px 14px;border:1px solid var(--line);border-radius:8px;
+      background:var(--panel);color:var(--ink);font:inherit}
+  #q:focus{outline:2px solid var(--gold);outline-offset:1px}
+  button{padding:12px 16px;border:1px solid var(--line);border-radius:8px;background:var(--panel);
+         color:var(--muted);font:inherit;cursor:pointer;min-height:44px}
+  button:focus{outline:2px solid var(--gold);outline-offset:1px}
+  #count{font-family:var(--mono);font-size:12.5px;color:var(--muted);align-self:center}
+  .operator{margin:38px auto 0;width:fit-content;text-align:center}
+  .mark{width:58px;height:58px;margin:0 auto;display:grid;place-items:center;border:2px solid var(--gold);
+        border-radius:50%;color:var(--gold);font:italic 25px Georgia,serif}
+  .operator b{display:block;margin-top:10px;font-size:17px}
+  .operator span{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .stem{width:1px;height:26px;background:var(--line);margin:0 auto}
+  .band{border:1px dashed var(--gold);border-radius:12px;background:var(--gold-soft);padding:18px;margin:0 0 26px}
+  .band>p.blabel{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+                 color:var(--gold);text-align:center;margin:0 0 8px}
+  .band>p.bnote{color:var(--muted);font-size:14.5px;text-align:center;max-width:62ch;margin:0 auto 16px}
+  details.dept{background:var(--panel);border:1px solid var(--line);border-radius:12px;margin:0 0 14px;overflow:hidden}
+  details.dept.reviewer{border-color:var(--gold)}
+  summary{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:16px 18px;cursor:pointer;min-height:44px}
+  summary:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+  .rune{width:38px;height:38px;flex:none;display:grid;place-items:center;border:1px solid var(--line);
+        border-radius:9px;color:var(--gold);font:20px/1 Georgia,serif;background:var(--panel2)}
+  .dtitle{font-weight:600;font-size:16.5px}
+  .badge{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);
+         border:1px solid var(--gold);border-radius:20px;padding:2px 9px;margin-left:6px;vertical-align:2px}
+  .dmeta{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .charter{margin:0;padding:0 18px 4px;color:var(--muted);max-width:74ch}
+  .install{margin:10px 0 4px;padding:0 18px}
+  code{font-family:var(--mono);font-size:13px;color:var(--gold);background:var(--gold-soft);
+       border-radius:6px;padding:2px 7px}
+  ul.skills{list-style:none;margin:8px 0 0;padding:6px 18px 16px}
+  li.skill{padding:12px 0;border-top:1px solid var(--line)}
+  li.skill p{margin:6px 0 0;color:var(--muted);font-size:14.5px;max-width:76ch}
+  .grid{display:grid;gap:0;grid-template-columns:1fr}
+  footer{margin-top:44px;padding-top:22px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+  footer a{color:var(--gold)}
+  [hidden]{display:none!important}
+  @media (prefers-reduced-motion:no-preference){details.dept{transition:border-color .15s}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Asgardr / Operations Org</p>
+  <h1>The Asgardr Operations Org</h1>
+  <p class="lede">An agent organization for a ten-computer, local-first fabric — five k3s core nodes, five mesh peers, one evidence-led operator. Every department installs independently.</p>
+  <div class="stats">
+    <div class="stat"><b>8</b><span>departments</span></div>
+    <div class="stat"><b>27</b><span>skills</span></div>
+    <div class="stat"><b>2</b><span>reviewer-class</span></div>
+    <div class="stat"><b>10</b><span>machines served</span></div>
+  </div>
+  <div class="tools">
+    <input id="q" type="search" placeholder="Search 27 skills — try “restore”, “rotation”, “refusal”…"
+           aria-label="Search skills">
+    <button id="expand" type="button">Expand all</button>
+    <span id="count">27 skills in 8 departments</span>
+  </div>
+</header>
+
+<div class="operator">
+  <div class="mark" aria-hidden="true">Á</div>
+  <b>The Operator</b>
+  <span>evidence-led human authority</span>
+</div>
+<div class="stem" aria-hidden="true"></div>
+
+<section class="band" aria-label="Reviewer-class departments">
+  <p class="blabel">Reviewer-class — reports to the Operator</p>
+  <p class="bnote">Reviewer-class departments report to the Operator, not into the functions they review. Their blocking findings are not overrulable by the department under review — only the Operator may override, and the override is recorded in the decision ledger.</p>
+  <details class="dept reviewer" id="evidence" open>
+    <summary>
+      <span class="rune" aria-hidden="true">ᛗ</span>
+      <span class="dtitle">Evidence Review <span class="badge">reviewer</span></span>
+      <span class="dmeta">Mímir · 4 skills</span>
+    </summary>
+    <p class="charter">Reviews what the other departments claim to work. Green is not evidence; the artifact is. A check whose passing condition is also satisfied by the failure mode is decoration.</p>
+    <p class="install"><code>/plugin install evidence@asgardr</code></p>
+    <ul class="skills">
+      <li class="skill" data-search="evidence-review use when any asgardr change claims to work — before merging, deploying, reporting success, or marking a task done. reviews the evidence behind the claim, not the status color. reviewer-class - blocking findings are not overrulable by the department under review.">
+        <code>evidence-review</code>
+        <p>Use when any Asgardr change claims to work — before merging, deploying, reporting success, or marking a task done. Reviews the evidence behind the claim, not the status color. Reviewer-class - blocking findings are not overrulable by the department under review.</p>
+      </li>
+      <li class="skill" data-search="negative-controls use when designing tests or health checks for any asgardr system — retrieval, mesh, backups, publishing, checkers themselves. adds the cases that must fail - absent facts refuse, out-of-scope stays out, dead endpoints error, and every checker proves it can fail.">
+        <code>negative-controls</code>
+        <p>Use when designing tests or health checks for any Asgardr system — retrieval, mesh, backups, publishing, checkers themselves. Adds the cases that must fail - absent facts refuse, out-of-scope stays out, dead endpoints error, and every checker proves it can fail.</p>
+      </li>
+      <li class="skill" data-search="restore-drill use when validating any asgardr backup — vector collections, etcd snapshots, config repos, volumes. a backup that has never been restored is a file of unknown provenance; this drill proves it by restoring and querying the restored copy.">
+        <code>restore-drill</code>
+        <p>Use when validating any Asgardr backup — vector collections, etcd snapshots, config repos, volumes. A backup that has never been restored is a file of unknown provenance; this drill proves it by restoring and querying the restored copy.</p>
+      </li>
+      <li class="skill" data-search="test-forensics use when auditing an existing test suite, health check, or monitoring setup for vacuous assertions — checks that pass while measuring nothing. run it on inherited code, vendor deliverables, and anything that &quot;arrived with a passing suite.">
+        <code>test-forensics</code>
+        <p>Use when auditing an existing test suite, health check, or monitoring setup for vacuous assertions — checks that pass while measuring nothing. Run it on inherited code, vendor deliverables, and anything that &quot;arrived with a passing suite.</p>
+      </li>
+    </ul>
+  </details>
+  <details class="dept reviewer" id="publication-safety" open>
+    <summary>
+      <span class="rune" aria-hidden="true">ᚺ</span>
+      <span class="dtitle">Publication Safety <span class="badge">reviewer</span></span>
+      <span class="dmeta">Heimdallr · 4 skills</span>
+    </summary>
+    <p class="charter">Watches the boundary between the private fabric and every public surface. Synthetic-only in public: no live cluster access, telemetry, identifiers, or operator controls.</p>
+    <p class="install"><code>/plugin install publication-safety@asgardr</code></p>
+    <ul class="skills">
+      <li class="skill" data-search="public-surface-review use before anything ships to a public asgardr surface — github pages, the garden portal, screenshots, posts, demos. enforces the synthetic-only boundary between the private fabric and the public web. reviewer-class - blocking findings are not overrulable by the department under review.">
+        <code>public-surface-review</code>
+        <p>Use before anything ships to a public Asgardr surface — GitHub Pages, the garden portal, screenshots, posts, demos. Enforces the synthetic-only boundary between the private fabric and the public web. Reviewer-class - blocking findings are not overrulable by the department under review.</p>
+      </li>
+      <li class="skill" data-search="redirect-integrity use when moving, retiring, or re-homing a public asgardr page — old urls keep working, redirects carry a visible link and an honest description of the destination, and page metadata stays truthful.">
+        <code>redirect-integrity</code>
+        <p>Use when moving, retiring, or re-homing a public Asgardr page — old URLs keep working, redirects carry a visible link and an honest description of the destination, and page metadata stays truthful.</p>
+      </li>
+      <li class="skill" data-search="secret-hygiene use when handling credentials anywhere in asgardr — application code, container images, manifests, git history, public pages. no literal defaults; secret references only; built images must grep clean; exposure means rotation proven by the old secret failing.">
+        <code>secret-hygiene</code>
+        <p>Use when handling credentials anywhere in Asgardr — application code, container images, manifests, git history, public pages. No literal defaults; secret references only; built images must grep clean; exposure means rotation proven by the old secret failing.</p>
+      </li>
+      <li class="skill" data-search="synthetic-fixtures use when creating demo data, sample corpora, or interactive fixtures for a public asgardr surface — coherent and believable, explicitly fictional, deterministic where possible, and never derived from live values.">
+        <code>synthetic-fixtures</code>
+        <p>Use when creating demo data, sample corpora, or interactive fixtures for a public Asgardr surface — coherent and believable, explicitly fictional, deterministic where possible, and never derived from live values.</p>
+      </li>
+    </ul>
+  </details>
+</section>
+
+<section class="grid" aria-label="Line departments">
+  <details class="dept" id="operator">
+    <summary>
+      <span class="rune" aria-hidden="true">ᚨ</span>
+      <span class="dtitle">Office of the Operator </span>
+      <span class="dmeta">the Operator · 3 skills</span>
+    </summary>
+    <p class="charter">Authority tiers, continuity when the operator is away, and the ledger where decisions and their evidence are recorded — corrections visible, nothing silently rewritten.</p>
+    <p class="install"><code>/plugin install operator@asgardr</code></p>
+    <ul class="skills">
+      <li class="skill" data-search="continuity-plan use when assessing single-operator risk for the asgardr fabric — what runs unattended, what only the operator knows, and whether the cluster could be cold-started from written artifacts alone. the homelab translation of succession planning and workforce risk.">
+        <code>continuity-plan</code>
+        <p>Use when assessing single-operator risk for the Asgardr fabric — what runs unattended, what only the Operator knows, and whether the cluster could be cold-started from written artifacts alone. The homelab translation of succession planning and workforce risk.</p>
+      </li>
+      <li class="skill" data-search="decision-ledger use when recording an operational decision for the asgardr fabric — what was decided, on what evidence, what was rejected, and when to revisit. also the required destination for reviewer-class overrides and accepted risks.">
+        <code>decision-ledger</code>
+        <p>Use when recording an operational decision for the Asgardr fabric — what was decided, on what evidence, what was rejected, and when to revisit. Also the required destination for reviewer-class overrides and accepted risks.</p>
+      </li>
+      <li class="skill" data-search="operator-authority use when deciding whether an action on the asgardr fabric may proceed autonomously, must be logged and reversible, or belongs to the operator alone — cluster state changes, new controllers, credential issuance, public exposure, deletions.">
+        <code>operator-authority</code>
+        <p>Use when deciding whether an action on the Asgardr fabric may proceed autonomously, must be logged and reversible, or belongs to the Operator alone — cluster state changes, new controllers, credential issuance, public exposure, deletions.</p>
+      </li>
+    </ul>
+  </details>
+  <details class="dept" id="fabric">
+    <summary>
+      <span class="rune" aria-hidden="true">ᚦ</span>
+      <span class="dtitle">Fabric </span>
+      <span class="dmeta">Yggdrasil steward · 3 skills</span>
+    </summary>
+    <p class="charter">The five-node k3s core. Nodes leave and return with proof; a moving image tag has no rollback target; upgrades go one node at a time with artifact checks between.</p>
+    <p class="install"><code>/plugin install fabric@asgardr</code></p>
+    <ul class="skills">
+      <li class="skill" data-search="node-lifecycle use when taking a k3s core node down for maintenance or returning it to the asgardr fabric — cordon, drain, prove the workloads survived, and prove the return with artifacts rather than dashboard green.">
+        <code>node-lifecycle</code>
+        <p>Use when taking a k3s core node down for maintenance or returning it to the Asgardr fabric — cordon, drain, prove the workloads survived, and prove the return with artifacts rather than dashboard green.</p>
+      </li>
+      <li class="skill" data-search="pinned-releases use when deploying or updating any workload on the asgardr fabric — pinned image tags with digests, a rollback target named before rollout, and model or backend swaps done as config changes, never code changes.">
+        <code>pinned-releases</code>
+        <p>Use when deploying or updating any workload on the Asgardr fabric — pinned image tags with digests, a rollback target named before rollout, and model or backend swaps done as config changes, never code changes.</p>
+      </li>
+      <li class="skill" data-search="upgrade-runbook use when upgrading k3s, the node os, or cluster-level components across the five-node asgardr core — snapshot first and prove it restorable, one node at a time, artifact checks between each, written abort criteria.">
+        <code>upgrade-runbook</code>
+        <p>Use when upgrading k3s, the node OS, or cluster-level components across the five-node Asgardr core — snapshot first and prove it restorable, one node at a time, artifact checks between each, written abort criteria.</p>
+      </li>
+    </ul>
+  </details>
+  <details class="dept" id="mesh">
+    <summary>
+      <span class="rune" aria-hidden="true">ᚹ</span>
+      <span class="dtitle">Mesh </span>
+      <span class="dmeta">Bifröst warden · 3 skills</span>
+    </summary>
+    <p class="charter">The five peers beyond the core. Keys rotate and the rotation is proven when the old key fails; reachability is read from session artifacts, not a dashboard&#x27;s green dot.</p>
+    <p class="install"><code>/plugin install mesh@asgardr</code></p>
+    <ul class="skills">
+      <li class="skill" data-search="key-rotation use when rotating mesh or service credentials on the asgardr fabric — issue, cut over, revoke, then prove the rotation by attempting the old credential and saving its refusal. rotation is proven when the old key fails, not when the new one works.">
+        <code>key-rotation</code>
+        <p>Use when rotating mesh or service credentials on the Asgardr fabric — issue, cut over, revoke, then prove the rotation by attempting the old credential and saving its refusal. Rotation is proven when the old key fails, not when the new one works.</p>
+      </li>
+      <li class="skill" data-search="peer-lifecycle use when joining, replacing, or retiring one of the five asgardr mesh peers — key issuance stays with the operator, every step leaves an artifact, and retirement is proven by the retired peer failing to connect.">
+        <code>peer-lifecycle</code>
+        <p>Use when joining, replacing, or retiring one of the five Asgardr mesh peers — key issuance stays with the Operator, every step leaves an artifact, and retirement is proven by the retired peer failing to connect.</p>
+      </li>
+      <li class="skill" data-search="reachability-audit use when verifying connectivity across the asgardr mesh — a full peer-to-peer probe matrix at the service level, read from saved artifacts with current timestamps, never from a dashboard&#x27;s green dot.">
+        <code>reachability-audit</code>
+        <p>Use when verifying connectivity across the Asgardr mesh — a full peer-to-peer probe matrix at the service level, read from saved artifacts with current timestamps, never from a dashboard&#x27;s green dot.</p>
+      </li>
+    </ul>
+  </details>
+  <details class="dept" id="retrieval">
+    <summary>
+      <span class="rune" aria-hidden="true">ᚱ</span>
+      <span class="dtitle">Retrieval </span>
+      <span class="dmeta">Huginn &amp; Muninn · 4 skills</span>
+    </summary>
+    <p class="charter">The knowledge fabric: what goes into the corpus, how answers stay grounded and cited, how a query is scoped to the documents it may see, and how replicas stay honest.</p>
+    <p class="install"><code>/plugin install retrieval@asgardr</code></p>
+    <ul class="skills">
+      <li class="skill" data-search="corpus-hygiene use when adding, chunking, or re-embedding documents in the asgardr knowledge fabric — chunk sizing, indexing vs querying task prefixes, scoping payloads, and re-embedding on model change decide both retrieval quality and the privacy boundary.">
+        <code>corpus-hygiene</code>
+        <p>Use when adding, chunking, or re-embedding documents in the Asgardr knowledge fabric — chunk sizing, indexing vs querying task prefixes, scoping payloads, and re-embedding on model change decide both retrieval quality and the privacy boundary.</p>
+      </li>
+      <li class="skill" data-search="grounded-answering use when building or tuning how the asgardr assistant answers from documents — every claim cited to its passage, clean refusal when the corpus is silent, and grounding prompts tested in both directions so strictness never refuses a rank-1 answer.">
+        <code>grounded-answering</code>
+        <p>Use when building or tuning how the Asgardr assistant answers from documents — every claim cited to its passage, clean refusal when the corpus is silent, and grounding prompts tested in both directions so strictness never refuses a rank-1 answer.</p>
+      </li>
+      <li class="skill" data-search="replica-consistency use when a fabric service runs multiple replicas over shared state — no per-process caches of store contents without invalidation, health checks that touch the real store path, and consistency probes that compare replicas to each other and to the store.">
+        <code>replica-consistency</code>
+        <p>Use when a fabric service runs multiple replicas over shared state — no per-process caches of store contents without invalidation, health checks that touch the real store path, and consistency probes that compare replicas to each other and to the store.</p>
+      </li>
+      <li class="skill" data-search="scoped-retrieval use when queries must be restricted to a subset of documents in the asgardr knowledge fabric — payload filtering at the database is the privacy boundary the product rests on, and it is proven with cross-document leak tests.">
+        <code>scoped-retrieval</code>
+        <p>Use when queries must be restricted to a subset of documents in the Asgardr knowledge fabric — payload filtering at the database is the privacy boundary the product rests on, and it is proven with cross-document leak tests.</p>
+      </li>
+    </ul>
+  </details>
+  <details class="dept" id="workloads">
+    <summary>
+      <span class="rune" aria-hidden="true">ᛒ</span>
+      <span class="dtitle">Workloads </span>
+      <span class="dmeta">Völundr · 3 skills</span>
+    </summary>
+    <p class="charter">The built public works. Self-contained pages, canaries that earn capabilities one release at a time, and layouts that survive a 320-pixel phone with gloves on.</p>
+    <p class="install"><code>/plugin install workloads@asgardr</code></p>
+    <ul class="skills">
+      <li class="skill" data-search="canary-progression use when advancing a public interactive asgardr workload through canary versions — one capability class per release, risky capabilities deliberately deferred until earned, every canary an atomic static release whose rollback is a git revert.">
+        <code>canary-progression</code>
+        <p>Use when advancing a public interactive Asgardr workload through canary versions — one capability class per release, risky capabilities deliberately deferred until earned, every canary an atomic static release whose rollback is a git revert.</p>
+      </li>
+      <li class="skill" data-search="device-fit use when validating a public asgardr page on real phones — no horizontal overflow from 320 css px up, 44 px touch targets, safe-area padding, visible focus, reduced-motion support, keyboard-operable tabs, shrink-safe grids.">
+        <code>device-fit</code>
+        <p>Use when validating a public Asgardr page on real phones — no horizontal overflow from 320 CSS px up, 44 px touch targets, safe-area padding, visible focus, reduced-motion support, keyboard-operable tabs, shrink-safe grids.</p>
+      </li>
+      <li class="skill" data-search="page-shipping use when creating or editing a page on the asgardr public site — self-contained static html, both color schemes handled deliberately, truthful metadata, wide content scrolling in its own container, then the publication-safety gate before push.">
+        <code>page-shipping</code>
+        <p>Use when creating or editing a page on the Asgardr public site — self-contained static HTML, both color schemes handled deliberately, truthful metadata, wide content scrolling in its own container, then the publication-safety gate before push.</p>
+      </li>
+    </ul>
+  </details>
+  <details class="dept" id="records">
+    <summary>
+      <span class="rune" aria-hidden="true">ᛟ</span>
+      <span class="dtitle">Records </span>
+      <span class="dmeta">Sága · 3 skills</span>
+    </summary>
+    <p class="charter">Every claim labeled confirmed, preliminary, or unknown; every figure dated; contradictions flagged in public rather than silently resolved.</p>
+    <p class="install"><code>/plugin install records@asgardr</code></p>
+    <ul class="skills">
+      <li class="skill" data-search="claim-labeling use when publishing factual claims on any asgardr surface — every claim labeled confirmed, preliminary, or unknown; every figure carries its vintage; unknown is a publishable value carried honestly until an official number exists.">
+        <code>claim-labeling</code>
+        <p>Use when publishing factual claims on any Asgardr surface — every claim labeled confirmed, preliminary, or unknown; every figure carries its vintage; UNKNOWN is a publishable value carried honestly until an official number exists.</p>
+      </li>
+      <li class="skill" data-search="discrepancy-ledger use when sources contradict each other or the public record contradicts itself — flag the discrepancy openly rather than silently resolving it, track open questions to answered, and keep resolved entries visible.">
+        <code>discrepancy-ledger</code>
+        <p>Use when sources contradict each other or the public record contradicts itself — flag the discrepancy openly rather than silently resolving it, track open questions to answered, and keep resolved entries visible.</p>
+      </li>
+      <li class="skill" data-search="source-dating use when citing anything on an asgardr surface — every claim sourced and dated, verification before publication, failed verification means removal rather than smoothing, corrections stay visible, and no non-public information ever.">
+        <code>source-dating</code>
+        <p>Use when citing anything on an Asgardr surface — every claim sourced and dated, verification before publication, failed verification means removal rather than smoothing, corrections stay visible, and no non-public information ever.</p>
+      </li>
+    </ul>
+  </details>
+</section>
+
+<footer>
+  <p>Install a department on the machine whose role needs it:
+  <code>/plugin marketplace add itpro2792-beep/asgardr</code> then <code>/plugin install fabric@asgardr</code>.
+  Every value on this page is derived from the repository tree — no live cluster
+  access, telemetry, or operator controls.</p>
+  <p>Generated from the repository tree — <code>scripts/build-org-chart.py</code>.
+  Pattern after cbrock84/headcount (MIT) — departments that install independently, a reviewer class that reports to the top, and a chart generated from the repository tree.
+  · <a href="https://github.com/itpro2792-beep/asgardr">Repository</a>
+  · <a href="https://asgardr-public-garden.itpro27.chatgpt.site/">The Asgardr garden</a></p>
+</footer>
+
+</div>
+<script>
+(function () {
+  var q = document.getElementById('q');
+  var count = document.getElementById('count');
+  var expand = document.getElementById('expand');
+  var depts = Array.prototype.slice.call(document.querySelectorAll('details.dept'));
+  var total = document.querySelectorAll('li.skill').length;
+  var allOpen = false;
+
+  function filter() {
+    var term = q.value.trim().toLowerCase();
+    var shown = 0;
+    depts.forEach(function (d) {
+      var hits = 0;
+      d.querySelectorAll('li.skill').forEach(function (li) {
+        var hit = !term || li.getAttribute('data-search').indexOf(term) !== -1;
+        li.hidden = !hit;
+        if (hit) hits++;
+      });
+      d.hidden = term ? hits === 0 : false;
+      if (term && hits > 0) d.open = true;
+      shown += hits;
+    });
+    count.textContent = term
+      ? shown + ' of ' + total + ' skills match'
+      : total + ' skills in ' + depts.length + ' departments';
+  }
+  q.addEventListener('input', filter);
+
+  expand.addEventListener('click', function () {
+    allOpen = !allOpen;
+    depts.forEach(function (d) { d.open = allOpen; });
+    expand.textContent = allOpen ? 'Collapse all' : 'Expand all';
+  });
+})();
+</script>
+</body>
+</html>

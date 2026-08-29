@@ -1,0 +1,76 @@
+{
+  "name": "asgardr",
+  "owner": {
+    "name": "Ian Thane"
+  },
+  "metadata": {
+    "description": "The Asgardr operations org — an evidence-led skill organization for a ten-computer, local-first intelligence fabric. Eight departments install independently; two are reviewer-class.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "operator",
+      "source": "./departments/operator",
+      "description": "Office of the Operator — authority tiers, single-operator continuity, and the decision ledger. What may run autonomously, what stays quarantined, and what only the operator decides.",
+      "version": "0.1.0",
+      "category": "executive",
+      "keywords": ["asgardr", "authority", "continuity", "governance"]
+    },
+    {
+      "name": "evidence",
+      "source": "./departments/evidence",
+      "description": "Evidence Review (reviewer-class) — green is not evidence; the artifact is. Verification of claims, negative controls, test forensics, and restore drills. Blocking findings are not overrulable by the department under review.",
+      "version": "0.1.0",
+      "category": "reviewer",
+      "keywords": ["asgardr", "verification", "testing", "negative-controls", "backups"]
+    },
+    {
+      "name": "publication-safety",
+      "source": "./departments/publication-safety",
+      "description": "Publication Safety (reviewer-class) — the synthetic-only public boundary. Pre-publish review, synthetic fixtures, secret hygiene, and redirect integrity for every public Asgardr surface. Blocking findings are not overrulable by the department under review.",
+      "version": "0.1.0",
+      "category": "reviewer",
+      "keywords": ["asgardr", "publishing", "safety", "secrets", "synthetic-data"]
+    },
+    {
+      "name": "fabric",
+      "source": "./departments/fabric",
+      "description": "Fabric — the five-node k3s core. Node lifecycle with proven redundancy, pinned releases with named rollback targets, and staged upgrade runbooks.",
+      "version": "0.1.0",
+      "category": "infrastructure",
+      "keywords": ["asgardr", "k3s", "kubernetes", "upgrades", "deployments"]
+    },
+    {
+      "name": "mesh",
+      "source": "./departments/mesh",
+      "description": "Mesh — the five mesh peers. Peer lifecycle, credential rotation proven by the old key failing, and reachability audits from artifacts rather than dashboards.",
+      "version": "0.1.0",
+      "category": "infrastructure",
+      "keywords": ["asgardr", "mesh", "networking", "keys", "reachability"]
+    },
+    {
+      "name": "retrieval",
+      "source": "./departments/retrieval",
+      "description": "Retrieval — the knowledge fabric. Corpus hygiene, grounded answering that refuses cleanly on silence, scoped retrieval as the privacy boundary, and replica consistency.",
+      "version": "0.1.0",
+      "category": "knowledge",
+      "keywords": ["asgardr", "rag", "qdrant", "embeddings", "grounding"]
+    },
+    {
+      "name": "workloads",
+      "source": "./departments/workloads",
+      "description": "Workloads — the built public works. Shipping self-contained pages, canary progression with deferred capabilities, and device-fit acceptance on real phones.",
+      "version": "0.1.0",
+      "category": "product",
+      "keywords": ["asgardr", "static-sites", "canary", "responsive", "pwa"]
+    },
+    {
+      "name": "records",
+      "source": "./departments/records",
+      "description": "Records — the civic-notebook doctrine. Claim labeling (confirmed / preliminary / unknown), discrepancy ledgers that flag contradictions instead of resolving them silently, and sourced-and-dated citations.",
+      "version": "0.1.0",
+      "category": "documentation",
+      "keywords": ["asgardr", "documentation", "citations", "claims", "ledger"]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "name": "publication-safety",
+  "description": "Publication Safety (reviewer-class) \u2014 the synthetic-only public boundary: pre-publish review, synthetic fixtures, secret hygiene, redirect integrity.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Ian Thane"
+  }
+}
