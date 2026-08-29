@@ -54,8 +54,10 @@ materially differs from the terms above.
   and funded within 72 hours** of receipt → deadline ≈ **Tuesday, Sept 1,
   11:46 AM ET**. The Monday appointment is safely inside it.
 - Due at signing (per the phone call): **first month's rent + $1,490**, in
-  cash or certified funds; bank stop planned beforehand. The $1,490 is not
-  yet itemized — see pre-signing questions below.
+  cash or certified funds; bank stop planned beforehand. The **$250 already
+  paid is credited toward the first month's rent** (confirmed by the leasing
+  office), so the estimated total is **$1,441 + $1,490 ≈ $2,931** — confirm
+  the exact figure and payee before the bank stop (questions below).
 - Fully executed lease + key date: **not yet in hand** — expected Monday.
   The approval letter states the lease is not binding until executed by both
   parties **and a duplicate is delivered to the tenant** — do not leave the
@@ -67,28 +69,40 @@ materially differs from the terms above.
    review.
 2. Exact **payee name** for the certified check(s), whether one or two
    checks, and the **exact amounts**.
-3. What does the **$1,490** cover, and is the **$250 already paid**
-   credited? (If the deposit equals one month's rent: $1,691 − $250 =
-   $1,441 — what accounts for the extra $49?)
+3. What does the **$1,490** cover — security deposit, fees, or both? (The
+   $250 credit toward first month's rent is confirmed by phone; verify it
+   appears that way on the move-in statement, and confirm the total due
+   Monday to the dollar — estimated ≈ $2,931.)
 4. **Key/possession date**, lease start date, and any proration.
 5. Is **proof of renter's insurance** required at signing, and with what
    coverage and interested-party wording?
 
 ### Monday, Aug 31 itinerary
 
-1. Bank stop — certified funds (exact amounts confirmed first).
+Drive up from Wilmington, DE (Ian + mother). The job start has moved to
+**Tuesday, Sept 1** at the employer's request (Monday is paid), so Monday is
+fully clear for these errands.
+
+1. Bank stop — certified funds (exact amount and payee confirmed first).
 2. **2:30 PM — lease signing**, Ambassador leasing office.
 3. **3:00 PM — fingerprinting appointment, 1900 Grant Ave** (employer
    clearances).
+4. If keys are handed over Monday (hoped, not yet promised): photograph the
+   unit's condition **before anything goes in**, take doorway and room
+   measurements, then drop off the bags of clothes and essentials brought
+   in the car.
 
-⚠️ Two flags: (a) the 2:30 → 3:00 gap leaves ~20 minutes for a signing that
-normally takes longer — ask to start earlier, or confirm the fingerprinting
-site tolerates a late/walk-in arrival; (b) Monday is also day one at the new
-job — make sure the afternoon appointments are squared with onboarding.
+⚠️ Flags: (a) the 2:30 → 3:00 gap leaves ~20 minutes for a signing that
+normally takes longer — ask to start earlier or confirm the fingerprinting
+site tolerates a late arrival, and do the bag drop-off and photos **after**
+fingerprinting, not between; (b) the 72-hour funding deadline (~Tue 11:46
+AM ET) collides with the first day of work Tuesday — everything must
+complete Monday.
 
 Bring: photo ID, certified funds, the $250 receipt, checkbook, this
-checklist (Section 4B), and a phone for photos and measurements if unit
-access is offered.
+checklist (Section 4B), the drop-off bags, and a phone for photos and
+measurements. Ask the consultant to confirm key-handover timing — the
+approval letter says they'll explain "how and when to pick up keys."
 
 ### Resolved
 
@@ -194,5 +208,6 @@ thermal, and room measurements are complete.
 
 Moving from Amsterdam, NY to Northeast Philadelphia for the Senior DAS Field
 Engineer role at R.F. Design & Integration (2180 Hornig Road), starting
-**Monday, August 31, 2026**, under the signed REV2 offer (8/18). Income
+**Tuesday, September 1, 2026** — moved from Aug 31 at the employer's
+request, with Monday paid — under the signed REV2 offer (8/18). Income
 comfortably clears the standard 3× rent screen for a $1,691 base rent.
