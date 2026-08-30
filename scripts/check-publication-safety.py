@@ -5,8 +5,10 @@ Scans every text file in this public repository for violations of the
 synthetic-only boundary:
 
   1. External resource loads in HTML (script/link/img/iframe/media src or href,
-     CSS url()/@import to another host). Outbound <a href> navigation is allowed;
-     outbound *loads* are not — public pages are self-contained.
+     CSS url()/@import to another host) — including tags split across lines,
+     unquoted attributes, and protocol-relative //host URLs. Outbound <a href>
+     navigation is allowed; outbound *loads* are not — public pages are
+     self-contained.
   2. Network APIs in page JavaScript (fetch, XHR, WebSocket, EventSource,
      sendBeacon, service-worker registration).
   3. Credential-shaped strings (cloud keys, tokens, private key blocks).
@@ -40,10 +42,15 @@ SKIP_DIRS = {".git", "node_modules", "__pycache__"}
 
 # --- rule sets -------------------------------------------------------------
 
-# 1. External resource loads (HTML only). href counts only on <link>.
-RE_EXT_SRC = re.compile(r"<(script|img|iframe|video|audio|source|embed|object)\b[^>]*\bsrc\s*=\s*[\"']https?://", re.I)
-RE_EXT_LINK = re.compile(r"<link\b[^>]*\bhref\s*=\s*[\"']https?://", re.I)
-RE_CSS_URL = re.compile(r"(@import\s+[\"'(]|url\(\s*[\"']?)\s*https?://", re.I)
+# 1. External resource loads (HTML only). href counts only on <link>. Matched
+#    against the whole file, not per line: a tag broken across lines, an
+#    unquoted attribute, or a protocol-relative //host URL is the same load.
+#    ([^>] spans newlines, so a multi-line tag cannot hide its src.)
+RE_EXT_SRC = re.compile(
+    r"<(script|img|iframe|video|audio|source|embed|object)\b[^>]*?"
+    r"\bsrc\s*=\s*[\"']?\s*(?:https?:)?//", re.I)
+RE_EXT_LINK = re.compile(r"<link\b[^>]*?\bhref\s*=\s*[\"']?\s*(?:https?:)?//", re.I)
+RE_CSS_URL = re.compile(r"(@import\s+[\"'(]|url\(\s*[\"']?)\s*(?:https?:)?//", re.I)
 
 # 2. Network APIs (HTML + JS).
 RE_NET = re.compile(
@@ -81,24 +88,40 @@ def iter_files(base: Path):
 def scan_tree(base: Path) -> list:
     findings = []
 
-    def hit(path, lineno, category, line):
-        findings.append((path.relative_to(base), lineno, category, line.strip()[:120]))
+    def hit(path, lineno, category, snippet):
+        findings.append((path.relative_to(base), lineno, category, snippet.strip()[:120]))
 
     for path in iter_files(base):
         text = path.read_text(encoding="utf-8", errors="replace")
-        is_html = path.suffix.lower() == ".html"
-        is_js = path.suffix.lower() == ".js"
-        is_css = path.suffix.lower() in {".css", ".html"}
+        suffix = path.suffix.lower()
+        is_html = suffix == ".html"
+        is_js = suffix == ".js"
+        is_css = suffix in {".css", ".html"}
+
+        def line_of(pos):
+            return text.count("\n", 0, pos) + 1
+
+        def snippet_at(pos):
+            start = text.rfind("\n", 0, pos) + 1
+            end = text.find("\n", pos)
+            return text[start:end if end != -1 else len(text)]
+
+        # Whole-text rules: a tag split across lines is still one tag, so these
+        # must never be evadable by a line break.
+        whole_rules = []
+        if is_html:
+            whole_rules += [(RE_EXT_SRC, "external resource load"),
+                            (RE_EXT_LINK, "external <link> load")]
+        if is_css:
+            whole_rules.append((RE_CSS_URL, "external CSS load"))
+        if is_html or is_js:
+            whole_rules.append((RE_NET, "network API in page code"))
+        for pattern, category in whole_rules:
+            for m in pattern.finditer(text):
+                hit(path, line_of(m.start()), category, snippet_at(m.start()))
+
+        # Line-shaped rules (tokens and addresses never span lines).
         for lineno, line in enumerate(text.splitlines(), 1):
-            if is_html:
-                if RE_EXT_SRC.search(line):
-                    hit(path, lineno, "external resource load", line)
-                if RE_EXT_LINK.search(line):
-                    hit(path, lineno, "external <link> load", line)
-            if is_css and RE_CSS_URL.search(line):
-                hit(path, lineno, "external CSS load", line)
-            if (is_html or is_js) and RE_NET.search(line):
-                hit(path, lineno, "network API in page code", line)
             for label, pattern in SECRET_PATTERNS:
                 if pattern.search(line):
                     hit(path, lineno, f"credential shape: {label}", line)
@@ -141,6 +164,19 @@ def self_test() -> int:
             "</body></html>",
         ]
         (base / "bad.html").write_text("\n".join(bad_lines), encoding="utf-8")
+        # Evasions a line-by-line scanner provably missed: a tag broken across
+        # lines, an unquoted attribute, a protocol-relative URL.
+        evasion_lines = [
+            "<html><head>",
+            "<link rel=stylesheet",
+            "      href=https://cdn.example.com/a.css>",
+            "<style>body{background:url('//cdn.example.com/bg.png')}</style>",
+            "</head><body>",
+            "<script",
+            '  src="//evil.example/x.js"></script>',
+            "</body></html>",
+        ]
+        (base / "bad2.html").write_text("\n".join(evasion_lines), encoding="utf-8")
         (base / "clean.html").write_text(
             "<html><head><style>body{color:#111}</style></head>"
             '<body><a href="https://example.org">a navigation link is fine</a>'
@@ -162,6 +198,14 @@ def self_test() -> int:
         if private_hits < 2:
             print("[self-test] FAIL — private-address rule missed a range "
                   f"(caught {private_hits} of 2: RFC1918 + CGNAT)")
+            return 1
+        evasion_cats = {c for (p, _, c, _) in findings if str(p) == "bad2.html"}
+        evasion_expected = {"external resource load", "external <link> load",
+                            "external CSS load"}
+        evasion_missed = evasion_expected - evasion_cats
+        if evasion_missed:
+            print("[self-test] FAIL — evasion fixture (multi-line / unquoted / "
+                  f"protocol-relative) slipped past: {sorted(evasion_missed)}")
             return 1
         if clean_hits:
             print(f"[self-test] FAIL — clean fixture drew findings: {clean_hits}")
