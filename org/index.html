@@ -50,6 +50,8 @@
   .badge{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);
          border:1px solid var(--gold);border-radius:20px;padding:2px 9px;margin-left:6px;vertical-align:2px}
   .dmeta{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .anchor{color:var(--muted);text-decoration:none;font-size:15px;padding:4px 8px;border-radius:6px}
+  .anchor:hover,.anchor:focus-visible{color:var(--gold)}
   .charter{margin:0;padding:0 18px 4px;color:var(--muted);max-width:74ch}
   .install{margin:10px 0 4px;padding:0 18px}
   code{font-family:var(--mono);font-size:13px;color:var(--gold);background:var(--gold-soft);
@@ -79,7 +81,7 @@
   </div>
   <div class="tools">
     <input id="q" type="search" placeholder="Search 27 skills — try “restore”, “rotation”, “refusal”…"
-           aria-label="Search skills">
+           aria-label="Search skills" title="Press / to search">
     <button id="expand" type="button">Expand all</button>
     <span id="count">27 skills in 8 departments</span>
   </div>
@@ -100,6 +102,7 @@
       <span class="rune" aria-hidden="true">ᛗ</span>
       <span class="dtitle">Evidence Review <span class="badge">reviewer</span></span>
       <span class="dmeta">Mímir · 4 skills</span>
+      <a class="anchor" href="#evidence" aria-label="Link to Evidence Review">§</a>
     </summary>
     <p class="charter">Reviews what the other departments claim to work. Green is not evidence; the artifact is. A check whose passing condition is also satisfied by the failure mode is decoration.</p>
     <p class="install"><code>/plugin install evidence@asgardr</code></p>
@@ -127,6 +130,7 @@
       <span class="rune" aria-hidden="true">ᚺ</span>
       <span class="dtitle">Publication Safety <span class="badge">reviewer</span></span>
       <span class="dmeta">Heimdallr · 4 skills</span>
+      <a class="anchor" href="#publication-safety" aria-label="Link to Publication Safety">§</a>
     </summary>
     <p class="charter">Watches the boundary between the private fabric and every public surface. Synthetic-only in public: no live cluster access, telemetry, identifiers, or operator controls.</p>
     <p class="install"><code>/plugin install publication-safety@asgardr</code></p>
@@ -157,6 +161,7 @@
       <span class="rune" aria-hidden="true">ᚨ</span>
       <span class="dtitle">Office of the Operator </span>
       <span class="dmeta">the Operator · 3 skills</span>
+      <a class="anchor" href="#operator" aria-label="Link to Office of the Operator">§</a>
     </summary>
     <p class="charter">Authority tiers, continuity when the operator is away, and the ledger where decisions and their evidence are recorded — corrections visible, nothing silently rewritten.</p>
     <p class="install"><code>/plugin install operator@asgardr</code></p>
@@ -180,6 +185,7 @@
       <span class="rune" aria-hidden="true">ᚦ</span>
       <span class="dtitle">Fabric </span>
       <span class="dmeta">Yggdrasil steward · 3 skills</span>
+      <a class="anchor" href="#fabric" aria-label="Link to Fabric">§</a>
     </summary>
     <p class="charter">The five-node k3s core. Nodes leave and return with proof; a moving image tag has no rollback target; upgrades go one node at a time with artifact checks between.</p>
     <p class="install"><code>/plugin install fabric@asgardr</code></p>
@@ -203,6 +209,7 @@
       <span class="rune" aria-hidden="true">ᚹ</span>
       <span class="dtitle">Mesh </span>
       <span class="dmeta">Bifröst warden · 3 skills</span>
+      <a class="anchor" href="#mesh" aria-label="Link to Mesh">§</a>
     </summary>
     <p class="charter">The five peers beyond the core. Keys rotate and the rotation is proven when the old key fails; reachability is read from session artifacts, not a dashboard&#x27;s green dot.</p>
     <p class="install"><code>/plugin install mesh@asgardr</code></p>
@@ -226,6 +233,7 @@
       <span class="rune" aria-hidden="true">ᚱ</span>
       <span class="dtitle">Retrieval </span>
       <span class="dmeta">Huginn &amp; Muninn · 4 skills</span>
+      <a class="anchor" href="#retrieval" aria-label="Link to Retrieval">§</a>
     </summary>
     <p class="charter">The knowledge fabric: what goes into the corpus, how answers stay grounded and cited, how a query is scoped to the documents it may see, and how replicas stay honest.</p>
     <p class="install"><code>/plugin install retrieval@asgardr</code></p>
@@ -253,6 +261,7 @@
       <span class="rune" aria-hidden="true">ᛒ</span>
       <span class="dtitle">Workloads </span>
       <span class="dmeta">Völundr · 3 skills</span>
+      <a class="anchor" href="#workloads" aria-label="Link to Workloads">§</a>
     </summary>
     <p class="charter">The built public works. Self-contained pages, canaries that earn capabilities one release at a time, and layouts that survive a 320-pixel phone with gloves on.</p>
     <p class="install"><code>/plugin install workloads@asgardr</code></p>
@@ -276,6 +285,7 @@
       <span class="rune" aria-hidden="true">ᛟ</span>
       <span class="dtitle">Records </span>
       <span class="dmeta">Sága · 3 skills</span>
+      <a class="anchor" href="#records" aria-label="Link to Records">§</a>
     </summary>
     <p class="charter">Every claim labeled confirmed, preliminary, or unknown; every figure dated; contradictions flagged in public rather than silently resolved.</p>
     <p class="install"><code>/plugin install records@asgardr</code></p>
@@ -341,6 +351,36 @@
     allOpen = !allOpen;
     depts.forEach(function (d) { d.open = allOpen; });
     expand.textContent = allOpen ? 'Collapse all' : 'Expand all';
+  });
+
+  // Deep links: /org/#retrieval opens and scrolls to that department.
+  function openFromHash() {
+    var id = decodeURIComponent(location.hash.slice(1));
+    if (!id) return;
+    var d = document.getElementById(id);
+    if (d && d.tagName === 'DETAILS') {
+      d.open = true;
+      d.scrollIntoView({ block: 'start' });
+    }
+  }
+  addEventListener('hashchange', openFromHash);
+  openFromHash();
+
+  // The § link sets a shareable URL without toggling the card shut.
+  document.querySelectorAll('details.dept summary .anchor').forEach(function (a) {
+    a.addEventListener('click', function (ev) {
+      ev.preventDefault(); ev.stopPropagation();
+      a.closest('details').open = true;
+      history.replaceState(null, '', a.getAttribute('href'));
+    });
+  });
+
+  // Press / anywhere to jump to search.
+  addEventListener('keydown', function (ev) {
+    if (ev.key === '/' && document.activeElement !== q &&
+        !/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)) {
+      ev.preventDefault(); q.focus();
+    }
   });
 })();
 </script>

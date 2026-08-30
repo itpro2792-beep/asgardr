@@ -96,6 +96,7 @@ def render_dept(d: dict, install_example: str, open_by_default: bool) -> str:
       <span class="rune" aria-hidden="true">{e(d["rune"])}</span>
       <span class="dtitle">{e(d["title"])} {badge}</span>
       <span class="dmeta">{e(d["steward"])} · {n} skill{"s" if n != 1 else ""}</span>
+      <a class="anchor" href="#{e(d["id"])}" aria-label="Link to {e(d["title"])}">§</a>
     </summary>
     <p class="charter">{e(d["charter"])}</p>
     <p class="install"><code>/plugin install {e(d["id"])}@asgardr</code></p>
@@ -166,6 +167,8 @@ def build_page(org: dict) -> str:
   .badge{{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);
          border:1px solid var(--gold);border-radius:20px;padding:2px 9px;margin-left:6px;vertical-align:2px}}
   .dmeta{{margin-left:auto;font-family:var(--mono);font-size:12px;color:var(--muted)}}
+  .anchor{{color:var(--muted);text-decoration:none;font-size:15px;padding:4px 8px;border-radius:6px}}
+  .anchor:hover,.anchor:focus-visible{{color:var(--gold)}}
   .charter{{margin:0;padding:0 18px 4px;color:var(--muted);max-width:74ch}}
   .install{{margin:10px 0 4px;padding:0 18px}}
   code{{font-family:var(--mono);font-size:13px;color:var(--gold);background:var(--gold-soft);
@@ -195,7 +198,7 @@ def build_page(org: dict) -> str:
   </div>
   <div class="tools">
     <input id="q" type="search" placeholder="Search {total} skills — try “restore”, “rotation”, “refusal”…"
-           aria-label="Search skills">
+           aria-label="Search skills" title="Press / to search">
     <button id="expand" type="button">Expand all</button>
     <span id="count">{total} skills in {len(depts)} departments</span>
   </div>
@@ -263,6 +266,36 @@ def build_page(org: dict) -> str:
     allOpen = !allOpen;
     depts.forEach(function (d) {{ d.open = allOpen; }});
     expand.textContent = allOpen ? 'Collapse all' : 'Expand all';
+  }});
+
+  // Deep links: /org/#retrieval opens and scrolls to that department.
+  function openFromHash() {{
+    var id = decodeURIComponent(location.hash.slice(1));
+    if (!id) return;
+    var d = document.getElementById(id);
+    if (d && d.tagName === 'DETAILS') {{
+      d.open = true;
+      d.scrollIntoView({{ block: 'start' }});
+    }}
+  }}
+  addEventListener('hashchange', openFromHash);
+  openFromHash();
+
+  // The § link sets a shareable URL without toggling the card shut.
+  document.querySelectorAll('details.dept summary .anchor').forEach(function (a) {{
+    a.addEventListener('click', function (ev) {{
+      ev.preventDefault(); ev.stopPropagation();
+      a.closest('details').open = true;
+      history.replaceState(null, '', a.getAttribute('href'));
+    }});
+  }});
+
+  // Press / anywhere to jump to search.
+  addEventListener('keydown', function (ev) {{
+    if (ev.key === '/' && document.activeElement !== q &&
+        !/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)) {{
+      ev.preventDefault(); q.focus();
+    }}
   }});
 }})();
 </script>

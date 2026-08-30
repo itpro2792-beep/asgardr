@@ -1,0 +1,8 @@
+#!/bin/sh
+# Publication-safety gate (see CLAUDE.md): scans the whole tree and checks the
+# generated org chart is current. Any finding blocks the push — fix it, or
+# record an Operator override in LEDGER.md and push with --no-verify.
+repo="$(git rev-parse --show-toplevel)" || exit 1
+PY=python3
+command -v python3 >/dev/null 2>&1 || PY=python
+exec "$PY" "$repo/scripts/check-publication-safety.py"

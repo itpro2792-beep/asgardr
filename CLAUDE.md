@@ -15,6 +15,9 @@ under `departments/`). Everything in this repo is public.
 3. After editing either script, run
    `python3 scripts/check-publication-safety.py --self-test` — the checker
    must still be able to fail.
+4. In a fresh clone, run `sh scripts/install-hooks.sh` once — it wires the
+   same gate in as a pre-push hook. Overrides of a blocking finding are valid
+   only with an Operator entry in `LEDGER.md`.
 
 ## Hard rules for public pages
 
