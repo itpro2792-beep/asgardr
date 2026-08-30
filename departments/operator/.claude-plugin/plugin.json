@@ -1,0 +1,8 @@
+{
+  "name": "operator",
+  "description": "Office of the Operator \u2014 authority tiers, single-operator continuity, and the decision ledger for the Asgardr fabric.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Ian Thane"
+  }
+}

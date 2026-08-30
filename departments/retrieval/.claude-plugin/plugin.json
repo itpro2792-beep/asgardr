@@ -1,0 +1,8 @@
+{
+  "name": "retrieval",
+  "description": "Retrieval \u2014 knowledge-fabric operations: corpus hygiene, grounded answering, scoped retrieval, replica consistency.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Ian Thane"
+  }
+}

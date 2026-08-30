@@ -1,0 +1,8 @@
+{
+  "name": "evidence",
+  "description": "Evidence Review (reviewer-class) \u2014 verification of claims, negative controls, test forensics, and restore drills. Green is not evidence; the artifact is.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Ian Thane"
+  }
+}

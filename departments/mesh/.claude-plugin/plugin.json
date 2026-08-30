@@ -1,0 +1,8 @@
+{
+  "name": "mesh",
+  "description": "Mesh \u2014 five-peer mesh operations: peer lifecycle, key rotation proven by failure of the old key, reachability audits from artifacts.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Ian Thane"
+  }
+}

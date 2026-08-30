@@ -1,0 +1,8 @@
+{
+  "name": "fabric",
+  "description": "Fabric \u2014 five-node k3s core operations: node lifecycle, pinned releases, staged upgrades.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Ian Thane"
+  }
+}

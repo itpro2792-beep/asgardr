@@ -1,0 +1,8 @@
+{
+  "name": "records",
+  "description": "Records \u2014 claim labeling, discrepancy ledgers, sourced-and-dated citations.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Ian Thane"
+  }
+}
