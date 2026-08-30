@@ -1,0 +1,39 @@
+#!/bin/sh
+# Publication-safety gate (see CLAUDE.md). Scans the CONTENT BEING PUSHED:
+# each pushed commit's tree is extracted and checked, so a branch pushed from
+# a different checkout is still gated, and untracked scratch files in the
+# working tree cannot block a clean push. Any finding blocks the push — fix
+# it, or record an Operator override in LEDGER.md and push with --no-verify.
+repo="$(git rev-parse --show-toplevel)" || exit 1
+
+# A python that exists is not a python that works (Windows ships a Store
+# stub named python3; a bare macOS ships an installer shim) — verify it runs.
+PY=""
+for candidate in python3 python; do
+  if command -v "$candidate" >/dev/null 2>&1 &&
+     "$candidate" -c "import sys" >/dev/null 2>&1; then
+    PY="$candidate"
+    break
+  fi
+done
+if [ -z "$PY" ]; then
+  echo "[pre-push] no working python3/python on PATH — cannot run the publication-safety gate" >&2
+  exit 1
+fi
+
+zero=0000000000000000000000000000000000000000
+status=0
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [ "$local_sha" = "$zero" ] && continue   # deleting a remote ref: nothing to scan
+  tmp="$(mktemp -d)" || exit 1
+  if git -C "$repo" archive "$local_sha" | tar -x -C "$tmp"; then
+    if [ -f "$tmp/scripts/check-publication-safety.py" ]; then
+      "$PY" "$tmp/scripts/check-publication-safety.py" || status=1
+    fi
+  else
+    echo "[pre-push] could not extract $local_sha for scanning" >&2
+    status=1
+  fi
+  rm -rf "$tmp"
+done
+exit $status

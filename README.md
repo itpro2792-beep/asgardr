@@ -72,6 +72,16 @@ chart. Its `--self-test` seeds a known-bad fixture and asserts every rule
 fires — a scanner that has never caught anything is indistinguishable from a
 scanner that cannot.
 
+Install the same gate as a local pre-push hook in any clone, one command:
+
+```
+sh scripts/install-hooks.sh
+```
+
+Decisions, accepted risks, and reviewer overrides for this repository are
+recorded in [`LEDGER.md`](LEDGER.md) — the org's `decision-ledger` skill,
+practiced on the org itself.
+
 ### Regenerating the chart
 
 [`org/index.html`](org/index.html) is generated — never hand-edit it:
