@@ -7,6 +7,9 @@
 set -e
 cd "$(git rev-parse --show-toplevel)"
 chmod +x .githooks/pre-push 2>/dev/null || true
-git config core.hooksPath .githooks
-echo "[install-hooks] core.hooksPath -> .githooks"
-echo "[install-hooks] pre-push now runs scripts/check-publication-safety.py"
+# Absolute path so linked worktrees (whose checkouts may lack .githooks/)
+# still run this clone's hooks instead of silently running none. Re-run this
+# script if the repository directory ever moves.
+git config core.hooksPath "$(pwd)/.githooks"
+echo "[install-hooks] core.hooksPath -> $(pwd)/.githooks"
+echo "[install-hooks] pre-push now scans every pushed commit with scripts/check-publication-safety.py"

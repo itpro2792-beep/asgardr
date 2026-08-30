@@ -16,6 +16,7 @@ a reviewer class that reports to the top, a chart generated from the tree.
 
 import html
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -48,6 +49,9 @@ def load_org() -> dict:
     org = json.loads(MANIFEST.read_text(encoding="utf-8"))
     seen = set()
     for dept in org["departments"]:
+        if not re.fullmatch(r"[a-z0-9][a-z0-9-]*", dept["id"]):
+            fail(f"department id '{dept['id']}' must be lowercase letters, digits, "
+                 "and hyphens — it is used verbatim in element ids and URL fragments")
         ddir = ROOT / "departments" / dept["id"]
         if not ddir.is_dir():
             fail(f"manifest names department '{dept['id']}' but {ddir} does not exist")
@@ -268,10 +272,15 @@ def build_page(org: dict) -> str:
     expand.textContent = allOpen ? 'Collapse all' : 'Expand all';
   }});
 
-  // Deep links: /org/#retrieval opens and scrolls to that department.
+  // Deep links: /org/#retrieval opens and scrolls to that department. A
+  // malformed fragment (e.g. a truncated percent-escape) must never abort
+  // initialization, so decode defensively and open the hash only after every
+  // handler below is registered.
   function openFromHash() {{
-    var id = decodeURIComponent(location.hash.slice(1));
-    if (!id) return;
+    var raw = location.hash.slice(1);
+    if (!raw) return;
+    var id;
+    try {{ id = decodeURIComponent(raw); }} catch (e) {{ id = raw; }}
     var d = document.getElementById(id);
     if (d && d.tagName === 'DETAILS') {{
       d.open = true;
@@ -279,11 +288,12 @@ def build_page(org: dict) -> str:
     }}
   }}
   addEventListener('hashchange', openFromHash);
-  openFromHash();
 
-  // The § link sets a shareable URL without toggling the card shut.
+  // The § link sets a shareable URL without toggling the card shut. Modified
+  // clicks (new tab / new window) keep the browser default.
   document.querySelectorAll('details.dept summary .anchor').forEach(function (a) {{
     a.addEventListener('click', function (ev) {{
+      if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey || ev.button !== 0) return;
       ev.preventDefault(); ev.stopPropagation();
       a.closest('details').open = true;
       history.replaceState(null, '', a.getAttribute('href'));
@@ -297,6 +307,8 @@ def build_page(org: dict) -> str:
       ev.preventDefault(); q.focus();
     }}
   }});
+
+  openFromHash();
 }})();
 </script>
 </body>
