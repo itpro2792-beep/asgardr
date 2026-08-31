@@ -63,6 +63,23 @@ materially differs from the terms above.
   parties **and a duplicate is delivered to the tenant** — do not leave the
   signing without a complete countersigned copy.
 
+### ⚠️ Monday 6:29 AM — KeyBank withdrawal of $2,329.60
+
+A KeyBank alert (received 6:43 AM ET Mon Aug 31) reports a **$2,329.60
+withdrawal** from the account ending **4924**, posted **08/31/2026 6:29 AM
+ET**. The email is **authentic** — SPF, DKIM (d=servicing.key.com) and DMARC
+(p=REJECT) all pass — so this is a real KeyBank notification, not phishing.
+
+What it was is **unknown from here** (no financial accounts are connected to
+this assistant). 6:29 AM precedes branch hours, so it is most likely an
+overnight ACH batch item — a scheduled auto-payment or a transfer — rather
+than a counter transaction.
+
+**Action before the bank stop:** check the actual available balance in the
+KeyBank app, and confirm it still covers the ~$2,931 due at signing. If the
+withdrawal was not expected, call KeyBank using the number on the back of
+the card or from key.com — **not** a number or link from the email.
+
 ### Pre-signing questions for the leasing office (before Monday 2:30 PM; answers in writing where possible)
 
 1. Email the lease and an **itemized move-in statement** in advance for
