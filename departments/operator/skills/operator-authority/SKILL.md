@@ -39,5 +39,5 @@ them.
 ## When unsure
 
 Unsure means Tier 3. The cost of asking is minutes; the cost of a wrong Tier 1
-guess on a ten-machine fabric is the weekend. An agent that escalates a borderline
+guess on a private fabric is the weekend. An agent that escalates a borderline
 call with its evidence attached is doing the job, not failing it.

@@ -1,6 +1,6 @@
 {
   "org": "The Asgardr Operations Org",
-  "tagline": "An agent organization for a ten-computer, local-first fabric — five k3s core nodes, five mesh peers, one evidence-led operator. Every department installs independently.",
+  "tagline": "An agent organization for a local-first intelligence fabric under one evidence-led operator. Every department installs independently. Public record note (recorded 2026-11-02, CONFIRMED): the five-node k3s orchestration layer described in July–August 2026 artifacts was retired 2026-08-11 in favor of host-native service management; historical k3s runbooks stay preserved with their July–August 2026 vintage.",
   "operator": {
     "title": "The Operator",
     "subtitle": "evidence-led human authority",
@@ -42,7 +42,7 @@
       "steward": "Yggdrasil steward",
       "rune": "ᚦ",
       "class": "line",
-      "charter": "The five-node k3s core. Nodes leave and return with proof; a moving image tag has no rollback target; upgrades go one node at a time with artifact checks between."
+      "charter": "Host-native service management and preserved July–August 2026 k3s core runbooks (five-node k3s orchestration retired 2026-08-11; recorded 2026-11-02, CONFIRMED). Hosts leave and return with proof; a moving release has no rollback target; upgrades go one machine at a time with artifact checks between."
     },
     {
       "id": "mesh",
@@ -50,7 +50,7 @@
       "steward": "Bifröst warden",
       "rune": "ᚹ",
       "class": "line",
-      "charter": "The five peers beyond the core. Keys rotate and the rotation is proven when the old key fails; reachability is read from session artifacts, not a dashboard's green dot."
+      "charter": "Peer connectivity across the private mesh. Keys rotate and the rotation is proven when the old key fails; reachability is read from session artifacts, not a dashboard's green dot."
     },
     {
       "id": "retrieval",

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Private AI Assistant — document Q&amp;A on private infrastructure</title>
-<meta name="description" content="A retrieval-augmented document assistant running entirely on self-hosted hardware. No external API calls. Answers cite the source passage.">
+<meta name="description" content="Case study (July–August 2026 vintage): a retrieval-augmented document assistant running entirely on self-hosted hardware with cited answers and negative controls. Note recorded 2026-11-02 (CONFIRMED): the k3s orchestration layer described here was retired 2026-08-11 in favor of host-native service management.">
 <style>
   :root{
     --bg:#f7f6f3; --panel:#fffffe; --ink:#191a17; --muted:#5f6360; --line:#e2e0da;
@@ -63,12 +63,26 @@
   on hardware I own — nothing leaves the network.</p>
 </header>
 
+<div class="card" role="note" aria-label="Architecture and vintage note">
+  <p style="margin:0"><span class="tag">CONFIRMED · recorded 2026-11-02</span>
+  <strong>Vintage &amp; architecture-transition note:</strong> This case study preserves the
+  <strong>July–August 2026</strong> deployment and verification pass built on Asgardr's
+  Kubernetes (<code>k3s</code>) orchestration layer. That five-node <code>k3s</code>
+  orchestration layer was <strong>retired on 2026-08-11</strong> in favor of host-native
+  service management; per Asgardr's discrepancy-ledger and source-dating rules, the
+  historical Kubernetes notes below remain visible with their July–August 2026 vintage
+  labeled rather than silently rewritten (see the
+  <a href="https://github.com/itpro2792-beep/asgardr/blob/main/LEDGER.md">public decision &amp; discrepancy ledger</a>).</p>
+</div>
+
 <h2>Why this shape</h2>
 <p>Plenty of tools will answer questions about your documents. Most of them require handing
 those documents to somebody else's servers. For a venue operator holding signed service
 agreements, or a contractor holding as-built records and safety procedures, that is often
 the end of the conversation.</p>
-<p>This runs on a private Kubernetes cluster: a vector database for retrieval, a local model
+<p>In the July–August 2026 build documented here, this ran on a private Kubernetes cluster
+(<code>k3s</code> orchestration retired 2026-08-11 in favor of host-native service
+management): a vector database for retrieval, a local model
 gateway for inference, and a web interface. The document text is embedded locally, stored
 locally, and answered locally. There is no third-party API key anywhere in the request path,
 which means there is no version of this where a contract leaks because a vendor changed
@@ -131,7 +145,7 @@ tested for, not a behaviour you get for free.</p>
   <tr><td>Embedding</td><td>Local embedding model with task prefixes</td><td>Separate prefixes for indexing and querying measurably improve retrieval quality</td></tr>
   <tr><td>Generation</td><td>Local model behind an OpenAI-compatible gateway</td><td>Swapping models is a config change, not a code change</td></tr>
   <tr><td>Chunking</td><td>Recursive split, ~750 chars, 100 overlap</td><td>A 21 KB document becomes 38 chunks with exact retrieval from the middle and the end</td></tr>
-  <tr><td>Serving</td><td>Kubernetes, pinned image tags</td><td>A moving tag has no rollback target</td></tr>
+  <tr><td>Serving</td><td>Kubernetes, pinned image tags (July–August 2026 vintage; <code>k3s</code> retired 2026-08-11 in favor of host-native service management)</td><td>A moving release has no rollback target</td></tr>
 </table>
 
 <h2>How I know it works</h2>
@@ -190,10 +204,10 @@ failure mode is decoration. Green is not evidence. The artifact is.</p>
 </ul>
 
 <footer>
-  <p>Built and operated by Ian Thane on a private nine-machine Kubernetes cluster.<br>
+  <p>Built and operated by Ian Thane on private self-hosted hardware (originally published July–August 2026 against Asgardr's Kubernetes orchestration layer; <code>k3s</code> retired 2026-08-11 in favor of host-native service management — recorded 2026-11-02, CONFIRMED).<br>
   Interested in a walkthrough, or in running this against your own documents?
   Get in touch and I will show you the live system.</p>
-  <p><a href="https://asgardr-public-garden.itpro27.chatgpt.site/">← More about the cluster this runs on</a></p>
+  <p><a href="https://asgardr-public-garden.itpro27.chatgpt.site/">← More about the Asgardr fabric</a> · <a href="../org/">Operations org chart</a> · <a href="https://github.com/itpro2792-beep/asgardr/blob/main/LEDGER.md">Decision &amp; discrepancy ledger</a></p>
 </footer>
 
 </div>

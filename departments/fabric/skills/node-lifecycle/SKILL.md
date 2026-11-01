@@ -1,13 +1,24 @@
 ---
 name: node-lifecycle
-description: Use when taking a k3s core node down for maintenance or returning it to the Asgardr fabric — cordon, drain, prove the workloads survived, and prove the return with artifacts rather than dashboard green.
+description: Use when taking a fabric host down for maintenance or returning it to service (July–August 2026 k3s cordon/drain runbook preserved; five-node k3s layer retired 2026-08-11 in favor of host-native service management, recorded 2026-11-02) — prove surviving capacity before exit and prove return with artifacts rather than dashboard green.
 ---
 
 # Node Lifecycle
 
-Five core nodes; critical services run two replicas and must survive a node loss.
-This runbook makes each node exit and return an evidenced event, not an act of
-faith.
+> **Architecture & vintage note (`CONFIRMED` · recorded `2026-11-02`):** The
+> five-node `k3s` orchestration layer illustrated in the commands below
+> (**July–August 2026 vintage**) was **retired on `2026-08-11`** in favor of
+> host-native service management (see [`LEDGER.md`](../../../../LEDGER.md),
+> Discrepancy D-01). Per `source-dating` and `discrepancy-ledger`, the
+> historical `k3s` drain procedure stays preserved below with its vintage
+> labeled; under host-native service management, the same evidence contract
+> governs every host maintenance window (verify standby/failover readiness on a
+> distinct host before stopping supervised services, and prove return with a
+> saved end-to-end artifact).
+
+*Historical runbook (July–August 2026 `k3s` core vintage):* Critical services
+run two replicas across core nodes and must survive a node loss. This runbook
+makes each node exit and return an evidenced event, not an act of faith.
 
 ## Before touching the node
 

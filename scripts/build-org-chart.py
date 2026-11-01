@@ -124,7 +124,7 @@ def build_page(org: dict) -> str:
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="The Asgardr operations org chart — {len(depts)} departments of evidence-led skills for a ten-computer, local-first fabric, {len(reviewers)} of them reviewer-class. Generated from the repository tree; no live cluster access.">
+<meta name="description" content="The Asgardr operations org chart — {len(depts)} departments of evidence-led skills for a local-first intelligence fabric, {len(reviewers)} of them reviewer-class. Generated from the repository tree; no live cluster access.">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; img-src data:; base-uri 'none'; form-action 'none'">
 <title>{e(org["org"])}</title>
 <style>
@@ -198,7 +198,7 @@ def build_page(org: dict) -> str:
     <div class="stat"><b>{len(depts)}</b><span>departments</span></div>
     <div class="stat"><b>{total}</b><span>skills</span></div>
     <div class="stat"><b>{len(reviewers)}</b><span>reviewer-class</span></div>
-    <div class="stat"><b>10</b><span>machines served</span></div>
+    <div class="stat"><b>{len(line)}</b><span>line departments</span></div>
   </div>
   <div class="tools">
     <input id="q" type="search" placeholder="Search {total} skills — try “restore”, “rotation”, “refusal”…"
@@ -233,6 +233,7 @@ def build_page(org: dict) -> str:
   <p>Generated from the repository tree — <code>scripts/build-org-chart.py</code>.
   {e(org["credits"])}
   · <a href="https://github.com/itpro2792-beep/asgardr">Repository</a>
+  · <a href="https://github.com/itpro2792-beep/asgardr/blob/main/LEDGER.md">Decision &amp; discrepancy ledger</a>
   · <a href="https://asgardr-public-garden.itpro27.chatgpt.site/">The Asgardr garden</a></p>
 </footer>
 
@@ -327,7 +328,8 @@ def main() -> None:
         print("[build-org-chart] org/index.html is current")
         return
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(page, encoding="utf-8")
+    with OUT.open("w", encoding="utf-8", newline="\n") as fh:
+        fh.write(page)
     total = sum(len(d["skills"]) for d in org["departments"])
     print(f"[build-org-chart] wrote {OUT.relative_to(ROOT)} — "
           f"{len(org['departments'])} departments, {total} skills")

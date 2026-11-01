@@ -1,10 +1,21 @@
 # Asgardr — public garden repository
 
 This is the GitHub Pages home for the public surfaces of **Asgardr**: a
-ten-computer, local-first intelligence and knowledge fabric — a five-node k3s
-core, five mesh peers, and one evidence-led operator. The canonical public guide
-lives at the [Asgardr garden portal](https://asgardr-public-garden.itpro27.chatgpt.site/);
+local-first intelligence and knowledge fabric operated under evidence-led human
+authority. The canonical public guide lives at the
+[Asgardr garden portal](https://asgardr-public-garden.itpro27.chatgpt.site/);
 this repository hosts the static pages and the **Asgardr operations org**.
+
+> **Public record & architecture-transition note (`CONFIRMED` · recorded `2026-11-02`):**
+> July–August 2026 public artifacts in this repository (including the initial
+> `2026-08-29` operations-org release) described Asgardr as running a five-node
+> `k3s` Kubernetes core. That `k3s` orchestration layer was **retired on
+> `2026-08-11`** in favor of **host-native service management**. Per the
+> [`discrepancy-ledger`](departments/records/skills/discrepancy-ledger/SKILL.md)
+> and [`source-dating`](departments/records/skills/source-dating/SKILL.md)
+> rules, historical `k3s` case studies and `fabric` runbooks remain preserved
+> in full with their **July–August 2026 vintage** labeled rather than silently
+> rewritten — see [`LEDGER.md`](LEDGER.md) (Discrepancy D-01).
 
 Everything here is public-safe by construction: synthetic data only, no live
 cluster access, no telemetry, no operator controls. A mechanical checker
@@ -15,7 +26,7 @@ enforces that boundary (below).
 | Path | What it is |
 | --- | --- |
 | [`/org/`](https://itpro2792-beep.github.io/asgardr/org/) | **The operations org chart** — generated from this repository tree |
-| [`/private-ai/`](https://itpro2792-beep.github.io/asgardr/private-ai/) | Case study: self-hosted, cited document Q&A on the fabric |
+| [`/private-ai/`](https://itpro2792-beep.github.io/asgardr/private-ai/) | Case study (July–August 2026 vintage): self-hosted, cited document Q&A (`k3s` layer retired `2026-08-11`; noted `2026-11-02`) |
 | [`/ibwbench/`](https://itpro2792-beep.github.io/asgardr/ibwbench/) | An in-building wireless / DAS reasoning benchmark for LLMs |
 | [`/fold-preview/`](https://itpro2792-beep.github.io/asgardr/fold-preview/) | Synthetic phone UI study (canary V3), clean-room and non-operational |
 | [`/amsterdam/`](https://itpro2792-beep.github.io/asgardr/amsterdam/) | Civic notebook for Amsterdam, NY — every claim labeled and dated |
@@ -25,12 +36,12 @@ enforces that boundary (below).
 
 An agent organization for running the fabric, structured as departments of
 Claude Code skills. **8 departments · 27 skills · 2 reviewer-class.** Every
-department installs independently, so each of the ten machines carries only the
-departments its role needs:
+department installs independently, so each host carries only the departments
+its role needs:
 
 ```
 /plugin marketplace add itpro2792-beep/asgardr
-/plugin install fabric@asgardr            # the k3s core machine
+/plugin install fabric@asgardr            # host-native service & July–Aug 2026 k3s runbooks
 /plugin install evidence@asgardr          # everywhere work gets verified
 /plugin install publication-safety@asgardr # wherever public pages are edited
 ```
@@ -40,7 +51,7 @@ departments its role needs:
 | `evidence` | **reviewer** | Evidence review, negative controls, test forensics, restore drills |
 | `publication-safety` | **reviewer** | Public-surface review, synthetic fixtures, secret hygiene, redirect integrity |
 | `operator` | line | Authority tiers, continuity planning, the decision ledger |
-| `fabric` | line | Node lifecycle, pinned releases, upgrade runbooks |
+| `fabric` | line | Host-native service discipline & preserved July–Aug 2026 `k3s` runbooks (`k3s` retired `2026-08-11`) |
 | `mesh` | line | Peer lifecycle, key rotation, reachability audits |
 | `retrieval` | line | Corpus hygiene, grounded answering, scoped retrieval, replica consistency |
 | `workloads` | line | Page shipping, canary progression, device fit |

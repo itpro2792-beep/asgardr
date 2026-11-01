@@ -1,12 +1,22 @@
 ---
 name: upgrade-runbook
-description: Use when upgrading k3s, the node OS, or cluster-level components across the five-node Asgardr core — snapshot first and prove it restorable, one node at a time, artifact checks between each, written abort criteria.
+description: Use when upgrading host OS, runtime, or service components across the Asgardr fabric (July–August 2026 five-node k3s upgrade runbook preserved; k3s layer retired 2026-08-11 in favor of host-native service management, recorded 2026-11-02) — snapshot first and prove it restorable, one machine at a time, artifact checks between each, written abort criteria.
 ---
 
 # Upgrade Runbook
 
-Cluster upgrades are the highest-blast-radius routine work the fabric does. The
-runbook trades speed for the ability to stop.
+> **Architecture & vintage note (`CONFIRMED` · recorded `2026-11-02`):** The
+> five-node `k3s` / `etcd` orchestration layer documented in the steps below
+> (**July–August 2026 vintage**) was **retired on `2026-08-11`** in favor of
+> host-native service management (see [`LEDGER.md`](../../../../LEDGER.md),
+> Discrepancy D-01). The July–August 2026 runbook stays preserved below with
+> its vintage labeled; host-native OS and runtime upgrades follow the same four
+> invariants (restorable backup drill first, written abort criteria, one
+> machine at a time, and saved end-to-end verification between machines).
+
+*Historical runbook (July–August 2026 `k3s` core vintage):* Cluster upgrades are
+the highest-blast-radius routine work the fabric does. The runbook trades speed
+for the ability to stop.
 
 ## Before the first node
 

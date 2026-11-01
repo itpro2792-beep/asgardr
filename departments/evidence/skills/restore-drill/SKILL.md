@@ -1,6 +1,6 @@
 ---
 name: restore-drill
-description: Use when validating any Asgardr backup — vector collections, etcd snapshots, config repos, volumes. A backup that has never been restored is a file of unknown provenance; this drill proves it by restoring and querying the restored copy.
+description: Use when validating any Asgardr backup — vector collections, config repos, volumes, or historical etcd snapshots (July–August 2026 k3s vintage; k3s retired 2026-08-11, recorded 2026-11-02). A backup that has never been restored is a file of unknown provenance; this drill proves it by restoring and querying the restored copy.
 ---
 
 # Restore Drill

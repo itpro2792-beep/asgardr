@@ -1,9 +1,17 @@
 ---
 name: pinned-releases
-description: Use when deploying or updating any workload on the Asgardr fabric — pinned image tags with digests, a rollback target named before rollout, and model or backend swaps done as config changes, never code changes.
+description: Use when deploying or updating any workload on the Asgardr fabric (host-native services or container images; July–August 2026 k3s layer retired 2026-08-11, recorded 2026-11-02) — pinned versions or image digests, a rollback target named before rollout, and model or backend swaps done as config changes, never code changes.
 ---
 
 # Pinned Releases
+
+> **Architecture & vintage note (`CONFIRMED` · recorded `2026-11-02`):** The
+> five-node `k3s` orchestration layer referenced in the July–August 2026
+> container-manifest examples below was **retired on `2026-08-11`** in favor of
+> host-native service management (see [`LEDGER.md`](../../../../LEDGER.md),
+> Discrepancy D-01). The July–August 2026 examples stay preserved with their
+> vintage; under host-native service management, the identical rule applies to
+> pinned commit SHAs, runtime binaries, and container digests alike.
 
 A moving tag has no rollback target. Everything that runs on the fabric is pinned,
 and every rollout knows where it would retreat to before it advances.
