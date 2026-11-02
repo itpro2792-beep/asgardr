@@ -1,6 +1,6 @@
 {
   "name": "fabric",
-  "description": "Fabric \u2014 five-node k3s core operations: node lifecycle, pinned releases, staged upgrades.",
+  "description": "Fabric \u2014 host-native service operations and preserved July\u2013August 2026 k3s core runbooks (five-node k3s retired 2026-08-11; recorded 2026-11-02): node lifecycle, pinned releases, staged upgrades.",
   "version": "0.1.0",
   "author": {
     "name": "Ian Thane"

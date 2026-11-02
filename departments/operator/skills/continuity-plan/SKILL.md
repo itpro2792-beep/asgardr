@@ -1,11 +1,11 @@
 ---
 name: continuity-plan
-description: Use when assessing single-operator risk for the Asgardr fabric — what runs unattended, what only the Operator knows, and whether the cluster could be cold-started from written artifacts alone. The homelab translation of succession planning and workforce risk.
+description: Use when assessing single-operator risk for the Asgardr fabric — what runs unattended, what only the Operator knows, and whether the fabric could be cold-started from written artifacts alone. The homelab translation of succession planning and workforce risk.
 ---
 
 # Continuity Plan
 
-A ten-computer fabric with one operator has a bus factor of one. Corporate orgs
+A multi-machine private fabric with one operator has a bus factor of one. Corporate orgs
 run succession planning for this; Asgardr runs a continuity plan.
 
 ## The nap test

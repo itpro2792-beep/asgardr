@@ -4,7 +4,7 @@
     "name": "Ian Thane"
   },
   "metadata": {
-    "description": "The Asgardr operations org — an evidence-led skill organization for a ten-computer, local-first intelligence fabric. Eight departments install independently; two are reviewer-class.",
+    "description": "The Asgardr operations org — an evidence-led skill organization for a local-first intelligence fabric. Eight departments install independently; two are reviewer-class.",
     "version": "0.1.0"
   },
   "plugins": [
@@ -35,15 +35,15 @@
     {
       "name": "fabric",
       "source": "./departments/fabric",
-      "description": "Fabric — the five-node k3s core. Node lifecycle with proven redundancy, pinned releases with named rollback targets, and staged upgrade runbooks.",
+      "description": "Fabric — host-native service management and preserved July–August 2026 k3s core runbooks (five-node k3s layer retired 2026-08-11; recorded 2026-11-02). Lifecycle maintenance with proven surviving capacity, pinned releases with named rollback targets, and staged upgrade runbooks.",
       "version": "0.1.0",
       "category": "infrastructure",
-      "keywords": ["asgardr", "k3s", "kubernetes", "upgrades", "deployments"]
+      "keywords": ["asgardr", "host-native", "k3s", "kubernetes", "upgrades", "deployments"]
     },
     {
       "name": "mesh",
       "source": "./departments/mesh",
-      "description": "Mesh — the five mesh peers. Peer lifecycle, credential rotation proven by the old key failing, and reachability audits from artifacts rather than dashboards.",
+      "description": "Mesh — private mesh peer operations. Peer lifecycle, credential rotation proven by the old key failing, and reachability audits from artifacts rather than dashboards.",
       "version": "0.1.0",
       "category": "infrastructure",
       "keywords": ["asgardr", "mesh", "networking", "keys", "reachability"]

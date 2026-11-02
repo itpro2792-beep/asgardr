@@ -1,8 +1,8 @@
 # CLAUDE.md — working rules for this repository
 
-This is the public GitHub Pages repo for Asgardr (a private ten-computer
-fabric) plus the Asgardr operations org (departments of Claude Code skills
-under `departments/`). Everything in this repo is public.
+This is the public GitHub Pages repo for Asgardr (a private, local-first
+intelligence fabric) plus the Asgardr operations org (departments of Claude
+Code skills under `departments/`). Everything in this repo is public.
 
 ## The gate before any push
 

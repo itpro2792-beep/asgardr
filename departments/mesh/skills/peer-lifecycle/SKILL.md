@@ -1,11 +1,14 @@
 ---
 name: peer-lifecycle
-description: Use when joining, replacing, or retiring one of the five Asgardr mesh peers — key issuance stays with the Operator, every step leaves an artifact, and retirement is proven by the retired peer failing to connect.
+description: Use when joining, replacing, or retiring an Asgardr mesh peer — key issuance stays with the Operator, every step leaves an artifact, and retirement is proven by the retired peer failing to connect.
 ---
 
 # Peer Lifecycle
 
-The five mesh peers extend the fabric beyond the k3s core. Peers come and go;
+Mesh peers extend the private fabric across roles and locations (note recorded
+`2026-11-02`, `CONFIRMED`: the July–August 2026 five-node `k3s` core referenced
+in early mesh notes was retired on `2026-08-11` in favor of host-native service
+management — see [`LEDGER.md`](../../../../LEDGER.md)). Peers come and go;
 the mesh's trust model must not drift while they do.
 
 ## Joining a peer

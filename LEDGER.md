@@ -1,12 +1,14 @@
-# Asgardr Public-Site Decision Ledger
+# Asgardr Public-Site Decision & Discrepancy Ledger
 
-The decision ledger for everything this repository governs: the public pages
-and the operations org. Kept per the org's own
-[`decision-ledger`](departments/operator/skills/decision-ledger/SKILL.md) skill:
-entries carry their evidence, corrections append rather than rewrite, and
-reviewer-class overrides are not valid unless recorded here. The private
-fabric keeps its own ledger beside the systems it governs; nothing in this
-file references live cluster state.
+The decision and discrepancy ledger for everything this repository governs: the
+public pages and the operations org. Kept per the org's own
+[`decision-ledger`](departments/operator/skills/decision-ledger/SKILL.md) and
+[`discrepancy-ledger`](departments/records/skills/discrepancy-ledger/SKILL.md)
+skills: entries carry their evidence, contradictions in the public record are
+flagged openly rather than smoothed over, corrections append rather than
+rewrite, and reviewer-class overrides are not valid unless recorded here. The
+private fabric keeps its own ledger beside the systems it governs; nothing in
+this file references live cluster state.
 
 ---
 
@@ -81,3 +83,51 @@ file references live cluster state.
 - **Owner:** The Operator, with the workstation agent (`public-surface-review`
   checklist applies manually — the checker cannot see that host).
 - **Status:** open
+
+## 2026-11-02 — Discrepancy D-01: July–August 2026 k3s core framing vs. 2026-08-11 retirement
+
+- **Source A:** July–August 2026 public surfaces in this repository —
+  [`index.html`](index.html), [`garden/written/index.html`](garden/written/index.html),
+  [`private-ai/index.html`](private-ai/index.html), [`README.md`](README.md),
+  [`departments/org-manifest.json`](departments/org-manifest.json), and
+  [`departments/fabric/`](departments/fabric/) (published through PR #2,
+  `3570f03`, merged `2026-08-30`) — described the fabric in the present tense
+  as running a five-node `k3s` Kubernetes core (and an earlier cluster-count
+  phrasing in the July–August 2026 `private-ai/` case study footer).
+- **Source B:** **CONFIRMED** architecture transition (`2026-08-11`): the
+  five-node `k3s` Kubernetes orchestration layer was retired on `2026-08-11` in
+  favor of host-native service management across the private fabric. Late-August
+  2026 public commits (`2506f08`, `2026-08-29`) carried forward the July–August
+  2026 `k3s` description without recording the `2026-08-11` transition.
+- **Status:** answered
+- **Resolution:** Flagged and dated across all affected public pages,
+  [`README.md`](README.md), [`departments/org-manifest.json`](departments/org-manifest.json),
+  [`org/index.html`](org/index.html), and [`departments/fabric/`](departments/fabric/)
+  on `2026-11-02` per [`discrepancy-ledger`](departments/records/skills/discrepancy-ledger/SKILL.md)
+  and [`source-dating`](departments/records/skills/source-dating/SKILL.md).
+  Present-tense claims now state host-native service management without
+  publishing live machine counts or private topology; historical `k3s` pages
+  and runbooks stay visible with their **July–August 2026 vintage** labeled
+  rather than silently rewritten.
+
+## 2026-11-02 — Preserve July–August 2026 k3s runbooks with vintage labels after 2026-08-11 retirement
+
+- **Decision:** Keep the July–August 2026 `k3s` runbooks in
+  [`departments/fabric/`](departments/fabric/) (`node-lifecycle`,
+  `pinned-releases`, `upgrade-runbook`) and the [`private-ai/`](private-ai/)
+  case study intact, explicitly labeled with their **July–August 2026 vintage**
+  and a dated **2026-08-11** retirement / host-native transition note, and
+  replace the hardcoded machine-count stat in [`scripts/build-org-chart.py`](scripts/build-org-chart.py)
+  with the tree-derived line-department count so every figure on
+  [`org/index.html`](org/index.html) is derived solely from the repository tree.
+- **Evidence:** Discrepancy D-01 audit (`2026-11-02`) across tracked files in
+  this repository; `python3 scripts/check-publication-safety.py` and
+  `python3 scripts/build-org-chart.py --check` passing on the updated tree.
+- **Rejected:** Silently deleting `k3s` from historical pages and skills as if
+  it had never existed (violates [`source-dating`](departments/records/skills/source-dating/SKILL.md)
+  rule 4: corrections stay visible), or publishing live hostnames, addresses,
+  ports, or current machine counts (violates
+  [`public-surface-review`](departments/publication-safety/skills/public-surface-review/SKILL.md)).
+- **Revisit:** When standalone host-native service-supervision runbooks are
+  distilled as companion skills alongside the July–August 2026 `k3s` runbooks.
+- **Status:** answered

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="The Asgardr operations org chart — 8 departments of evidence-led skills for a ten-computer, local-first fabric, 2 of them reviewer-class. Generated from the repository tree; no live cluster access.">
+<meta name="description" content="The Asgardr operations org chart — 8 departments of evidence-led skills for a local-first intelligence fabric, 2 of them reviewer-class. Generated from the repository tree; no live cluster access.">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'none'; img-src data:; base-uri 'none'; form-action 'none'">
 <title>The Asgardr Operations Org</title>
 <style>
@@ -72,12 +72,12 @@
 <header>
   <p class="eyebrow">Asgardr / Operations Org</p>
   <h1>The Asgardr Operations Org</h1>
-  <p class="lede">An agent organization for a ten-computer, local-first fabric — five k3s core nodes, five mesh peers, one evidence-led operator. Every department installs independently.</p>
+  <p class="lede">An agent organization for a local-first intelligence fabric under one evidence-led operator. Every department installs independently. Public record note (recorded 2026-11-02, CONFIRMED): the five-node k3s orchestration layer described in July–August 2026 artifacts was retired 2026-08-11 in favor of host-native service management; historical k3s runbooks stay preserved with their July–August 2026 vintage.</p>
   <div class="stats">
     <div class="stat"><b>8</b><span>departments</span></div>
     <div class="stat"><b>27</b><span>skills</span></div>
     <div class="stat"><b>2</b><span>reviewer-class</span></div>
-    <div class="stat"><b>10</b><span>machines served</span></div>
+    <div class="stat"><b>6</b><span>line departments</span></div>
   </div>
   <div class="tools">
     <input id="q" type="search" placeholder="Search 27 skills — try “restore”, “rotation”, “refusal”…"
@@ -115,9 +115,9 @@
         <code>negative-controls</code>
         <p>Use when designing tests or health checks for any Asgardr system — retrieval, mesh, backups, publishing, checkers themselves. Adds the cases that must fail - absent facts refuse, out-of-scope stays out, dead endpoints error, and every checker proves it can fail.</p>
       </li>
-      <li class="skill" data-search="restore-drill use when validating any asgardr backup — vector collections, etcd snapshots, config repos, volumes. a backup that has never been restored is a file of unknown provenance; this drill proves it by restoring and querying the restored copy.">
+      <li class="skill" data-search="restore-drill use when validating any asgardr backup — vector collections, config repos, volumes, or historical etcd snapshots (july–august 2026 k3s vintage; k3s retired 2026-08-11, recorded 2026-11-02). a backup that has never been restored is a file of unknown provenance; this drill proves it by restoring and querying the restored copy.">
         <code>restore-drill</code>
-        <p>Use when validating any Asgardr backup — vector collections, etcd snapshots, config repos, volumes. A backup that has never been restored is a file of unknown provenance; this drill proves it by restoring and querying the restored copy.</p>
+        <p>Use when validating any Asgardr backup — vector collections, config repos, volumes, or historical etcd snapshots (July–August 2026 k3s vintage; k3s retired 2026-08-11, recorded 2026-11-02). A backup that has never been restored is a file of unknown provenance; this drill proves it by restoring and querying the restored copy.</p>
       </li>
       <li class="skill" data-search="test-forensics use when auditing an existing test suite, health check, or monitoring setup for vacuous assertions — checks that pass while measuring nothing. run it on inherited code, vendor deliverables, and anything that &quot;arrived with a passing suite.">
         <code>test-forensics</code>
@@ -166,9 +166,9 @@
     <p class="charter">Authority tiers, continuity when the operator is away, and the ledger where decisions and their evidence are recorded — corrections visible, nothing silently rewritten.</p>
     <p class="install"><code>/plugin install operator@asgardr</code></p>
     <ul class="skills">
-      <li class="skill" data-search="continuity-plan use when assessing single-operator risk for the asgardr fabric — what runs unattended, what only the operator knows, and whether the cluster could be cold-started from written artifacts alone. the homelab translation of succession planning and workforce risk.">
+      <li class="skill" data-search="continuity-plan use when assessing single-operator risk for the asgardr fabric — what runs unattended, what only the operator knows, and whether the fabric could be cold-started from written artifacts alone. the homelab translation of succession planning and workforce risk.">
         <code>continuity-plan</code>
-        <p>Use when assessing single-operator risk for the Asgardr fabric — what runs unattended, what only the Operator knows, and whether the cluster could be cold-started from written artifacts alone. The homelab translation of succession planning and workforce risk.</p>
+        <p>Use when assessing single-operator risk for the Asgardr fabric — what runs unattended, what only the Operator knows, and whether the fabric could be cold-started from written artifacts alone. The homelab translation of succession planning and workforce risk.</p>
       </li>
       <li class="skill" data-search="decision-ledger use when recording an operational decision for the asgardr fabric — what was decided, on what evidence, what was rejected, and when to revisit. also the required destination for reviewer-class overrides and accepted risks.">
         <code>decision-ledger</code>
@@ -187,20 +187,20 @@
       <span class="dmeta">Yggdrasil steward · 3 skills</span>
       <a class="anchor" href="#fabric" aria-label="Link to Fabric">§</a>
     </summary>
-    <p class="charter">The five-node k3s core. Nodes leave and return with proof; a moving image tag has no rollback target; upgrades go one node at a time with artifact checks between.</p>
+    <p class="charter">Host-native service management and preserved July–August 2026 k3s core runbooks (five-node k3s orchestration retired 2026-08-11; recorded 2026-11-02, CONFIRMED). Hosts leave and return with proof; a moving release has no rollback target; upgrades go one machine at a time with artifact checks between.</p>
     <p class="install"><code>/plugin install fabric@asgardr</code></p>
     <ul class="skills">
-      <li class="skill" data-search="node-lifecycle use when taking a k3s core node down for maintenance or returning it to the asgardr fabric — cordon, drain, prove the workloads survived, and prove the return with artifacts rather than dashboard green.">
+      <li class="skill" data-search="node-lifecycle use when taking a fabric host down for maintenance or returning it to service (july–august 2026 k3s cordon/drain runbook preserved; five-node k3s layer retired 2026-08-11 in favor of host-native service management, recorded 2026-11-02) — prove surviving capacity before exit and prove return with artifacts rather than dashboard green.">
         <code>node-lifecycle</code>
-        <p>Use when taking a k3s core node down for maintenance or returning it to the Asgardr fabric — cordon, drain, prove the workloads survived, and prove the return with artifacts rather than dashboard green.</p>
+        <p>Use when taking a fabric host down for maintenance or returning it to service (July–August 2026 k3s cordon/drain runbook preserved; five-node k3s layer retired 2026-08-11 in favor of host-native service management, recorded 2026-11-02) — prove surviving capacity before exit and prove return with artifacts rather than dashboard green.</p>
       </li>
-      <li class="skill" data-search="pinned-releases use when deploying or updating any workload on the asgardr fabric — pinned image tags with digests, a rollback target named before rollout, and model or backend swaps done as config changes, never code changes.">
+      <li class="skill" data-search="pinned-releases use when deploying or updating any workload on the asgardr fabric (host-native services or container images; july–august 2026 k3s layer retired 2026-08-11, recorded 2026-11-02) — pinned versions or image digests, a rollback target named before rollout, and model or backend swaps done as config changes, never code changes.">
         <code>pinned-releases</code>
-        <p>Use when deploying or updating any workload on the Asgardr fabric — pinned image tags with digests, a rollback target named before rollout, and model or backend swaps done as config changes, never code changes.</p>
+        <p>Use when deploying or updating any workload on the Asgardr fabric (host-native services or container images; July–August 2026 k3s layer retired 2026-08-11, recorded 2026-11-02) — pinned versions or image digests, a rollback target named before rollout, and model or backend swaps done as config changes, never code changes.</p>
       </li>
-      <li class="skill" data-search="upgrade-runbook use when upgrading k3s, the node os, or cluster-level components across the five-node asgardr core — snapshot first and prove it restorable, one node at a time, artifact checks between each, written abort criteria.">
+      <li class="skill" data-search="upgrade-runbook use when upgrading host os, runtime, or service components across the asgardr fabric (july–august 2026 five-node k3s upgrade runbook preserved; k3s layer retired 2026-08-11 in favor of host-native service management, recorded 2026-11-02) — snapshot first and prove it restorable, one machine at a time, artifact checks between each, written abort criteria.">
         <code>upgrade-runbook</code>
-        <p>Use when upgrading k3s, the node OS, or cluster-level components across the five-node Asgardr core — snapshot first and prove it restorable, one node at a time, artifact checks between each, written abort criteria.</p>
+        <p>Use when upgrading host OS, runtime, or service components across the Asgardr fabric (July–August 2026 five-node k3s upgrade runbook preserved; k3s layer retired 2026-08-11 in favor of host-native service management, recorded 2026-11-02) — snapshot first and prove it restorable, one machine at a time, artifact checks between each, written abort criteria.</p>
       </li>
     </ul>
   </details>
@@ -211,16 +211,16 @@
       <span class="dmeta">Bifröst warden · 3 skills</span>
       <a class="anchor" href="#mesh" aria-label="Link to Mesh">§</a>
     </summary>
-    <p class="charter">The five peers beyond the core. Keys rotate and the rotation is proven when the old key fails; reachability is read from session artifacts, not a dashboard&#x27;s green dot.</p>
+    <p class="charter">Peer connectivity across the private mesh. Keys rotate and the rotation is proven when the old key fails; reachability is read from session artifacts, not a dashboard&#x27;s green dot.</p>
     <p class="install"><code>/plugin install mesh@asgardr</code></p>
     <ul class="skills">
       <li class="skill" data-search="key-rotation use when rotating mesh or service credentials on the asgardr fabric — issue, cut over, revoke, then prove the rotation by attempting the old credential and saving its refusal. rotation is proven when the old key fails, not when the new one works.">
         <code>key-rotation</code>
         <p>Use when rotating mesh or service credentials on the Asgardr fabric — issue, cut over, revoke, then prove the rotation by attempting the old credential and saving its refusal. Rotation is proven when the old key fails, not when the new one works.</p>
       </li>
-      <li class="skill" data-search="peer-lifecycle use when joining, replacing, or retiring one of the five asgardr mesh peers — key issuance stays with the operator, every step leaves an artifact, and retirement is proven by the retired peer failing to connect.">
+      <li class="skill" data-search="peer-lifecycle use when joining, replacing, or retiring an asgardr mesh peer — key issuance stays with the operator, every step leaves an artifact, and retirement is proven by the retired peer failing to connect.">
         <code>peer-lifecycle</code>
-        <p>Use when joining, replacing, or retiring one of the five Asgardr mesh peers — key issuance stays with the Operator, every step leaves an artifact, and retirement is proven by the retired peer failing to connect.</p>
+        <p>Use when joining, replacing, or retiring an Asgardr mesh peer — key issuance stays with the Operator, every step leaves an artifact, and retirement is proven by the retired peer failing to connect.</p>
       </li>
       <li class="skill" data-search="reachability-audit use when verifying connectivity across the asgardr mesh — a full peer-to-peer probe matrix at the service level, read from saved artifacts with current timestamps, never from a dashboard&#x27;s green dot.">
         <code>reachability-audit</code>
@@ -314,6 +314,7 @@
   <p>Generated from the repository tree — <code>scripts/build-org-chart.py</code>.
   Pattern after cbrock84/headcount (MIT) — departments that install independently, a reviewer class that reports to the top, and a chart generated from the repository tree.
   · <a href="https://github.com/itpro2792-beep/asgardr">Repository</a>
+  · <a href="https://github.com/itpro2792-beep/asgardr/blob/main/LEDGER.md">Decision &amp; discrepancy ledger</a>
   · <a href="https://asgardr-public-garden.itpro27.chatgpt.site/">The Asgardr garden</a></p>
 </footer>
 
