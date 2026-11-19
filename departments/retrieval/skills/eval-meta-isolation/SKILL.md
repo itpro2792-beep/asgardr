@@ -6,17 +6,18 @@ description: Use when deciding what an Asgardr retrieval corpus may ingest, or a
 # Eval-Meta Isolation
 
 Review write-ups, scorecards, evaluation commentary, frozen question sets,
-pass/fail records, and transcripts or ledger entries that quote expected
-answers are eval-meta: documents about the system's quality. Served by
-default, they answer a quality question from the report card and a blind
-question from the answer key. Both leaks are silent: **scores go up.**
+and transcripts or ledger entries that quote expected answers are eval-meta:
+documents about the system's quality. Served by default, they answer a
+quality question from the system's own report card and a blind question from
+the answer key. Neither failure looks like one — **scores go up.**
 
 ## The invariants
 
 - **Exclude by default, admit by name.** Eval-meta is never retrieved unless
   the question names the exact file: a reviewer asking what a named review
-  says is served; a general question never is. An answer that cites its own
-  scorecard is correctly cited (`grounded-answering`) and still self-grading.
+  says is served; a general question never is. Otherwise the top hit for a
+  quality question is the system's own latest review — cited, document and
+  passage, `grounded-answering` satisfied to the letter, defeated in purpose.
 - **Classify by name pattern and by content.** Known filename prefixes catch
   the review documents; content markers ("blind set", "holdout", scores)
   catch what drifts in under other names. New reviews appear every round —
@@ -48,7 +49,7 @@ question from the answer key. Both leaks are silent: **scores go up.**
 ## Deliverable
 
 The document-level classification rule, name patterns and content markers
-both; a refusal transcript per chunk shape; after any leak, the regression
-case pinned and keyed to the chunk shape that leaked. Do not report isolation
-as done until every chunk-shape probe has been watched refusing — a rising
-score is evidence of nothing but change.
+both; a refusal transcript per chunk shape the pipeline produces; after any
+leak, the regression case pinned and keyed to the chunk shape that leaked.
+Do not report isolation as done until every chunk-shape probe has been
+watched refusing — a rising score proves change, not health.
