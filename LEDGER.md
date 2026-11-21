@@ -131,3 +131,55 @@ this file references live cluster state.
 - **Revisit:** When standalone host-native service-supervision runbooks are
   distilled as companion skills alongside the July–August 2026 `k3s` runbooks.
 - **Status:** answered
+
+## 2026-11-21 — Harden the publication gate after an adversarial review of PR #6
+
+- **Decision:** Rewrite the CSP rule and the reporting path of
+  [`scripts/check-publication-safety.py`](scripts/check-publication-safety.py).
+  The policy is found the way a browser finds it: a real
+  `<meta http-equiv="Content-Security-Policy">` in `<head>`, before any script,
+  style, link or base. Report-Only, commented-out, templated and body-placed
+  declarations do not count. The policy is parsed as CSP3 parses it and its
+  sources are allow-listed instead of block-listed. Findings name file, line,
+  column, category and length only: no matched text, no surrounding line, no
+  digest. Every file is scanned in several decodings (UTF-8, BOM-marked or
+  NUL-patterned UTF-16/32, NUL-stripped, entity-decoded pages), every pattern is
+  bounded so long lines stay linear, and the self-test gains a fixture per
+  evasion.
+- **Evidence:** Two independent reviewers reproduced 14 defects in the first
+  version (`505e209`), among them twelve CSP declarations Chromium ignores but
+  the gate accepted; scheme-less hosts, `*:*`, `&#42;`, a shadowed `default-src`
+  and `'strict-dynamic'` accepted as strict; source lines carrying addresses and
+  keys still printed by the load and network findings; the printed `sha256`
+  prefix of a private address reversed by brute force in 7–8 s; and a 181 KB
+  single-line stylesheet taking 32 s. After the rewrite the self-test passes
+  (81 findings on bad fixtures, 0 on clean ones), 41 of 43 mutants are killed
+  (the 2 survivors are equivalent: a check another guard fully covers, and a
+  speed-only shortcut), and the long-line control takes under 1 s yet fails
+  (37.9 s, 149.6 s) when either pattern bound is removed.
+- **Rejected:** Hash-only style sources (`'sha256-…'` per `<style>` block):
+  tighter on paper, but every edit would need a recomputed hash or the page
+  silently loses its styles. `'unsafe-inline'` for styles on script-free pages
+  is the house policy. Also rejected: printing a digest for correlation, since
+  a low-entropy value's digest is itself a publication.
+- **Revisit:** When a page needs something outside the allow-list (a font, a
+  frame, a host): extend the allow-list here with the reason, never per page.
+- **Status:** answered
+
+## 2026-11-21 — Open: is the private-ai sample corpus synthetic?
+
+- **Question:** The [`private-ai/`](private-ai/) case study shows answers drawn
+  from a sample corpus about a venue named "Meridian Arena". Is that corpus
+  synthetic, and are its figures and documents free of real client or site data?
+- **Why it matters:** The rule is synthetic data only, labeled as such. If the
+  corpus is synthetic, the page needs a label in place (and a `demo-*` venue
+  name when the demo is next regenerated, or a recorded accepted risk for
+  keeping the name). If it is not, the page needs removal, not a label.
+- **Evidence so far:** The venue name appears in no other file of this
+  repository; the commit that created the page (`7cf7e9a`) describes "four real
+  question-and-answer exchanges"; an external review called the corpus
+  synthetic without citing a source. A synthetic label was drafted in PR #6 and
+  withdrawn, because nothing in the repository supports it.
+- **Owner:** Operator. **Settled by:** the corpus generator and seed, or the
+  Operator's statement.
+- **Status:** open
