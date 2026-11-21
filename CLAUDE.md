@@ -24,10 +24,15 @@ Code skills under `departments/`). Everything in this repo is public.
 - Pages are self-contained static HTML: no external scripts, stylesheets,
   fonts, or images; no `fetch`/XHR/WebSocket/service workers; no analytics.
   Outbound `<a href>` navigation links are fine.
-- Every page declares a Content-Security-Policy in a `<meta>` tag starting from
-  `default-src 'none'` — no wildcard, scheme-wide, or remote-host sources, no
-  `'unsafe-eval'`. The gate blocks a page without one.
-- No email addresses other than placeholders (`@example.com`, `noreply@…`).
+- Every page (`.html`, `.htm`, `.xhtml`) declares a Content-Security-Policy in a
+  `<meta http-equiv>` inside `<head>`, before any script, style, link or base
+  element, starting from `default-src 'none'`. Sources are limited to `'none'`,
+  `'self'`, `'unsafe-inline'`, `'unsafe-hashes'`, hashes and nonces, plus
+  `data:` for images, fonts and media — no hosts, no other schemes, no
+  `'unsafe-eval'` or `'strict-dynamic'`, and `connect-src` stays `'none'`. The
+  gate blocks a page without one, or with one a browser would ignore.
+- No email addresses other than placeholders (`@example.com`, `noreply@…`,
+  `git@github.com:` remotes); entity- or percent-encoded addresses count.
 - Synthetic data only, labeled as such; identities use `demo-*` / `DEMO-*`.
   Never publish private hostnames, RFC1918 or CGNAT/tailnet addresses,
   serials, credentials, or anything derived from live cluster state. This
