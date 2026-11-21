@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
 <title>ibwbench — an in-building wireless / DAS reasoning benchmark for LLMs</title>
 <meta name="description" content="A held-out benchmark measuring whether language models can reason about in-building wireless and distributed antenna systems: public-safety code, PIM/intermod, DAS topology, and closeout QA.">
 <style>
@@ -30,6 +31,8 @@
   h2{font-size:22px;margin:0 0 14px;letter-spacing:-.01em}
   p{max-width:66ch}
   a{color:var(--accent)}
+  .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:14px 0}
+  .table-scroll table{margin:0}
   table{width:100%;border-collapse:collapse;margin:14px 0;font-size:15px}
   th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line)}
   th{font:600 12px/1.2 var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
@@ -80,6 +83,7 @@
   <h2>Baselines — first discrimination run</h2>
   <p class="muted">Aug 2026, via an OpenAI-compatible endpoint. Scored by float-tolerant numeric
   match; control items held out of the headline number.</p>
+  <div class="table-scroll" role="region" aria-label="Baseline scores table (scrolls horizontally on narrow screens)" tabindex="0">
   <table>
     <thead><tr><th>Model</th><th>Score</th><th>Code</th><th>PIM</th><th>Topology</th><th>Closeout</th></tr></thead>
     <tbody>
@@ -88,6 +92,7 @@
       <tr><td>llama3.3:70b</td><td class="score">0.605 <span class="bar" style="width:61px"></span></td><td class="num">8/10</td><td class="num">5/11</td><td class="num">6/11</td><td class="num">7/11</td></tr>
     </tbody>
   </table>
+  </div>
   <p><strong>It discriminates.</strong> Three distinct, well-separated scores. And note the ordering:
   <strong>the 4B model beats the older 70B.</strong> That is deliberate — ibwbench rewards RF/DAS
   reasoning, not parameter count, and a modern small reasoning model outperforms an older large one.

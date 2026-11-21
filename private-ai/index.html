@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
 <title>Private AI Assistant — document Q&amp;A on private infrastructure</title>
 <meta name="description" content="Case study (July–August 2026 vintage): a retrieval-augmented document assistant running entirely on self-hosted hardware with cited answers and negative controls. Note recorded 2026-11-02 (CONFIRMED): the k3s orchestration layer described here was retired 2026-08-11 in favor of host-native service management.">
 <style>
@@ -89,9 +90,11 @@ which means there is no version of this where a contract leaks because a vendor 
 their data-retention policy.</p>
 
 <h2>What it looks like in use</h2>
-<p class="note">Real responses from the running system, against a sample corpus of venue
-documents: a DAS site survey, a neutral-host service agreement, a field operations handbook,
-and a quarterly performance report.</p>
+<p class="note">Real responses from the running system, against a <strong>synthetic</strong>
+sample corpus of venue documents: a DAS site survey, a neutral-host service agreement, a field
+operations handbook, and a quarterly performance report. The venue (“Meridian Arena”), its
+figures, and every document in the corpus are invented for this demonstration; no real venue,
+client, or site data appears on this page.</p>
 
 <div class="card">
   <div class="qa">
